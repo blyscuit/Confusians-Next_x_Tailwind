@@ -1,7 +1,7 @@
 import ReactGA from 'react-ga'
 export const initGA = () => {
-  console.log('GA init')
-  ReactGA.initialize('UA-47162441-4')
+//   console.log('GA init')
+  ReactGA.initialize(process.env.GOOGLE_ANALYTIC_KEY)
 }
 export const logPageView = () => {
 //   console.log(`Logging pageview for ${window.location.pathname}`)
