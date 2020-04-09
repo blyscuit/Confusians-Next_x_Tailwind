@@ -1,0 +1,84 @@
+{
+    "index": [
+        {"name": "Cosmetica", "size": "w-full", "image": "cosmetica_home.png"},
+        {"name": "Sliadde", "size": "w-full", "image": "sliadde_home.png"},
+        {"name": "Esqace", "size": "w-full", "image": "esqace_home.png"},
+        {"name": "N-egative", "size": "w-full", "image": "negative_home.png"},
+        {"name": "HTML", "size": "w-4/12", "image": "mary.png"},
+        {"name": "KeepMisFit", "size": "w-8/12", "image": ""},
+        {"name": "QNOHC", "size": "w-full", "image": ""}
+    ],
+    "home": {
+        "backgroundColor":"blue-grey lighten-5"
+    },
+    "Cosmetica": {
+        "name": "Cosmetica", 
+        "about": "Match 3 ○ Deck ○ Building", 
+        "font":"Quicksand", 
+        "backgroundColor":"grey lighten-4", 
+        "textColor":"grey-text text-darken-3", 
+        "ios":"https://appsto.re/th/Ui3Eib.i", 
+        "adr":"", 
+        "image":["/cosmetica_mobile.png"]
+    },
+    "KeepMisFit": {
+        "name": "Keep MisFit", 
+        "about": "Your personal Shine Keychain", 
+        "font":"", 
+        "backgroundColor":"blue-grey darken-4", 
+        "textColor":"light-blue-text text-lighten-5", 
+        "ios":"https://itunes.apple.com/th/app/keep-misfit-shine-tracker/id1079891930?mt=8", 
+        "adr":"", 
+        "image":["/KeepMisfit_mobile.png"]
+    },
+    "Esqace": {
+        "name": "Esqace", 
+        "about": "escape", 
+        "font":"Times,serif", 
+        "backgroundColor":"grey darken-1", 
+        "textColor":"grey-text text-lighten-5", 
+        "ios":"https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8", 
+        "adr":"", 
+        "image":["/esqace_mobile.png"]
+    },
+    "Sliadde": {
+        "name": "Sliadde", 
+        "about": "Fast pace matching game with mathematic twist", 
+        "font":"Futura Oblique", 
+        "backgroundColor":"grey darken-4", 
+        "textColor":"grey-text text-lighten-5", 
+        "ios":"https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8", 
+        "adr":"https://play.google.com/store/apps/details?id=com.confusians.Sliaddee", 
+        "image":["/sliadde_mobile.png"]
+    },
+    "N-egative": {
+        "name": "N-egative", 
+        "about": "A minimal game about mind reading!", 
+        "font":"", 
+        "backgroundColor":"amber accent-1", 
+        "textColor":"text-blue-grey text-darken-4", 
+        "ios":"https://itunes.apple.com/en/app/negative/id840000894?mt=8", 
+        "adr":"", 
+        "image":["/iphone-big.png"]
+    },
+    "QNOHC": {
+        "name": "QNOHC", 
+        "about": "Quick. Note. One. Handed. Camera", 
+        "font":"", 
+        "backgroundColor":"deep-orange lighten-1", 
+        "textColor":"grey-text text-lighten-2", 
+        "ios":"https://apps.apple.com/us/app/quick-note-one-handed-camera/id981003902", 
+        "adr":"", 
+        "image":["/qnohc_mobile.png"]
+    },
+    "HTML": {
+        "name": "HTML", 
+        "about": "", 
+        "font":"", 
+        "backgroundColor":"blue-grey lighten-1", 
+        "textColor":"blue-grey-text text-lighten-4", 
+        "ios":"", 
+        "adr":"", 
+        "image":["/mary.png"]
+    }
+}
