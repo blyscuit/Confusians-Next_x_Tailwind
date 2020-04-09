@@ -17,7 +17,7 @@ const Post = props => {
         <div class={"flex flex-col items-center  pb-10"}>
 
           <div class="flex flex-col px-6 py-16">
-            <h1 class={"text-6xl text-center " + item.textColor} style={{ "font-family": item.font }}>{item.name}</h1>
+            <h1 class={"text-6xl text-center " + item.textColor} style={{ "fontFamily": item.font }}>{item.name}</h1>
             <h5 class={"text-2xl text-center font-light " + item.textColor}>{item.about}</h5>
           </div>
 
