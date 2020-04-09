@@ -25,7 +25,7 @@ const Header = props => {
             <a><span class={headerTextClass}>Work</span></a>
           </Link>
           <span class={seperatorTextClass}> | </span>
-          <Link href="/blog">
+          <Link href="http://confusianscom.ipage.com/blog">
             <a><span class={headerTextClass}>Blog</span></a>
           </Link>
         </div>
