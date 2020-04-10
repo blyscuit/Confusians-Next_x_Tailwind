@@ -13,7 +13,7 @@ const client = require('contentful').createClient({
 function HomePage() {
   async function fetchEntries() {
     const entries = await client.getEntries({
-        order: 'sys.createdAt',
+        order: '-sys.createdAt',
         content_type: "post"})
     console.log(entries)
     if (entries.items) return entries.items
