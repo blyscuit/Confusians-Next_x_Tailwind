@@ -1,24 +1,30 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
-import Post from '../components/blog/post'
+import Post from '../../components/blog/post'
 import { Helmet } from 'react-helmet';
-import catalog from '../db/catalog.json'
-import Layout from '../components/MyLayout.js'
+import catalog from '../../db/catalog.json'
+import Layout from '../../components/MyLayout.js'
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-function HomePage() {
+const BlogPage = props => {
   async function fetchEntries() {
+  console.log(props)
+  if (props.id != null) {
+    const entry = await client.getEntry(
+      props.id)
+      console.log(entry)
+    if (entry) return entry
+  } else {
     const entries = await client.getEntries({
-        order: '-fields.date',
-        content_type: "post"})
-    console.log(entries)
-
-    if (entries.items) return entries.items
+      "fields.title": props.blog,
+      content_type: "post"})
+    if (entries.items) return entries.items[0] || {}
     console.log(`Error getting Entries for ${contentType.name}.`)
+  }
   }
 
   const [posts, setPosts] = useState([])
@@ -26,7 +32,7 @@ function HomePage() {
   useEffect(() => {
     async function getPosts() {
       const allPosts = await fetchEntries()
-      setPosts([...allPosts])
+      setPosts(allPosts)
     }
     getPosts()
   }, [])
@@ -38,23 +44,24 @@ function HomePage() {
           <body class={"white"}></body>
         </Helmet>
         <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
-      {posts.length > 0
-        ? posts.map(p => (
-            <Post
-              detail={p.fields.detail}
-              alt={p.fields.alt}
-              date={p.fields.date}
-              key={p.fields.title}
-              image={p.fields.image}
-              title={p.fields.title}
-              url={p.fields.url}
-              id={p.sys.id}
-            />
-          ))
+      {posts.fields != null
+        ? <Post
+        detail={posts.fields.detail}
+        alt={posts.fields.alt}
+        date={posts.fields.date}
+        key={posts.fields.title}
+        image={posts.fields.image}
+        title={posts.fields.title}
+        url={posts.fields.url}
+      />
         : null}
         </div>
         </Layout>
   )
 }
 
-export default HomePage
+BlogPage.getInitialProps = async function (context) {
+  return context.query;
+};
+
+export default BlogPage

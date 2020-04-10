@@ -2,15 +2,26 @@ import Layout from '../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
 import catalog from '../db/catalog.json'
 import { Helmet } from 'react-helmet';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Post = props => {
   var item = catalog[props.id] || {}
+  
+  const router = useRouter()
+
+  useEffect(() => {
+    if (catalog[props.id] == null) {
+      router.push('/')
+    }
+  }, [])
+
   return (
     <div class={item.backgroundColor}>
-      <Layout backdrop={item.textColor.includes("lighten") ? "dark" : "light"}>
+      <Layout backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}>
 
         <Helmet>
-          <title>{item.name} | Confusians</title>
+          <title>{item.name || ""} | Confusians</title>
           <body class={item.backgroundColor}></body>
         </Helmet>
 
@@ -23,14 +34,14 @@ const Post = props => {
 
           <div class="w-2/3 md:w-1/4 lg:w-1/4">
             <div>
-              <img class="w-auto" src={item.image[0]}></img>
+              <img class="w-auto" src={(item.image || [""])[0]}></img>
             </div>
           </div>
 
           <div class="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
             <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
 
-              {item.adr != "" ? (
+              {item.adr != null && item.adr != "" ? (
                 <div class={"flex-1 flex items-center flex-col"}>
                   <div class="">
                     <a href={item.adr}>
@@ -41,7 +52,7 @@ const Post = props => {
                 </div>
               ) : null}
 
-              {item.ios != "" ? (
+              {item.ios != null && item.ios != "" ? (
                 <div class="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
                   <div class="pt-px ">
                     <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg")', backgroundRepeat: 'no-repeat', width: '135px', height: '40px' }}></a>
@@ -58,7 +69,6 @@ const Post = props => {
 }
 
 Post.getInitialProps = async function (context) {
-
   return context.query;
 };
 
