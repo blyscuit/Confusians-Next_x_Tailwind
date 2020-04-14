@@ -2,6 +2,8 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import Link from 'next/link'
 
+const ReactMarkdown = require('react-markdown')
+
 // import Prism from 'prismjs';
 import React, { Component } from "react"
 
@@ -18,7 +20,7 @@ export default class Post extends Component {
     }
 
     render() {
-        var { detail, alt, date, image, title, url, id } = this.props
+        var { alt, date, image, title, url, id, markdown } = this.props
 
         const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: 'numeric' })
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
@@ -31,7 +33,8 @@ export default class Post extends Component {
                     <p class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800">{title}</p>
                 </Link>
                     <p class="font-light text-sm pt-2 text-gray-500">{`${mo} ${da}, ${ye}`}</p>
-                    <div class="font-serif  text-xl leading-relaxed text-gray-900 text-justify"
+                    <ReactMarkdown source={markdown}></ReactMarkdown>
+                    {/* <div class="font-serif  text-xl leading-relaxed text-gray-900 text-justify"
                         dangerouslySetInnerHTML={{
                             __html: documentToHtmlString(detail, {
                                 renderNode: {
@@ -53,7 +56,7 @@ export default class Post extends Component {
                                 }
                             }),
                         }}
-                    ></div>
+                    ></div> */}
                 </div>
                 <div class={'bg-gray-400 h-px w-full my-12'}></div>
             </div>

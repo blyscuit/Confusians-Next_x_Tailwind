@@ -15,7 +15,6 @@ function HomePage() {
     const entries = await client.getEntries({
         order: '-fields.date',
         content_type: "post"})
-    console.log(entries)
 
     if (entries.items) return entries.items
     console.log(`Error getting Entries for ${contentType.name}.`)
@@ -41,7 +40,6 @@ function HomePage() {
       {posts.length > 0
         ? posts.map(p => (
             <Post
-              detail={p.fields.detail}
               alt={p.fields.alt}
               date={p.fields.date}
               key={p.fields.title}
@@ -49,6 +47,7 @@ function HomePage() {
               title={p.fields.title}
               url={p.fields.url}
               id={p.sys.id}
+              markdown={p.fields.markdown}
             />
           ))
         : null}

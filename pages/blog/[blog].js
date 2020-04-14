@@ -31,13 +31,13 @@ const BlogPage = props => {
         <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
       {posts.fields != null
         ? <Post
-        detail={posts.fields.detail}
         alt={posts.fields.alt}
         date={posts.fields.date}
         key={posts.fields.title}
         image={posts.fields.image}
         title={posts.fields.title}
         url={posts.fields.url}
+        markdown={posts.fields.markdown}
       />
         : null}
         </div>
