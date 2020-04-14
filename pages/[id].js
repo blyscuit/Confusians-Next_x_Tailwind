@@ -23,6 +23,25 @@ const Post = props => {
         <Helmet>
           <title>{item.name || ""} | Confusians</title>
           <body class={item.backgroundColor}></body>
+          <meta name="description" content={item.name + " " + item.about} />
+          <meta
+            name="robots"
+            content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          />
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={item.name} />
+          <meta property="og:description" content={item.about} />
+          <meta property="og:url" content={"https://confusians.com/" + item.name} />
+          <meta property="og:site_name" content="Confusians" />
+          <meta property="og:image" content={(item.image || [""])[0]} />
+          <meta property="og:image:secure_url" content={(item.image || [""])[0]} />
+          <meta property="og:image:width" content="1280" />
+          <meta property="og:image:height" content="720" />
+          <meta name="twitter:card" content="app" />
+          <meta name="twitter:description" content={item.about} />
+          <meta name="twitter:title" content={item.name} />
+          <meta name="twitter:image" content={(item.image || [""])[0]} />
         </Helmet>
 
         <div class={"flex flex-col items-center  pb-10"}>

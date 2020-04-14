@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../../components/blog/post'
 import { Helmet } from 'react-helmet';
-import catalog from '../../db/catalog.json'
 import Layout from '../../components/MyLayout.js'
 
 const client = require('contentful').createClient({
@@ -11,31 +10,17 @@ const client = require('contentful').createClient({
 })
 
 const BlogPage = props => {
-  async function fetchEntries() {
-  console.log(props)
-  if (props.id != null) {
-    const entry = await client.getEntry(
-      props.id)
-      console.log(entry)
-    if (entry) return entry
-  } else {
-    const entries = await client.getEntries({
-      "fields.title": props.blog,
-      content_type: "post"})
-    if (entries.items) return entries.items[0] || {}
-    console.log(`Error getting Entries for ${contentType.name}.`)
-  }
-  }
 
-  const [posts, setPosts] = useState([])
+  const posts = props
 
-  useEffect(() => {
-    async function getPosts() {
-      const allPosts = await fetchEntries()
-      setPosts(allPosts)
-    }
-    getPosts()
-  }, [])
+  // useEffect(() => {
+  //     /* ComponentDidMount code */
+  //   async function getPosts() {
+  //     const allPosts = await fetchEntries()
+  //     setPosts(allPosts)
+  //   }
+  //   getPosts()
+  // }, [])
 
   return (
         <Layout footer={true}>
@@ -61,7 +46,21 @@ const BlogPage = props => {
 }
 
 BlogPage.getInitialProps = async function (context) {
-  return context.query;
+  async function fetchEntries() {
+    if (context.query.id != null) {
+      const entry = await client.getEntry(
+        context.query.id)
+      if (entry) return entry
+    } else {
+      const entries = await client.getEntries({
+        "fields.title": context.query.blog,
+        content_type: "post"})
+      if (entries.items) return entries.items[0] || {}
+      console.log(`Error getting Entries for ${contentType.name}.`)
+    }
+    }
+
+  return await fetchEntries()
 };
 
 export default BlogPage
