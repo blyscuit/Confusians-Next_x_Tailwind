@@ -1,5 +1,4 @@
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+
 import Link from 'next/link'
 
 const ReactMarkdown = require('react-markdown')
@@ -26,14 +25,21 @@ export default class Post extends Component {
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
 
         return (
-            <div className="max-w-2xl">
+            <div class="max-w-2xl">
                     <img alt={alt} src={image} />
-                <div className="text">
+                <div>
                 <Link href={{pathname: "/blog/[blog]", query: {"id":id}}} as={`/blog/${title}`} >
                     <p class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800">{title}</p>
                 </Link>
                     <p class="font-light text-sm pt-2 text-gray-500">{`${mo} ${da}, ${ye}`}</p>
-                    <ReactMarkdown source={markdown}></ReactMarkdown>
+                    <ReactMarkdown source={markdown}
+                    className="text-xl font-serif leading-relaxed text-gray-900 text-justify"
+                    renderers={{
+                        paragraph: props => <p class="mt-8 ">{props.children}</p>,
+                        code: props => {  return (<div class="mt-8 "><pre class="mt-8 "><code class={"text-sm language-" + props.language + " mt-8"} style={{fontSize: "0.875rem"}} >{props.value}</code></pre></div>) },
+                        image: props => { return (<img class="mt-8 self-center max-h-1/4" alt={props.alt} src={props.src}></img>)},
+                      }}
+                    ></ReactMarkdown>
                     {/* <div class="font-serif  text-xl leading-relaxed text-gray-900 text-justify"
                         dangerouslySetInnerHTML={{
                             __html: documentToHtmlString(detail, {
