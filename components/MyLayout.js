@@ -2,6 +2,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { initGA, logPageView } from '../utils/analytics'
 import React, { Component } from "react"
+import Head from 'next/head';
 
 const layoutStyle = {
   // margin: 20,
@@ -21,6 +22,10 @@ export default class Layout extends Component {
   render() {
     return (
       <div style={layoutStyle} >
+      <Head>
+        <link rel="shortcut icon" href="/static/favicon.ico" />
+      </Head>
+      
         <Header backdrop={this.props.backdrop || "light"} />
         {this.props.children}
         {this.props.footer == true &&
