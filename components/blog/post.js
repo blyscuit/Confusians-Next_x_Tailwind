@@ -18,6 +18,10 @@ export default class Post extends Component {
         Prism.highlightAll();
     }
 
+    componentDidUpdate() {
+        Prism.highlightAll();
+    }
+
     render() {
         var { alt, date, image, title, url, id, markdown } = this.props
 

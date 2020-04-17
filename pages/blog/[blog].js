@@ -9,7 +9,7 @@ const client = require('contentful').createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-const BlogPage = props => {
+const BlogDetail = props => {
 
   const posts = props
 
@@ -45,7 +45,7 @@ const BlogPage = props => {
   )
 }
 
-BlogPage.getInitialProps = async function (context) {
+BlogDetail.getInitialProps = async function (context) {
   async function fetchEntries() {
     if (context.query.id != null) {
       const entry = await client.getEntry(
@@ -63,4 +63,4 @@ BlogPage.getInitialProps = async function (context) {
   return await fetchEntries()
 };
 
-export default BlogPage
+export default BlogDetail

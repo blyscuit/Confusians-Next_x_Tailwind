@@ -2,30 +2,37 @@ import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../components/blog/post'
 import { Helmet } from 'react-helmet';
-import catalog from '../db/catalog.json'
 import Layout from '../components/MyLayout.js'
+import PaginngIndicator from '../components/blog/pagingIndicator'
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 })
 
-function HomePage() {
+const perPage = 4
+
+function HomePage(props) {
   async function fetchEntries() {
     const entries = await client.getEntries({
+      limit: perPage,
+      skip: ((parseInt(props.page) || 1) - 1) * perPage,
+
         order: '-fields.date',
         content_type: "post"})
-
-    if (entries.items) return entries.items
+    if (entries.items) return entries
     console.log(`Error getting Entries for ${contentType.name}.`)
   }
 
   const [posts, setPosts] = useState([])
+  const [pagesArray, setPagesArray] = useState(0)
 
   useEffect(() => {
     async function getPosts() {
       const allPosts = await fetchEntries()
-      setPosts([...allPosts])
+      const entries = allPosts.items
+      setPosts([...entries])
+      setPagesArray(allPosts.total)
     }
     getPosts()
   }, [])
@@ -52,8 +59,15 @@ function HomePage() {
           ))
         : null}
         </div>
+        
+        <PaginngIndicator currentPage={(parseInt(props.page) || 1) - 1} maxPage={Math.ceil(pagesArray / perPage)}></PaginngIndicator>
+
         </Layout>
   )
 }
+
+HomePage.getInitialProps = async function (context) {
+  return context.query;
+};
 
 export default HomePage
