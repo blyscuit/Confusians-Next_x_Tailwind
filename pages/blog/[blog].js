@@ -38,6 +38,7 @@ const BlogDetail = props => {
         title={posts.fields.title}
         url={posts.fields.url}
         markdown={posts.fields.markdown}
+        isDetail={true}
       />
         : null}
         </div>

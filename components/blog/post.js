@@ -23,7 +23,7 @@ export default class Post extends Component {
     }
 
     render() {
-        var { alt, date, image, title, url, id, markdown } = this.props
+        var { alt, date, image, title, url, id, markdown, isDetail } = this.props
 
         const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: 'numeric' })
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
@@ -32,9 +32,16 @@ export default class Post extends Component {
             <div class="max-w-2xl">
                     <img alt={alt} src={image} />
                 <div>
-                <Link href={{pathname: "/blog/[blog]", query: {"id":id}}} as={`/blog/${title}`} >
-                    <p class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800">{title}</p>
-                </Link>
+                { (isDetail == true) ? (
+                    <p class="font-sans-serif font-medium text-3xl text-gray-800">{title}</p>
+                    ) :
+                    (
+                    <Link href={{pathname: "/blog/[blog]", query: {"id":id}}} as={`/blog/${title}`}>
+                    <a class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800">{title}
+                    </a>
+                    </Link>
+                    )
+                }
                     <p class="font-light text-sm pt-2 text-gray-500">{`${mo} ${da}, ${ye}`}</p>
                     <ReactMarkdown source={markdown}
                     className="text-xl font-serif leading-relaxed text-gray-900 text-justify"
