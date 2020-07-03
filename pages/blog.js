@@ -21,7 +21,7 @@ function HomePage(props) {
           <body class={"white"}></body>
         </Helmet>
         <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
-      {props.entries.length > 0
+      {(props.entries || []).length > 0
         ? props.entries.map(p => (
             <Post
               alt={p.fields.alt}
@@ -37,7 +37,7 @@ function HomePage(props) {
         : null}
         </div>
         
-        <PaginngIndicator currentPage={(parseInt(props.page) || 1) - 1} maxPage={Math.ceil(pagesArray / perPage)}></PaginngIndicator>
+        <PaginngIndicator currentPage={(parseInt(props.page) || 1) - 1} maxPage={Math.ceil((props.totalCount || 0) / perPage)}></PaginngIndicator>
 
         </Layout>
   )
@@ -51,10 +51,9 @@ HomePage.getInitialProps = async function (context) {
 
         order: '-fields.date',
         content_type: "post"})
-    if (entries.items) return entries
-    console.log(`Error getting Entries for ${contentType.name}.`)
 
-  return { page: context.page || 1, entries: entries.items};
+
+  return { totalCount: entries.total, page: context.page || 1, entries: entries.items};
 };
 
 export default HomePage
