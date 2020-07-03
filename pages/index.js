@@ -25,8 +25,8 @@ const Index = props => (
         </Helmet>
 
     <div class="flex flex-wrap py-10">
-      {((catalog || {}).index || []).map(item => {
-        var detail = catalog[item.name] || {}
+      {((props.catalog || {}).index || []).map(item => {
+        var detail = props.catalog[item.name] || {}
         return (
           <div key={item.name} class={' sm: w-full md:' + item.size}>
             <Link href={{pathname: "/[id]", query: {}}} as={`/${item.name}`} >
@@ -40,7 +40,7 @@ const Index = props => (
 )
 
 Index.getInitialProps = async function() {
-  return {}
+  return {catalog : catalog}
 }
 
 export default Index

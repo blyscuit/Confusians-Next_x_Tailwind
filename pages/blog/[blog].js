@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Post from '../../components/blog/post'
 import { Helmet } from 'react-helmet';
@@ -12,15 +11,6 @@ const client = require('contentful').createClient({
 const BlogDetail = props => {
 
   const posts = props
-
-  // useEffect(() => {
-  //     /* ComponentDidMount code */
-  //   async function getPosts() {
-  //     const allPosts = await fetchEntries()
-  //     setPosts(allPosts)
-  //   }
-  //   getPosts()
-  // }, [])
 
   return (
         <Layout footer={true}>
