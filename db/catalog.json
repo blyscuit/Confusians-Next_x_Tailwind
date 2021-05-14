@@ -1,5 +1,6 @@
 {
     "index": [
+        {"name": "Cryptget", "size": "w-full", "image": "cryptget_home.jpg"},
         {"name": "Cosmetica", "size": "w-full", "image": "cosmetica_home.png"},
         {"name": "Sliadde", "size": "w-full", "image": "sliadde_home.png"},
         {"name": "Esqace", "size": "w-full", "image": "esqace_home.png"},
@@ -10,6 +11,16 @@
     ],
     "home": {
         "backgroundColor":"blue-grey lighten-5"
+    },
+    "Cryptget": {
+        "name": "Cryptget", 
+        "about": "Watch Cryptocurrency, on iOS, Mac, and Widget", 
+        "font":"", 
+        "backgroundColor":"black darken-4", 
+        "textColor":"white-text text-lighten-4", 
+        "ios":"https://apps.apple.com/us/app/cryptget/id1565348556", 
+        "adr":"", 
+        "image":["/cryptget_mobile.png"]
     },
     "Cosmetica": {
         "name": "Cosmetica", 
