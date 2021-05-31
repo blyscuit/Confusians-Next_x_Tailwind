@@ -29,7 +29,7 @@ export default class Post extends Component {
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
 
         return (
-            <div class="max-w-2xl">
+            <div class="container mx-auto md:max-w-xl px-4 md:px-0">
                     <img alt={alt} src={image} />
                 <div>
                 { (isDetail == true) ? (
@@ -46,9 +46,9 @@ export default class Post extends Component {
                     <ReactMarkdown source={markdown}
                     className="text-xl font-serif leading-relaxed text-gray-900 text-justify"
                     renderers={{
-                        paragraph: props => <p class="mt-8 ">{props.children}</p>,
-                        code: props => {  return (<div class="mt-8 "><pre class="mt-8 "><code class={"text-sm language-" + props.language + " mt-8"} style={{fontSize: "0.875rem"}} >{props.value}</code></pre></div>) },
-                        image: props => { return (<img class="mt-8 self-center max-h-1/4" alt={props.alt} src={props.src}></img>)},
+                        paragraph: props => <p class="mt-8">{props.children}</p>,
+                        code: props => {  return (<div class="mt-8"><pre class="mt-8"><code class={"text-sm language-" + props.language + " mt-8"} style={{fontSize: "0.875rem"}} >{props.value}</code></pre></div>) },
+                        image: props => { return (<img class="my-8 mx-auto md:max-w-lg" alt={props.alt} src={props.src}></img>)},
                       }}
                     ></ReactMarkdown>
                     {/* <div class="font-serif  text-xl leading-relaxed text-gray-900 text-justify"

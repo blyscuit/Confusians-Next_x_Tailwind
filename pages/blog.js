@@ -20,7 +20,7 @@ function HomePage(props) {
           <title>Confusians | Blog</title>
           <body class={"white"}></body>
         </Helmet>
-        <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
+        <div class="min-h-screen pt-20" style={{"paddingBottom": "-60rem"}}>
       {(props.entries || []).length > 0
         ? props.entries.map(p => (
             <Post
