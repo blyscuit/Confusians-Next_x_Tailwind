@@ -20,7 +20,13 @@
         "textColor":"white-text text-lighten-4", 
         "ios":"https://apps.apple.com/us/app/cryptget/id1565348556", 
         "adr":"", 
-        "image":["/cryptget_mobile.png"]
+        "image":["/cryptget_mobile.png"],
+        "description": [
+            {"icon": "cloud", "text": "Sync across devices with iCloud"},
+            {"icon": "IoTabletLandscapeOutline", "text": "Widget from Your List"},
+            {"icon": "IoStorefrontSharp", "text": "Universal App"},
+            {"icon": "IoMoonSharp", "text": "Dark Mode"}
+        ]
     },
     "Cosmetica": {
         "name": "Cosmetica", 

@@ -4,10 +4,11 @@ import catalog from '../db/catalog.json'
 import { Helmet } from 'react-helmet';
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import IconView from '../components/IconView'
 
 const Post = props => {
   var item = catalog[props.id] || {}
-  
+
   const router = useRouter()
 
   useEffect(() => {
@@ -15,6 +16,32 @@ const Post = props => {
       router.push('/')
     }
   }, [])
+
+  let linkSection = (
+    <div class="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
+    <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
+
+      {item.adr != null && item.adr != "" ? (
+        <div class={"flex-1 flex items-center flex-col"}>
+          <div class="">
+            <a href={item.adr}>
+              <img alt="Android app on Google Play"
+                src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" style={{ width: '122px', height: '44px', marginTop: -1 }} />
+            </a>
+          </div>
+        </div>
+      ) : null}
+
+      {item.ios != null && item.ios != "" ? (
+        <div class="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
+          <div class="pt-px ">
+            <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg")', backgroundRepeat: 'no-repeat', width: '135px', height: '40px' }}></a>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  </div>
+  )
 
   return (
     <div class={item.backgroundColor}>
@@ -57,29 +84,23 @@ const Post = props => {
             </div>
           </div>
 
-          <div class="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
-            <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
+          {linkSection}
 
-              {item.adr != null && item.adr != "" ? (
-                <div class={"flex-1 flex items-center flex-col"}>
-                  <div class="">
-                    <a href={item.adr}>
-                      <img alt="Android app on Google Play"
-                        src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" style={{ width: '122px', height: '44px', marginTop: -1 }} />
-                    </a>
-                  </div>
+          <div className="grid-container"></div>
+          <div class={"self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " + item.textColor}>
+            {(item.description ?? []).map(function (des) {
+              return (
+                <div class="flex flex-col items-center pt-16">
+                  <IconView icon={des.icon} size={60} color={item.textColor} />
+                  <div class={"pt-4 "}>{des.text}</div>
                 </div>
-              ) : null}
-
-              {item.ios != null && item.ios != "" ? (
-                <div class="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
-                  <div class="pt-px ">
-                    <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg")', backgroundRepeat: 'no-repeat', width: '135px', height: '40px' }}></a>
-                  </div>
-                </div>
-              ) : null}
-            </div>
+              )
+            })
+            }
           </div>
+
+          {(item.description ?? []).length > 0 ? linkSection : null}
+
         </div>
 
       </Layout>
