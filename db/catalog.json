@@ -25,7 +25,8 @@
             {"icon": "cloud", "text": "Sync across devices with iCloud"},
             {"icon": "IoTabletLandscapeOutline", "text": "Widget from Your List"},
             {"icon": "IoStorefrontSharp", "text": "Universal App"},
-            {"icon": "IoMoonSharp", "text": "Dark Mode"}
+            {"icon": "IoMoonSharp", "text": "Dark Mode"},
+            {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"}
         ]
     },
     "Cosmetica": {

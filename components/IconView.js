@@ -2,18 +2,20 @@ import * as Icons from 'react-icons/io5';
 
 const IconView = props => {
 
-    switch(props.icon) {
+    switch (props.icon) {
         case "cloud":
-            return ( <Icons.IoCloudOutline class={"" + props.color} size={props.size} /> )
+            return (<Icons.IoCloudOutline class={"" + props.color} size={props.size} />)
         case "IoMoonSharp":
-            return ( <Icons.IoMoonSharp class={"" + props.color} size={props.size} /> )
+            return (<Icons.IoMoonSharp class={"" + props.color} size={props.size} />)
         case "IoStorefrontSharp":
-            return ( <Icons.IoStorefrontSharp class={"" + props.color} size={props.size} /> )
+            return (<Icons.IoStorefrontSharp class={"" + props.color} size={props.size} />)
         case "IoTabletLandscapeOutline":
-            return ( <Icons.IoTabletLandscapeOutline class={"" + props.color} size={props.size} /> )
+            return (<Icons.IoTabletLandscapeOutline class={"" + props.color} size={props.size} />)
+        case "IoSquareOutline":
+            return (<Icons.IoSquareOutline class={"" + props.color} size={props.size} />)
         default:
-            return ( <div /> )
-      }
+            return (<div />)
+    }
 }
 
 export default IconView;
