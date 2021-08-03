@@ -44,7 +44,7 @@ export default class Post extends Component {
                 }
                     <p class="font-light text-sm pt-2 text-gray-500">{`${mo} ${da}, ${ye}`}</p>
                     <ReactMarkdown source={markdown}
-                    className="text-xl font-serif leading-relaxed text-gray-900 text-justify"
+                    className="prose-lg lg:prose-xl prose-blue font-serif leading-relaxed text-gray-900 "
                     renderers={{
                         paragraph: props => <p class="mt-8">{props.children}</p>,
                         code: props => {  return (<div class="mt-8"><pre class="mt-8"><code class={"text-sm language-" + props.language + " mt-8"} style={{fontSize: "0.875rem"}} >{props.value}</code></pre></div>) },
