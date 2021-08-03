@@ -15,7 +15,7 @@ const BlogDetail = props => {
   return (
         <Layout footer={true}>
         <Helmet>
-          <title>Confusians | Blog</title>
+          <title>{posts.fields != null ? posts.fields.title + " | " : ""} Confusians | Blog</title>
           <body class={"white"}></body>
         </Helmet>
         <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
