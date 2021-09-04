@@ -8,18 +8,30 @@ export default async function fetchPage(context, perPage) {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
   })
 
-  var { page } = context.query || ""
-  var pageInt = parseInt(page) || 1
+  var { blogPage } = context.query
+  blogPage = blogPage || ""
+  if (blogPage == "") { 
+    blogPage = '1' 
+  }
+  var pageInt = parseInt(blogPage)
+  if (isNaN(pageInt)) {
+    return {
+      redirect: {
+        destination: '/blog',
+        permanent: false,
+      },
+    }
+  }
+
   pageInt = pageInt > 0 ? pageInt : 1
   const entries = await client.getEntries({
     limit: perPage,
-    skip: ((parseInt(page) || 1) - 1) * perPage,
-
+    skip: (pageInt - 1) * perPage,
     order: '-fields.date',
     content_type: "post"
   })
 
   return { props:
-      { totalCount: entries.total, page: pageInt + 1, entries: entries.items}
+    { totalCount: entries.total, page: pageInt, entries: entries.items }
   }
 };

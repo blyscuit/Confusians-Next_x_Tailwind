@@ -42,7 +42,7 @@ function BlogPage(props) {
         : null}
         </div>
         
-        <PaginngIndicator currentPage={(parseInt(props.page) || 1) - 1} maxPage={Math.ceil((props.totalCount || 0) / perPage)}></PaginngIndicator>
+        <PaginngIndicator currentPage={(props.page || 1) - 1} maxPage={Math.ceil((props.totalCount || 0) / perPage)}></PaginngIndicator>
 
         </Layout>
   )

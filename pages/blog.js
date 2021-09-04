@@ -1,4 +1,4 @@
-import BlogPage from './blog/page/[blockPage]'
+import BlogPage from './blog/page/[blogPage]'
 import fetchPage, { perPage } from './blog/fetchPage'
 
 const BlogDetail = props => {
