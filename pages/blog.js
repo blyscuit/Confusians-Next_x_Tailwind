@@ -1,59 +1,16 @@
-import Head from 'next/head'
-import Post from '../components/blog/post'
-import { Helmet } from 'react-helmet';
-import Layout from '../components/MyLayout.js'
-import PaginngIndicator from '../components/blog/pagingIndicator'
+import BlogPage from './blog/page/[blockPage]'
+import fetchPage, { perPage } from './blog/fetchPage'
 
-const client = require('contentful').createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-})
-
-const perPage = 4
-
-function HomePage(props) {
-  
-
-  return (
-        <Layout footer={true}>
-        <Helmet>
-          <title>Confusians | Blog</title>
-          <body class={"white"}></body>
-        </Helmet>
-        <div class="min-h-screen pt-20" style={{"paddingBottom": "-60rem"}}>
-      {(props.entries || []).length > 0
-        ? props.entries.map(p => (
-            <Post
-              alt={p.fields.alt}
-              date={p.fields.date}
-              key={p.fields.title}
-              image={p.fields.image}
-              title={p.fields.title}
-              url={p.fields.url}
-              id={p.sys.id}
-              markdown={p.fields.markdown}
-            />
-          ))
-        : null}
-        </div>
-        
-        <PaginngIndicator currentPage={(parseInt(props.page) || 1) - 1} maxPage={Math.ceil((props.totalCount || 0) / perPage)}></PaginngIndicator>
-
-        </Layout>
+const BlogDetail = props => {
+  return(
+    <BlogPage entries={props.entries}></BlogPage>
   )
 }
 
-HomePage.getInitialProps = async function (context) {
 
-    const entries = await client.getEntries({
-      limit: perPage,
-      skip: ((parseInt(context.query.page) || 1) - 1) * perPage,
+export async function getServerSideProps(context) {
 
-        order: '-fields.date',
-        content_type: "post"})
-
-
-  return { totalCount: entries.total, page: context.page || 1, entries: entries.items};
+  return await fetchPage(context, perPage)
 };
 
-export default HomePage
+export default BlogPage

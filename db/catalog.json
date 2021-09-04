@@ -1,18 +1,18 @@
 {
     "index": [
-        {"name": "Cryptget", "size": "w-full", "image": "cryptget_home.jpg"},
-        {"name": "Cosmetica", "size": "w-full", "image": "cosmetica_home.png"},
-        {"name": "Sliadde", "size": "w-full", "image": "sliadde_home.png"},
-        {"name": "Esqace", "size": "w-full", "image": "esqace_home.png"},
-        {"name": "N-egative", "size": "w-full", "image": "negative_home.png"},
-        {"name": "HTML", "size": "w-4/12", "image": "mary.png"},
-        {"name": "KeepMisFit", "size": "w-8/12", "image": ""},
-        {"name": "QNOHC", "size": "w-full", "image": ""}
+        {"id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg"},
+        {"id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png"},
+        {"id": "sliadde", "size": "w-full", "image": "sliadde_home.png"},
+        {"id": "esqace", "size": "w-full", "image": "esqace_home.png"},
+        {"id": "n-egative", "size": "w-full", "image": "negative_home.png"},
+        {"id": "html", "size": "w-4/12", "image": "mary.png"},
+        {"id": "keepmisfit", "size": "w-8/12", "image": ""},
+        {"id": "qnohc", "size": "w-full", "image": ""}
     ],
     "home": {
         "backgroundColor":"blue-grey lighten-5"
     },
-    "Cryptget": {
+    "cryptget": {
         "name": "Cryptget", 
         "about": "Watch Cryptocurrency, on iOS, Mac, and Widget", 
         "font":"", 
@@ -29,7 +29,7 @@
             {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"}
         ]
     },
-    "Cosmetica": {
+    "cosmetica": {
         "name": "Cosmetica", 
         "about": "Match 3 ○ Deck ○ Building", 
         "font":"Quicksand", 
@@ -39,7 +39,7 @@
         "adr":"", 
         "image":["/cosmetica_mobile.png"]
     },
-    "KeepMisFit": {
+    "keepmisfit": {
         "name": "Keep MisFit", 
         "about": "Your personal Shine Keychain", 
         "font":"", 
@@ -49,7 +49,7 @@
         "adr":"", 
         "image":["/KeepMisfit_mobile.png"]
     },
-    "Esqace": {
+    "esqace": {
         "name": "Esqace", 
         "about": "escape", 
         "font":"Times,serif", 
@@ -59,7 +59,7 @@
         "adr":"", 
         "image":["/esqace_mobile.png"]
     },
-    "Sliadde": {
+    "sliadde": {
         "name": "Sliadde", 
         "about": "Fast pace matching game with mathematic twist", 
         "font":"Futura Oblique", 
@@ -69,7 +69,7 @@
         "adr":"https://play.google.com/store/apps/details?id=com.confusians.Sliaddee", 
         "image":["/sliadde_mobile.png"]
     },
-    "N-egative": {
+    "n-egative": {
         "name": "N-egative", 
         "about": "A minimal game about mind reading!", 
         "font":"", 
@@ -79,7 +79,7 @@
         "adr":"", 
         "image":["/iphone-big.png"]
     },
-    "QNOHC": {
+    "qnohc": {
         "name": "QNOHC", 
         "about": "Quick. Note. One. Handed. Camera", 
         "font":"", 
@@ -89,7 +89,7 @@
         "adr":"", 
         "image":["/qnohc_mobile.png"]
     },
-    "HTML": {
+    "html": {
         "name": "HTML", 
         "about": "", 
         "font":"", 

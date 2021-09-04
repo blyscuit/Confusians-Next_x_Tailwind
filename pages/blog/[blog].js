@@ -18,6 +18,18 @@ const BlogDetail = props => {
           <title>{posts.fields != null ? posts.fields.title + " | " : ""} Confusians | Blog</title>
           <body class={"white"}></body>
         </Helmet>
+
+        <Head>
+          <meta property="og:locale" content="en_US" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content={(posts.fields != null ? posts.fields.title + " | " : "") + "Confusians | Blog"} />
+          <meta property="og:site_name" content="Confusians" />
+          <meta property="og:image" content={(posts.fields != null ? posts.fields.image : "")} />
+          <meta name="twitter:card" content="app" />
+          <meta name="twitter:description" content={""} />
+          <meta name="twitter:title" content={(posts.fields != null ? posts.fields.title : "")} />
+        </Head>
+
         <div class="min-h-screen flex flex-col items-center pt-20" style={{"paddingBottom": "-60rem"}}>
       {posts.fields != null
         ? <Post
@@ -36,7 +48,8 @@ const BlogDetail = props => {
   )
 }
 
-BlogDetail.getInitialProps = async function (context) {
+export async function getServerSideProps(context) {
+
   async function fetchEntries() {
     if (context.query.id != null) {
       const entry = await client.getEntry(
@@ -51,7 +64,9 @@ BlogDetail.getInitialProps = async function (context) {
     }
     }
 
-  return await fetchEntries()
+  return  { props:
+    await fetchEntries()
+  }
 };
 
 export default BlogDetail

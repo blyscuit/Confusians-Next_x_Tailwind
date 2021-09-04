@@ -5,17 +5,13 @@ import { Helmet } from 'react-helmet';
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import IconView from '../components/IconView'
+import Head from 'next/head'
 
 const Post = props => {
-  var item = catalog[props.id] || {}
 
   const router = useRouter()
 
-  useEffect(() => {
-    if (catalog[props.id] == null) {
-      router.push('/')
-    }
-  }, [])
+  const item = props
 
   let linkSection = (
     <div class="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
@@ -50,7 +46,9 @@ const Post = props => {
         <Helmet>
           <title>{item.name || ""} | Confusians</title>
           <body class={item.backgroundColor}></body>
-          <meta name="description" content={item.name + " " + item.about} />
+        </Helmet>
+        <Head>
+        <meta name="description" content={item.name + " " + item.about} />
           <meta
             name="robots"
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -69,7 +67,7 @@ const Post = props => {
           <meta name="twitter:description" content={item.about} />
           <meta name="twitter:title" content={item.name} />
           <meta name="twitter:image" content={"https://confusians.com/" + (item.image || [""])[0]} />
-        </Helmet>
+        </Head>
 
         <div class={"flex flex-col items-center  pb-10"}>
 
@@ -108,8 +106,21 @@ const Post = props => {
   );
 }
 
-Post.getInitialProps = async function (context) {
-  return context.query;
-};
+export async function getServerSideProps(context) {
+
+  var { id } = context.query || ""
+  var item = catalog[id.toLowerCase()]
+
+  if (!item) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+
+  return { props: item };
+}
 
 export default Post;
