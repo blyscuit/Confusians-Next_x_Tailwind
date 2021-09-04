@@ -106,9 +106,26 @@ const Post = props => {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
 
-  var { id } = context.query || ""
+  const paths = catalog.index.map(index => {
+    return {
+      params: {
+        id: index.id
+      }
+    }
+  })
+  return {
+    paths,
+    fallback: true
+  }
+}
+
+export async function getStaticProps(context) {
+
+  console.log(context)
+  var { id } = context.params
+  id = id || ''
   var item = catalog[id.toLowerCase()]
 
   if (!item) {
@@ -119,7 +136,6 @@ export async function getServerSideProps(context) {
       },
     }
   }
-
   return { props: item };
 }
 
