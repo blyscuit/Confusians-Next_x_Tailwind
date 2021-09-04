@@ -1,5 +1,5 @@
 import BlogPage from './blog/page/[blogPage]'
-import fetchPage, { perPage } from './blog/fetchPage'
+import fetchPage, { perPage } from '../functions/fetchPage'
 
 const BlogDetail = props => {
   return(

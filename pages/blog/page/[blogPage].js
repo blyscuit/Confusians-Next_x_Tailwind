@@ -4,7 +4,7 @@ import Post from '../../../components/blog/post'
 import { Helmet } from 'react-helmet';
 import Layout from '../../../components/MyLayout.js'
 import PaginngIndicator from '../../../components/blog/pagingIndicator'
-import fetchPage, { perPage } from '../fetchPage';
+import fetchPage, { perPage } from '../../../functions/fetchPage';
   
 function BlogPage(props) {
   
