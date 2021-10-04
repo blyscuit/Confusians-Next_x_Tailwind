@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'media',
   theme: {
     extend: {
     },
@@ -13,6 +14,10 @@ module.exports = {
   variants: {
     opacity: ['responsive', 'hover', 'focus', 'group-hover'],
     translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    extend: {
+      backgroundColor: ['dark'],
+      textColor: ['dark']
+    },
   },
   plugins: [
     require('@tailwindcss/typography')

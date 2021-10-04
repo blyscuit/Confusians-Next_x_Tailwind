@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Post from '../../components/blog/post'
 import { Helmet } from 'react-helmet';
 import Layout from '../../components/MyLayout.js'
+import { useDarkMode, modeBackground, modeBackdrop } from '../../js/useDarkMode';
 
 const client = require('contentful').createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -9,14 +10,14 @@ const client = require('contentful').createClient({
 })
 
 const BlogDetail = props => {
-
+  const [colorTheme, setTheme] = useDarkMode();
   const posts = props
 
   return (
-        <Layout footer={true}>
+        <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
         <Helmet>
           <title>{posts.fields != null ? posts.fields.title + " | " : ""} Confusians | Blog</title>
-          <body class={"white"}></body>
+          <body class={modeBackground(colorTheme)}></body>
         </Helmet>
 
         <Head>

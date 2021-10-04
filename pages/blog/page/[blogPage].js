@@ -5,14 +5,16 @@ import { Helmet } from 'react-helmet';
 import Layout from '../../../components/MyLayout.js'
 import PaginngIndicator from '../../../components/blog/pagingIndicator'
 import fetchPage, { perPage } from '../../../functions/fetchPage';
-  
+import { useDarkMode, modeBackdrop, modeBackground } from '../../../js/useDarkMode';  
+
 function BlogPage(props) {
-  
+  const [colorTheme, setTheme] = useDarkMode();
+
   return (
-        <Layout footer={true}>
+        <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
         <Helmet>
           <title>Confusians | Blog</title>
-          <body class={"white"}></body>
+          <body class={modeBackground(colorTheme)}></body>
         </Helmet>
 
         <Head>

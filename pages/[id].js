@@ -122,8 +122,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-
-  console.log(context)
   var { id } = context.params
   id = id || ''
   var item = catalog[id.toLowerCase()]

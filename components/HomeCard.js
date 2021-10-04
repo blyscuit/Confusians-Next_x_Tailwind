@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 const HomeCard = props => {
-    // console.log(props)
   return (
     <div class={"relative group flex flex-col h-64 " + props.backgroundColor}>
         <div class={"absolute w-full group flex flex-col items-center h-64 justify-center  "}>

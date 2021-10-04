@@ -29,22 +29,22 @@ export default class Post extends Component {
         const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
 
         return (
-            <div class="container mx-auto md:max-w-xl px-4 md:px-0">
+            <div class="dark container mx-auto md:max-w-xl px-4 md:px-0">
                     <img alt={alt} src={image} />
                 <div>
                 { (isDetail == true) ? (
-                    <p class="font-sans-serif font-medium text-3xl text-gray-800">{title}</p>
+                    <p class="font-sans-serif font-medium text-3xl text-gray-800 dark:text-white">{title}</p>
                     ) :
                     (
                     <Link href={{pathname: "/blog/[blog]", query: {"id":id}}} as={`/blog/${title}`}>
-                    <a class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800">{title}
+                    <a class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800 dark:text-white">{title}
                     </a>
                     </Link>
                     )
                 }
                     <p class="font-light text-sm pt-2 text-gray-500">{`${mo} ${da}, ${ye}`}</p>
                     <ReactMarkdown source={markdown}
-                    className="prose-lg lg:prose-xl prose-blue font-serif leading-relaxed text-gray-900 "
+                    className="prose-lg lg:prose-xl prose-blue font-serif leading-relaxed text-gray-900 dark:text-white"
                     renderers={{
                         paragraph: props => <p class="mt-8">{props.children}</p>,
                         code: props => {  return (<div class="mt-8"><pre class="mt-8"><code class={"text-sm language-" + props.language + " mt-8"} style={{fontSize: "0.875rem"}} >{props.value}</code></pre></div>) },

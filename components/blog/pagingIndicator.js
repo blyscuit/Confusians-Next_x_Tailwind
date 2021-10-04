@@ -25,7 +25,7 @@ export default class PagingIndicator extends Component {
                     marginPagesDisplayed={1}
                     pageRangeDisplayed={2}
                     onPageChange={this.handlePageClick}
-                    containerClassName={'font-light flex flex-row px-8 text-sm'}
+                    containerClassName={'font-light flex flex-row px-8 text-sm dark:text-white'}
                     subContainerClassName={'px-8'}
                     activeClassName={'font-semibold'}
                     forcePage={currentPage}
