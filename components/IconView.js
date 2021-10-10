@@ -13,6 +13,10 @@ const IconView = props => {
             return (<Icons.IoTabletLandscapeOutline class={"" + props.color} size={props.size} />)
         case "IoSquareOutline":
             return (<Icons.IoSquareOutline class={"" + props.color} size={props.size} />)
+        case "IoWatchOutline":
+            return (<Icons.IoWatchOutline class={"" + props.color} size={props.size} />)
+        case "IoLogoEuro":
+            return (<Icons.IoLogoEuro class={"" + props.color} size={props.size} />)
         default:
             return (<div />)
     }

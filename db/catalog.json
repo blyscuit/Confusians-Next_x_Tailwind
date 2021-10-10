@@ -26,7 +26,9 @@
             {"icon": "IoTabletLandscapeOutline", "text": "Widget from Your List"},
             {"icon": "IoStorefrontSharp", "text": "Universal App"},
             {"icon": "IoMoonSharp", "text": "Dark Mode"},
-            {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"}
+            {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"},
+            {"icon": "IoWatchOutline", "text": "Watch App & Complications"},
+            {"icon": "IoLogoEuro", "text": "Foreign Exchange Rate"}
         ]
     },
     "cosmetica": {
