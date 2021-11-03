@@ -22,6 +22,5 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography')
   ],
-  // Fix postcss-preset-env https://github.com/tailwindlabs/tailwindcss/issues/1190
-  purge: ['./components//*.{js,ts,jsx,tsx}', './pages//*.{js,ts,jsx,tsx}']
+  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx", "./public/**/*.html"],
 }
