@@ -32,5 +32,8 @@
   "devDependencies": {
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.2.16"
+  },
+  "resolutions": {
+    "postcss-focus-within": "^4.0.0"
   }
 }
