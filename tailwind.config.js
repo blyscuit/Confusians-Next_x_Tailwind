@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: 'media',
   theme: {
     extend: {
@@ -22,5 +23,4 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography')
   ],
-  purge: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx", "./public/**/*.html"],
 }
