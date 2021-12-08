@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import IconView from '../components/IconView'
 import Head from 'next/head'
+import ProductImage from "../components/ProductImage"
 
 const Post = props => {
 
@@ -76,11 +77,7 @@ const Post = props => {
             <h5 class={"text-2xl text-center font-light " + item.textColor}>{item.about}</h5>
           </div>
 
-          <div class="w-2/3 md:w-1/4 lg:w-1/4">
-            <div>
-              <img class="w-auto" src={(item.image || [""])[0]}></img>
-            </div>
-          </div>
+          <ProductImage item={item}></ProductImage>
 
           {linkSection}
 
