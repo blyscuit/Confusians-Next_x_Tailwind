@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const ProductImage = props => {
 
+    const [progress, setProgress] = useState(0)
     const [height, setHeight] = useState(0);
     const updateDimensions = () => {
         setHeight(window.innerHeight);
@@ -21,11 +22,22 @@ const ProductImage = props => {
   const scale = useTransform(scrollY, [0, 200], [1.8, 1]);
   const y = useTransform([scrollY, scrollYProgress], value => {
     if (value[0] <= 400) { return 0 }
-    // else if (value < 300) { return 0 - (value / 5.0) }
-    // else if (value < 400) { return 200 - (value / 2.0) }
     else if (value[0] > ((imageCount - 0.3) * height)) { return ((imageCount - 0.3) * height) - 400 } 
     return value[0] - 400
   })
+  const page = useTransform(scrollY, value => {
+      return Math.floor((value / height))
+  })
+  const imageOpacity = useTransform(scrollY, value => {
+      let scroll = (value / height)
+    if (scroll <= 1.5) { return 1.0 }
+    if (scroll > (imageCount-0.5)) { return 1.0 }
+    let rem = scroll % 1.0
+    if (rem > 0.95) { return (1-rem) / 0.025 }
+    else if (rem < 0.05) { return (rem) / 0.025 }
+    return 1.0
+  })
+  page.onChange(setProgress)
 
   return (
         <div class="w-6/12 md:w-1/4 lg:w-1/4">
@@ -34,15 +46,11 @@ const ProductImage = props => {
                     className="container"
                     style={{
                     scale, originY: "0%",
-                    y: y
+                    y: y,
+                    opacity: imageOpacity
                     }}
-
-                    // initial={{ opacity: 0.0, y: 400.0 }}
-                    // whileInView={{ opacity: 1, y: 220.0 }}
-                    // transition={{ duration: 1.1 }}
-                    // viewport={{ once: true }}
                 >
-                    <img class="w-auto" src={(item.image || [""])[0]}></img>
+                    <img class="w-auto" src={(item.image || [""])[Math.min(item.image.length - 1, Math.max(0, progress - 1))]}></img>
                 </motion.div>
                 </div>
             <div style={{"height": 100*(imageCount-1) + "vh"}}>
