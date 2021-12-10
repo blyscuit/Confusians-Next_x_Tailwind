@@ -4,6 +4,7 @@
         {"id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png"},
         {"id": "sliadde", "size": "w-full", "image": "sliadde_home.png"},
         {"id": "esqace", "size": "w-full", "image": "esqace_home.png"},
+        {"id": "livert", "size": "w-full", "image": "livert_home.png"},
         {"id": "n-egative", "size": "w-full", "image": "negative_home.png"},
         {"id": "html", "size": "w-4/12", "image": "mary.png"},
         {"id": "keepmisfit", "size": "w-8/12", "image": ""},
@@ -20,7 +21,7 @@
         "textColor":"white-text text-lighten-4", 
         "ios":"https://apps.apple.com/us/app/cryptget/id1565348556", 
         "adr":"", 
-        "image":["/cryptget_mobile.png"],
+        "image":["/cryptget_mobile1.png","/cryptget_mobile2.png","/cryptget_mobile3.png"],
         "description": [
             {"icon": "cloud", "text": "Sync across devices with iCloud"},
             {"icon": "IoTabletLandscapeOutline", "text": "Widget from Your List"},
@@ -39,7 +40,17 @@
         "textColor":"grey-text text-darken-3", 
         "ios":"https://appsto.re/th/Ui3Eib.i", 
         "adr":"", 
-        "image":["/cosmetica_mobile.png"]
+        "image":["/cosmetica_mobile1.png", "/cosmetica_mobile2.png"]
+    },
+    "livert": {
+        "name": "Livert", 
+        "about": "Live Photo Image editor", 
+        "font":"", 
+        "backgroundColor":"black darken-4", 
+        "textColor":"white-text text-lighten-3", 
+        "ios":"https://apps.apple.com/en/app/livert/id1409397277", 
+        "adr":"", 
+        "image":["/livert_mobile.png"]
     },
     "keepmisfit": {
         "name": "Keep MisFit", 
@@ -49,7 +60,8 @@
         "textColor":"light-blue-text text-lighten-5", 
         "ios":"https://itunes.apple.com/th/app/keep-misfit-shine-tracker/id1079891930?mt=8", 
         "adr":"", 
-        "image":["/KeepMisfit_mobile.png"]
+        "image":["/KeepMisfit_mobile.png"],
+        "noFrame": true
     },
     "esqace": {
         "name": "Esqace", 
@@ -59,7 +71,7 @@
         "textColor":"grey-text text-lighten-5", 
         "ios":"https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8", 
         "adr":"", 
-        "image":["/esqace_mobile.png"]
+        "image":["/esqace_mobile1.png"]
     },
     "sliadde": {
         "name": "Sliadde", 
@@ -69,7 +81,8 @@
         "textColor":"grey-text text-lighten-5", 
         "ios":"https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8", 
         "adr":"https://play.google.com/store/apps/details?id=com.confusians.Sliaddee", 
-        "image":["/sliadde_mobile.png"]
+        "image":["/sliadde_mobile.png"],
+        "noFrame": true
     },
     "n-egative": {
         "name": "N-egative", 
@@ -79,7 +92,8 @@
         "textColor":"text-blue-grey text-darken-4", 
         "ios":"https://itunes.apple.com/en/app/negative/id840000894?mt=8", 
         "adr":"", 
-        "image":["/iphone-big.png"]
+        "image":["/iphone-big.png"],
+        "noFrame": true
     },
     "qnohc": {
         "name": "QNOHC", 
@@ -89,7 +103,8 @@
         "textColor":"grey-text text-lighten-2", 
         "ios":"https://apps.apple.com/us/app/quick-note-one-handed-camera/id981003902", 
         "adr":"", 
-        "image":["/qnohc_mobile.png"]
+        "image":["/qnohc_mobile.png"],
+        "noFrame": true
     },
     "html": {
         "name": "HTML", 
@@ -99,6 +114,7 @@
         "textColor":"blue-grey-text text-lighten-4", 
         "ios":"", 
         "adr":"", 
-        "image":["/mary.png"]
+        "image":["/mary.png"],
+        "noFrame": true
     }
 }
