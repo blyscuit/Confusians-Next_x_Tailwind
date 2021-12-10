@@ -33,8 +33,8 @@ const ProductImage = props => {
     if (scroll <= 1.5) { return 1.0 }
     if (scroll > (imageCount-0.5)) { return 1.0 }
     let rem = scroll % 1.0
-    if (rem > 0.95) { return Math.max(0.5, (1-rem) / 0.025) }
-    else if (rem < 0.05) { return Math.max(0.5, (rem) / 0.025) }
+    if (rem > 0.90) { return Math.max(0.5, (1-rem) / 0.05) }
+    else if (rem < 0.1) { return Math.max(0.5, (rem) / 0.05) }
     return 1.0
   })
   page.onChange(setProgress)
@@ -45,19 +45,24 @@ const ProductImage = props => {
                 <motion.div
                     className="container"
                     style={{
-                        // position: "absolute",
                         scale, originY: "0%",
                         y: y,
-                        opacity: imageOpacity,
                     }}
-                    // class="w-6/12 md:w-1/4 lg:w-1/4"
                 >
                     { item.noFrame != true ?
                         <img class="w-auto absolute" src="/frame.png"></img>
                         : null
                     }
+
+                <motion.div
+                    className="container"
+                    style={{
+                        opacity: imageOpacity,
+                    }}
+                    >
                     <img class="top-1/2 left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
 
+                    </motion.div>
                     </motion.div>
 
                 </div>
