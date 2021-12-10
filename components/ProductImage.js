@@ -16,7 +16,7 @@ const ProductImage = props => {
 
   const item = props.item
 
-  const imageCount = item.image.length + 1
+  const imageCount = (item.image || []).length + 1
 
   const { scrollY, scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollY, [0, 200], [1.8, 1]);
@@ -56,7 +56,7 @@ const ProductImage = props => {
                         <img class="w-auto absolute" src="/frame.png"></img>
                         : null
                     }
-                    <img class="top-1/2 left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min(item.image.length - 1, Math.max(0, progress - 1))]}></img>
+                    <img class="top-1/2 left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
 
                     </motion.div>
 
