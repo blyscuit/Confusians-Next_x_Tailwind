@@ -15,7 +15,7 @@ const Header = props => {
         <div class="" id="index-banner-logo" style={{ paddingLeft: 13 }}>
           <Link href="/">
             <a id="logo-container" class="">
-              <img id="logoImage" class="w-20 md:w-32" src={logoImage} align="middle"></img>
+              <img id="logoImage" alt="Confusians logo" class="w-20 md:w-32" src={logoImage} align="middle"></img>
             </a>
           </Link>
         </div>

@@ -15,7 +15,7 @@ const Index = props => (
     
     <Head>
       <title>Confusians</title>
-      <meta name="description" content="Confusians' Indie Collection of trailor made Games and Apps." />
+      <meta name="description" content="Creates independent Games and Apps." />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={"Confusians"} />

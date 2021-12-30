@@ -50,7 +50,7 @@ const ProductImage = props => {
                     }}
                 >
                     { item.noFrame != true ?
-                        <img class="w-auto absolute" src="/frame.png"></img>
+                        <img alt="device frame" class="w-auto absolute" src="/frame.png"></img>
                         : null
                     }
 
@@ -60,7 +60,7 @@ const ProductImage = props => {
                         opacity: imageOpacity,
                     }}
                     >
-                    <img class="top-1/2 left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
+                    <img alt="screenshot" class="top-1/2 left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
 
                     </motion.div>
                     </motion.div>

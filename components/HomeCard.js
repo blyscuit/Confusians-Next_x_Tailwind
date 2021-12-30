@@ -17,7 +17,7 @@ const HomeCard = props => {
             <div class={"absolute w-full h-full duration-300 ease-out opacity-50 md:opacity-100 group-hover:opacity-0 "} style={{"backdrop-filter": "blur( 6px )","-webkit-backdrop-filter": "blur( 6px )","border-radius": "10px"}} ></div>
             <div class={"absolute w-full h-full duration-300 ease-out opacity-50 group-hover:opacity-0 " + props.backgroundColor} ></div>
         </div>
-        <img class={"object-cover w-full h-full"} src={props.image}></img>
+        <img alt={props.name} class={"object-cover w-full h-full"} src={props.image}></img>
     </div>
   );
 }
