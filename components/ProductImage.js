@@ -18,12 +18,12 @@ const ProductImage = props => {
 
   const imageCount = (item.image || []).length + 1
 
-  const { scrollY, scrollYProgress } = useViewportScroll();
+  const { scrollY } = useViewportScroll();
   const scale = useTransform(scrollY, [0, 200], [1.8, 1]);
   const y = useTransform(scrollY, value => {
-    if (value <= 400) { return 0.001 }
-    if (value > ((imageCount - 0.3) * height)) { return ((imageCount - 0.3) * height) - 400 } 
-    return value - 400
+    if (value <= 430) { return 0.001 }
+    if (value > ((imageCount - 0.3) * height)) { return ((imageCount - 0.3) * height) - 430 } 
+    return value - 430
   })
   const page = useTransform(scrollY, value => {
       return Math.floor((value / height))
