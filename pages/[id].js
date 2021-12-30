@@ -50,7 +50,7 @@ const Post = props => {
         </Helmet>
         <Head>
         <title>{item.name || ""} | Confusians</title>
-        <meta name="description" content={item.name + " " + item.about} />
+        <meta name="description" content={item.name + " | " + item.about} />
           <meta
             name="robots"
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
