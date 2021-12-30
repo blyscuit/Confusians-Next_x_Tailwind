@@ -33,12 +33,12 @@ export default class Post extends Component {
                     <img alt={alt} src={image} />
                 <div>
                 { (isDetail == true) ? (
-                    <p class="font-sans-serif font-medium text-3xl text-gray-800 dark:text-white">{title}</p>
+                    <h1 class="font-sans-serif font-medium text-3xl text-gray-800 dark:text-white">{title}</h1>
                     ) :
                     (
                     <Link href={{pathname: "/blog/[blog]", query: {"id":id}}} as={`/blog/${title}`}>
-                    <a class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800 dark:text-white">{title}
-                    </a>
+                    <h1 class="font-sans-serif cursor-pointer font-medium text-3xl text-gray-800 dark:text-white">{title}
+                    </h1>
                     </Link>
                     )
                 }

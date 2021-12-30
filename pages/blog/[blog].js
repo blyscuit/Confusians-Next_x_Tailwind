@@ -21,6 +21,7 @@ const BlogDetail = props => {
         </Helmet>
 
         <Head>
+          <title>{posts.fields != null ? posts.fields.title + " | " : ""} Confusians | Blog</title>
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={(posts.fields != null ? posts.fields.title + " | " : "") + "Confusians | Blog"} />

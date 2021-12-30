@@ -18,6 +18,7 @@ function BlogPage(props) {
         </Helmet>
 
         <Head>
+          <title>Confusians | Blog</title>
           <meta property="og:locale" content="en_US" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={"Confusians | Blog"} />

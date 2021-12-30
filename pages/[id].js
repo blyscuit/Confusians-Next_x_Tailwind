@@ -49,6 +49,7 @@ const Post = props => {
           <body class={item.backgroundColor}></body>
         </Helmet>
         <Head>
+        <title>{item.name || ""} | Confusians</title>
         <meta name="description" content={item.name + " " + item.about} />
           <meta
             name="robots"

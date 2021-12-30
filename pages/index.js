@@ -14,6 +14,8 @@ const Index = props => (
     </Helmet>
     
     <Head>
+      <title>Confusians</title>
+      <meta name="description" content="Confusians' Indie Collection of trailor made Games and Apps." />
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={"Confusians"} />
@@ -27,6 +29,10 @@ const Index = props => (
       <meta name="twitter:title" content={"Confusians"} />
       <meta name="twitter:image" content={"https://confusians.com/logofull.png"} />
     </Head>
+
+    <div class="hidden">
+      <h1 href="https://confusians.com">Confusians</h1>
+    </div>
 
     <div class="flex flex-wrap py-10">
       {((props.catalog || {}).index || []).map(item => {
