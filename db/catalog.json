@@ -29,6 +29,8 @@
             {"icon": "IoMoonSharp", "text": "Dark Mode"},
             {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"},
             {"icon": "IoWatchOutline", "text": "Watch App & Complications"},
+            {"icon": "IoNotificationsOutline", "text": "Price Change Notifications"},
+            {"icon": "IoLogoBitcoin", "text": "13,000+ Coins, Update Daily"},
             {"icon": "IoLogoEuro", "text": "Foreign Exchange Rate"},
             {"icon": "IoLockClosedOutline", "text": "Don't track you. Your data is always your."}
         ]

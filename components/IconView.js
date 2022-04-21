@@ -17,6 +17,8 @@ const IconView = props => {
             return (<Icons.IoWatchOutline class={"" + props.color} size={props.size} />)
         case "IoLogoEuro": return (<Icons.IoLogoEuro class={"" + props.color} size={props.size} />)
         case "IoLockClosedOutline": return (<Icons.IoLockClosedOutline class={"" + props.color} size={props.size} />)
+        case "IoNotificationsOutline": return (<Icons.IoNotificationsOutline class={"" + props.color} size={props.size} />)
+        case "IoLogoBitcoin": return (<Icons.IoLogoBitcoin class={"" + props.color} size={props.size} />)
         default:
             return (<div />)
     }
