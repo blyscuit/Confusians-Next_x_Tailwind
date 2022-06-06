@@ -40,11 +40,15 @@ const useDarkMode = () => {
 }
 
 function modeBackground(theme) {
-    return theme === 'light' ? 'white' : 'bg-gray-800'
+    return theme === 'light' ? 'bg-white' : 'bg-gray-800'
+}
+
+function modeBackgroundTrueBlack(theme) {
+    return theme === 'light' ? 'bg-white' : 'bg-black'
 }
 
 function modeBackdrop(theme) {
     return theme === 'light' ? 'light' : 'dark'
 }
 
-export { useDarkMode, modeBackground, modeBackdrop }
+export { useDarkMode, modeBackground, modeBackdrop, modeBackgroundTrueBlack }

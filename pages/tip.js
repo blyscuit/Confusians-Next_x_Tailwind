@@ -3,9 +3,12 @@ import Link from 'next/link'
 import { Helmet } from 'react-helmet';
 import Head from 'next/head'
 import { useEffect } from "react";
+import { useDarkMode, modeBackdrop, modeBackgroundTrueBlack } from '../js/useDarkMode';  
 
 const Tip = props => {
   
+  const [colorTheme, setTheme] = useDarkMode();
+
   const copy = (e) => {
     e.target.select();
     navigator.clipboard.writeText("0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276")
@@ -23,9 +26,10 @@ const Tip = props => {
   }, []);
 
   return(
-  <Layout footer={false}>
+    <Layout backdrop={modeBackdrop(colorTheme)} footer={false}>
     <Helmet>
       <title>Confusians | Tip</title>
+      <body class={modeBackgroundTrueBlack(colorTheme)}></body>
     </Helmet>
     
     <Head>
@@ -49,11 +53,11 @@ const Tip = props => {
       <h1 href="https://confusians.com">Confusians Tip Jar</h1>
     </div>
 
-    <div class={"flex flex-col items-center  pb-10"}>
+    <div class={"flex flex-col items-center  pb-10 dark:text-white"}>
 
         <div id="address" class="flex flex-col px-6 pt-96 pb-80">
           <h5 class={"text-2xl text-center font-light " + ""}>{"Any Chain"}</h5>
-          <textarea  onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	" + ""}>{"0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276"}</textarea>
+          <textarea  onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276"}</textarea>
         </div>
 
       </div>
