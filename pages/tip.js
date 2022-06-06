@@ -57,7 +57,7 @@ const Tip = props => {
 
         <div id="address" class="flex flex-col px-6 pt-96 pb-80">
           <h5 class={"text-2xl text-center font-light " + ""}>{"Any Chain"}</h5>
-          <textarea  onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276"}</textarea>
+          <textarea readonly onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276"}</textarea>
         </div>
 
       </div>
