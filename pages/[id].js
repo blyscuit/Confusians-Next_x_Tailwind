@@ -2,7 +2,6 @@ import Layout from '../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
 import catalog from '../db/catalog.json'
 import { Helmet } from 'react-helmet';
-import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import IconView from '../components/IconView'
 import Head from 'next/head'
