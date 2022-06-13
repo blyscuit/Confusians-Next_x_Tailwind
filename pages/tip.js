@@ -11,7 +11,7 @@ const Tip = props => {
 
   const copy = (e) => {
     e.target.select();
-    navigator.clipboard.writeText("0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276")
+    navigator.clipboard.writeText("0x150AAA0950537a99c1Ce1E5f258F00774011602B")
   }
 
   const scrollToTop = () => {
@@ -57,7 +57,7 @@ const Tip = props => {
 
         <div id="address" class="flex flex-col px-6 pt-96 pb-80">
           <h5 class={"text-2xl text-center font-light " + ""}>{"Any Chain"}</h5>
-          <textarea readOnly onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x8F24bDF60c4989Eac7d35B5701590B9Bf130A276"}</textarea>
+          <textarea readOnly onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x150AAA0950537a99c1Ce1E5f258F00774011602B"}</textarea>
         </div>
 
       </div>
