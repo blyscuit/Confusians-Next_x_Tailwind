@@ -27,6 +27,7 @@
             {"icon": "IoTabletLandscapeOutline", "text": "Widget from Your List"},
             {"icon": "IoStorefrontSharp", "text": "Universal App"},
             {"icon": "IoMoonSharp", "text": "Dark Mode"},
+            {"icon": "IoApps", "text": "Icons Pack"},
             {"icon": "IoSquareOutline", "text": "Keyboard Shortcuts"},
             {"icon": "IoWatchOutline", "text": "Watch App & Complications"},
             {"icon": "IoNotificationsOutline", "text": "Price Change Notifications"},
