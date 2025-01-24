@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Footer = props => {
     var since = 2015
-    var now = 2021
+    var now = 2025
     var brandColor = " text-lighten-4",
     yearColor = " text-lighten-3"
     if (props.backdrop == "light") {
