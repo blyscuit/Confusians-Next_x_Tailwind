@@ -1,7 +1,7 @@
 
 import Link from 'next/link'
 
-const ReactMarkdown = require('react-markdown')
+import ReactMarkdown from 'react-markdown';
 
 // import Prism from 'prismjs';
 import React, { Component } from "react"
