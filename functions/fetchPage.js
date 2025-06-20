@@ -31,7 +31,5 @@ export default async function fetchPage(context, perPage) {
     content_type: "post"
   })
 
-  return { props:
-    { totalCount: entries.total, page: pageInt, entries: entries.items }
-  }
+  return { totalCount: entries.total, page: pageInt, entries: entries.items }
 };
