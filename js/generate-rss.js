@@ -28,7 +28,7 @@ async function generateRSS() {
     const title = item.fields.title;
     const description = item.fields.description || "";
     const publishDate = item.fields.publishDate;
-    const url = `https://confusians.com/blog/${slug}`;
+    const url = `https://confusians.com/blog/${title}`;
 
     feed.item({
       title,
