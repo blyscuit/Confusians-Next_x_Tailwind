@@ -1,4 +1,4 @@
-import BlogPage from './[blog]/page'
+import BlogPage from './blogpage/page'
 import fetchPage, { perPage } from '../../functions/fetchPage'
 
 export default async function BlogList({ searchParams }) {

@@ -11,6 +11,9 @@ const client = createClient({
 })
 
 export default async function BlogDetail({ params, searchParams }) {
+  console.log('BlogDetail params:', params)
+  console.log('BlogDetail searchParams:', searchParams)
+
   let post = null
 
   if (searchParams?.id) {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Confusians Blog RSS Feed]]></title>
+        <description><![CDATA[Latest blog posts from Confusians]]></description>
+        <link>https://confusians.com</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 20 Jun 2025 14:46:14 GMT</lastBuildDate>
+        <atom:link href="https://confusians.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <language><![CDATA[en]]></language>
+        <item>
+            <title><![CDATA[Example of iOS 18 Tinted Widget Images]]></title>
+            <link>https://confusians.com/blog/Example of iOS 18 Tinted Widget Images</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Example of iOS 18 Tinted Widget Images</guid>
+        </item>
+        <item>
+            <title><![CDATA[Change NavigationBar Size with AdditionalSafeAreaInsets]]></title>
+            <link>https://confusians.com/blog/Change NavigationBar Size with AdditionalSafeAreaInsets</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Change NavigationBar Size with AdditionalSafeAreaInsets</guid>
+        </item>
+        <item>
+            <title><![CDATA[My take on Nested UINavigation]]></title>
+            <link>https://confusians.com/blog/My take on Nested UINavigation</link>
+            <guid isPermaLink="true">https://confusians.com/blog/My take on Nested UINavigation</guid>
+        </item>
+        <item>
+            <title><![CDATA[Dynamic Type and View Layout]]></title>
+            <link>https://confusians.com/blog/Dynamic Type and View Layout</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Dynamic Type and View Layout</guid>
+        </item>
+        <item>
+            <title><![CDATA[UISearchBar and your UI]]></title>
+            <link>https://confusians.com/blog/UISearchBar and your UI</link>
+            <guid isPermaLink="true">https://confusians.com/blog/UISearchBar and your UI</guid>
+        </item>
+        <item>
+            <title><![CDATA[Create ScrollView with Stretch Image Header With Auto Layout]]></title>
+            <link>https://confusians.com/blog/Create ScrollView with Stretch Image Header With Auto Layout</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Create ScrollView with Stretch Image Header With Auto Layout</guid>
+        </item>
+        <item>
+            <title><![CDATA[iOS Gradient Navigation Bar]]></title>
+            <link>https://confusians.com/blog/iOS Gradient Navigation Bar</link>
+            <guid isPermaLink="true">https://confusians.com/blog/iOS Gradient Navigation Bar</guid>
+        </item>
+        <item>
+            <title><![CDATA[Socio Gaming]]></title>
+            <link>https://confusians.com/blog/Socio Gaming</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Socio Gaming</guid>
+        </item>
+        <item>
+            <title><![CDATA[Design Diary | Lattea #2]]></title>
+            <link>https://confusians.com/blog/Design Diary | Lattea #2</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Design Diary | Lattea #2</guid>
+        </item>
+        <item>
+            <title><![CDATA[Download Lattea PNP]]></title>
+            <link>https://confusians.com/blog/Download Lattea PNP</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Download Lattea PNP</guid>
+        </item>
+        <item>
+            <title><![CDATA[Design Diary | Lattea #1]]></title>
+            <link>https://confusians.com/blog/Design Diary | Lattea #1</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Design Diary | Lattea #1</guid>
+        </item>
+        <item>
+            <title><![CDATA[One Night Werewolf AI]]></title>
+            <link>https://confusians.com/blog/One Night Werewolf AI</link>
+            <guid isPermaLink="true">https://confusians.com/blog/One Night Werewolf AI</guid>
+        </item>
+        <item>
+            <title><![CDATA[Design Diary | Rosemary City #1]]></title>
+            <link>https://confusians.com/blog/Design Diary | Rosemary City #1</link>
+            <guid isPermaLink="true">https://confusians.com/blog/Design Diary | Rosemary City #1</guid>
+        </item>
+        <item>
+            <title><![CDATA[About]]></title>
+            <link>https://confusians.com/blog/About</link>
+            <guid isPermaLink="true">https://confusians.com/blog/About</guid>
+        </item>
+    </channel>
+</rss>
