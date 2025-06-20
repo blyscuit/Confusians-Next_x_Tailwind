@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import BlogLoading from '../components/BlogLoading'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export default function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,7 @@ export default function MyApp({ Component, pageProps }) {
       ) : (
         <Component {...pageProps} />
       )}
+      <SpeedInsights />
     </>
   );
 }
