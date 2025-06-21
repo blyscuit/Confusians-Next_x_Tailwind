@@ -7,7 +7,7 @@ const PrivacyLivert = props => (
       <title>Livert Privacy Policy</title>
     </Helmet>
 
-<div class="container mx-auto">
+<div className="container mx-auto">
     <strong>Privacy Policy</strong> <p>
                    built the Livert app as
                   a Freemium app. This SERVICE is provided by

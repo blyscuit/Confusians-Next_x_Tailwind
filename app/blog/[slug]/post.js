@@ -13,7 +13,7 @@ export default function BlogDetailPost({ post }) {
       <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
       <Helmet>
         <title>{post?.fields?.title ?? ''} | Confusians | Blog</title>
-        <body class={modeBackground(colorTheme)}></body>
+        <body className={modeBackground(colorTheme)}></body>
       </Helmet>
 
         <Head>

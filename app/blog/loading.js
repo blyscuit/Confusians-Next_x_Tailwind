@@ -13,7 +13,7 @@ export default function BlogPageLoading({}) {
         <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
         <Helmet>
           <title>Confusians | Blog</title>
-          <body class={modeBackground(colorTheme)}></body>
+          <body className={modeBackground(colorTheme)}></body>
         </Helmet>
 
         <Head>
@@ -27,11 +27,11 @@ export default function BlogPageLoading({}) {
           <meta name="twitter:title" content={"Confusians | Blog"} />
         </Head>
 
-      <div class={"p-10"}>
-        <div class="dark container mx-auto md:max-w-xl px-4 md:px-0">
+      <div className={"p-10"}>
+        <div className="dark container mx-auto md:max-w-xl px-4 md:px-0">
                 <div>
-                    <h1 class="font-medium text-3xl"><Skeleton /></h1>
-                    <p class="text-sm pt-2"><Skeleton /></p>
+                    <h1 className="font-medium text-3xl"><Skeleton /></h1>
+                    <p className="text-sm pt-2"><Skeleton /></p>
                     <br></br>
                     <p><Skeleton count={10} /></p>
                 </div>

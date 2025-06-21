@@ -29,7 +29,7 @@ const Tip = props => {
     <Layout backdrop={modeBackdrop(colorTheme)} footer={false}>
     <Helmet>
       <title>Confusians | Tip</title>
-      <body class={modeBackgroundTrueBlack(colorTheme)}></body>
+      <body className={modeBackgroundTrueBlack(colorTheme)}></body>
     </Helmet>
     
     <Head>
@@ -53,11 +53,11 @@ const Tip = props => {
       <h1 href="https://confusians.com">Confusians Tip Jar</h1>
     </div>
 
-    <div class={"flex flex-col items-center  pb-10 dark:text-white"}>
+    <div className={"flex flex-col items-center  pb-10 dark:text-white"}>
 
-        <div id="address" class="flex flex-col px-6 pt-96 pb-80">
-          <h5 class={"text-2xl text-center font-light " + ""}>{"Any Chain"}</h5>
-          <textarea readOnly onClick={copy} class={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x150AAA0950537a99c1Ce1E5f258F00774011602B"}</textarea>
+        <div id="address" className="flex flex-col px-6 pt-96 pb-80">
+          <h5 className={"text-2xl text-center font-light " + ""}>{"Any Chain"}</h5>
+          <textarea readOnly onClick={copy} className={"text-3xl pb-4 text-center py-6 cursor-pointer	bg-transparent	" + ""}>{"0x150AAA0950537a99c1Ce1E5f258F00774011602B"}</textarea>
         </div>
 
       </div>

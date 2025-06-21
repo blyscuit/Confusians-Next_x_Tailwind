@@ -6,20 +6,24 @@ import { useRouter } from 'next/router'
 import IconView from '../components/IconView'
 import Head from 'next/head'
 import ProductImage from "../components/ProductImage"
+import { useEffect, useState } from 'react';
 
 const Post = props => {
+  const [isClient, setIsClient] = useState(false);
 
   const router = useRouter()
 
   const item = props
 
+  const style = isClient ? { fontFamily: props.font } : {};
+
   let linkSection = (
-    <div class="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
-    <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
+    <div className="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
+    <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
 
       {item.adr != null && item.adr != "" ? (
-        <div class={"flex-1 flex items-center flex-col"}>
-          <div class="">
+        <div className={"flex-1 flex items-center flex-col"}>
+          <div className="">
             <a href={item.adr}>
               <img alt="Android app on Google Play"
                 src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" style={{ width: '122px', height: '44px', marginTop: -1 }} />
@@ -29,9 +33,9 @@ const Post = props => {
       ) : null}
 
       {item.ios != null && item.ios != "" ? (
-        <div class="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
-          <div class="pt-px ">
-            <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("http://linkmaker.itunes.apple.com/images/badges/en-us/badge_appstore-lrg.svg")', backgroundRepeat: 'no-repeat', width: '135px', height: '40px' }}></a>
+        <div className="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
+          <div className="pt-px ">
+            <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg")', backgroundRepeat: 'no-repeat', width: '120px', height: '40px' }}></a>
           </div>
         </div>
       ) : null}
@@ -40,12 +44,12 @@ const Post = props => {
   )
 
   return (
-    <div class={item.backgroundColor}>
+    <div className={item.backgroundColor}>
       <Layout backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}>
 
         <Helmet>
           <title>{item.name || ""} | Confusians</title>
-          <body class={item.backgroundColor}></body>
+          <body className={item.backgroundColor}></body>
         </Helmet>
         <Head>
         <title>{item.name || ""} | Confusians</title>
@@ -70,11 +74,11 @@ const Post = props => {
           <meta name="twitter:image" content={"https://confusians.com/" + (item.image || [""])[0]} />
         </Head>
 
-        <div class={"flex flex-col items-center  pb-10"}>
+        <div className={"flex flex-col items-center  pb-10"}>
 
-          <div class="flex flex-col px-6 py-16">
-            <h1 class={"text-6xl pb-4 text-center " + item.textColor} style={{ "fontFamily": item.font }}>{item.name}</h1>
-            <h5 class={"text-2xl text-center font-light " + item.textColor}>{item.about}</h5>
+          <div className="flex flex-col px-6 py-16">
+            <h1 className={"text-6xl pb-4 text-center " + item.textColor} style={style}>{item.name}</h1>
+            <h5 className={"text-2xl text-center font-light " + item.textColor}>{item.about}</h5>
           </div>
 
           <ProductImage item={item}></ProductImage>
@@ -82,12 +86,12 @@ const Post = props => {
           {linkSection}
 
           <div className="grid-container"></div>
-          <div class={"self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " + item.textColor}>
+          <div className={"self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " + item.textColor}>
             {(item.description ?? []).map(function (des) {
               return (
-                <div class="flex flex-col items-center pt-16">
+                <div key={des.text} className="flex flex-col items-center pt-16">
                   <IconView icon={des.icon} size={60} color={item.textColor} />
-                  <div class={"pt-4 "}>{des.text}</div>
+                  <div className={"pt-4 "}>{des.text}</div>
                 </div>
               )
             })

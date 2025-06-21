@@ -64,7 +64,7 @@ const ProductImage = props => {
   page.onChange(setProgress)
 
   return (
-        <div class="w-6/12 md:w-1/4 lg:w-1/4">
+        <div className="w-6/12 md:w-1/4 lg:w-1/4">
             <div style={{"height":"100vh", "position": isAbsolute ? "fixed" : "relative", "width": isAbsolute ? "25%" : "100%", "top": isAbsolute ? scrollTop : "auto"}}>
                 <motion.div
                     className="container"
@@ -74,7 +74,7 @@ const ProductImage = props => {
                     }}
                 >
                     { item.noFrame != true ?
-                        <img alt="device frame" class="w-auto absolute" src="/frame.png"></img>
+                        <img alt="device frame" className="w-auto absolute" src="/frame.png"></img>
                         : null
                     }
 
@@ -84,7 +84,7 @@ const ProductImage = props => {
                         opacity: imageOpacity,
                     }}
                     >
-                    <img alt="screenshot" class="left-1/2 absolute " style={{"width": "89%", "border-radius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
+                    <img alt="screenshot" className="left-1/2 absolute " style={{"width": "89%", "borderRadius": item.noFrame != true ? "24px" : "0", "transform": "translate(-50%,2.5%)"}} src={(item.image || [""])[Math.min((item.image || []).length - 1, Math.max(0, progress - 1))]}></img>
 
                     </motion.div>
                     </motion.div>

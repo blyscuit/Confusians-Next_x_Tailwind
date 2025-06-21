@@ -15,7 +15,7 @@ export default function BlogPagePost({ result, page }) {
         <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
         <Helmet>
           <title>Confusians | Blog</title>
-          <body class={modeBackground(colorTheme)}></body>
+          <body className={modeBackground(colorTheme)}></body>
         </Helmet>
 
         <Head>

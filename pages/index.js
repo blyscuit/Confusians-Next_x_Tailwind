@@ -10,7 +10,7 @@ const Index = props => (
   <Layout footer={true}>
     <Helmet>
       <title>Confusians</title>
-      <body class={catalog.home.backgroundColor}></body>
+      <body className={catalog.home.backgroundColor}></body>
     </Helmet>
     
     <Head>
@@ -30,15 +30,15 @@ const Index = props => (
       <meta name="twitter:image" content={"https://confusians.com/logofull.png"} />
     </Head>
 
-    <div class="hidden">
+    <div className="hidden">
       <h1 href="https://confusians.com">Confusians</h1>
     </div>
 
-    <div class="flex flex-wrap py-10">
+    <div className="flex flex-wrap py-10">
       {((props.catalog || {}).index || []).map(item => {
         var detail = props.catalog[item.id] || {}
         return (
-          <div key={item.id} class={' sm: w-full md:' + item.size}>
+          <div key={item.id} className={' sm: w-full md:' + item.size}>
             <Link legacyBehavior href={{pathname: "/[id]", query: {}}} as={`/${item.id}`} >
               <a><HomeCard backgroundColor={detail.backgroundColor} name={detail.name} textColor={detail.textColor} image={item.image} font={detail.font}></HomeCard></a>
             </Link>

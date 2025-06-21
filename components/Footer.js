@@ -10,9 +10,9 @@ const Footer = props => {
     yearColor = "text-darken-3"
     }
   return (
-    <div class="group flex flex-col items-center pt-4 pb-10">
-      <p class={"text-sm grey-text " + brandColor}>Confusians</p>
-      <p class={"text-xs grey-text pt-2 " + yearColor}>© {since} - {now}</p>
+    <div className="group flex flex-col items-center pt-4 pb-10">
+      <p className={"text-sm grey-text " + brandColor}>Confusians</p>
+      <p className={"text-xs grey-text pt-2 " + yearColor}>© {since} - {now}</p>
     </div>
   );
 }
