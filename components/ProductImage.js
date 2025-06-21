@@ -24,14 +24,14 @@ const ProductImage = (props) => {
         setScrollTop(startingPoint);
       } else if (
         scrollY >
-        windowsHeight * (imageCount - 0.1) - windowsWidth / 30
+        (windowsHeight * (imageCount - 0.2)) - (windowsWidth / 30)
       ) {
         setIsAbsolute(true);
         setScrollTop(
-          windowsHeight * (imageCount - 0.1) -
+          ((windowsHeight * (imageCount - 0.2)) -
             scrollY +
             startingPoint -
-            windowsWidth / 30,
+            (windowsWidth / 30)) * 1,
         );
       } else if (scrollY > windowsHeight / 2) {
         setIsAbsolute(true);
