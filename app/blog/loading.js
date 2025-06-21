@@ -1,7 +1,6 @@
 'use client'
 import Layout from '../../components/MyLayout'
 import { useDarkMode, modeBackdrop, modeBackground } from '../../js/useDarkMode'
-import { Helmet } from 'react-helmet'
 import Head from 'next/head';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -11,10 +10,6 @@ export default function BlogPageLoading({}) {
 
   return (
         <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
-        <Helmet>
-          <title>Confusians | Blog</title>
-          <body className={modeBackground(colorTheme)}></body>
-        </Helmet>
 
         <Head>
           <title>Confusians | Blog</title>

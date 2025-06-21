@@ -9,14 +9,6 @@ export default function PagingIndicator({ currentPage, maxPage }) {
   const handlePageClick = (data) => {
     const selected = data.selected + 1
     router.push(`/blog/page/${selected}`)
-    scrollToTop()
-  }
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
   }
 
   return (

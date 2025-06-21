@@ -1,6 +1,5 @@
 'use client'
 
-import { Helmet } from 'react-helmet'
 import Post from '../../../components/blog/post'
 import Layout from '../../../components/MyLayout'
 import { useDarkMode, modeBackdrop, modeBackground } from '../../../js/useDarkMode'
@@ -11,11 +10,6 @@ export default function BlogDetailPost({ post }) {
   
   return (
       <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
-      <Helmet>
-        <title>{post?.fields?.title ?? ''} | Confusians | Blog</title>
-        <body className={modeBackground(colorTheme)}></body>
-      </Helmet>
-
         <Head>
           <title>{post?.fields?.title ?? ''} | Confusians | Blog</title>
           <meta property="og:locale" content="en_US" />

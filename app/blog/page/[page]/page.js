@@ -1,6 +1,11 @@
 import fetchPage, { perPage } from '../../../../functions/fetchPage'
 import BlogPagePosts from './post'
 
+export const metadata = {
+  title: 'Confusians | Blog',
+  description: 'Confusians Blog',
+}
+
 export default async function BlogPage({ params }) {
 
   const page = parseInt(params?.page || 1)

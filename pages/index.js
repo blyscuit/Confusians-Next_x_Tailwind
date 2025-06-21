@@ -2,16 +2,16 @@ import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import catalog from '../db/catalog.json'
-import { Helmet } from 'react-helmet';
 import HomeCard from '../components/HomeCard'
 import Head from 'next/head'
 
+export const metadata = {
+  title: 'Confusians',
+  description: 'Creates independent Games and Apps.',
+}
+
 const Index = props => (
   <Layout footer={true}>
-    <Helmet>
-      <title>Confusians</title>
-      <body className={catalog.home.backgroundColor}></body>
-    </Helmet>
     
     <Head>
       <title>Confusians</title>

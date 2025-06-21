@@ -4,7 +4,6 @@ import Layout from '../../../../components/MyLayout'
 import PaginngIndicator from '../../../../components/blog/pagingIndicator'
 import { perPage } from '../../../../functions/fetchPage'
 import { useDarkMode, modeBackdrop, modeBackground } from '../../../../js/useDarkMode'
-import { Helmet } from 'react-helmet'
 import Head from 'next/head';
 
 
@@ -13,10 +12,6 @@ export default function BlogPagePost({ result, page }) {
 
   return (
         <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
-        <Helmet>
-          <title>Confusians | Blog</title>
-          <body className={modeBackground(colorTheme)}></body>
-        </Helmet>
 
         <Head>
           <title>Confusians | Blog</title>

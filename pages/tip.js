@@ -1,9 +1,13 @@
 import Layout from '../components/MyLayout.js'
 import Link from 'next/link'
-import { Helmet } from 'react-helmet';
 import Head from 'next/head'
 import { useEffect } from "react";
 import { useDarkMode, modeBackdrop, modeBackgroundTrueBlack } from '../js/useDarkMode';  
+
+export const metadata = {
+  title: 'Confusians | Tip',
+  description: 'Confusians',
+}
 
 const Tip = props => {
   
@@ -27,10 +31,6 @@ const Tip = props => {
 
   return(
     <Layout backdrop={modeBackdrop(colorTheme)} footer={false}>
-    <Helmet>
-      <title>Confusians | Tip</title>
-      <body className={modeBackgroundTrueBlack(colorTheme)}></body>
-    </Helmet>
     
     <Head>
       <title>Confusians | Tip</title>

@@ -1,11 +1,7 @@
 import Layout from '../../components/MyLayout.js'
-import { Helmet } from 'react-helmet';
 
 const PrivacyLivert = props => (
   <Layout footer={true}>
-    <Helmet>
-      <title>Livert Privacy Policy</title>
-    </Helmet>
 
 <div className="container mx-auto">
     <strong>Privacy Policy</strong> <p>

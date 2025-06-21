@@ -1,8 +1,6 @@
 import Layout from '../components/MyLayout';
 import fetch from 'isomorphic-unfetch';
 import catalog from '../db/catalog.json'
-import { Helmet } from 'react-helmet';
-import { useRouter } from 'next/router'
 import IconView from '../components/IconView'
 import Head from 'next/head'
 import ProductImage from "../components/ProductImage"
@@ -10,8 +8,6 @@ import { useEffect, useState } from 'react';
 
 const Post = props => {
   const [isClient, setIsClient] = useState(false);
-
-  const router = useRouter()
 
   const item = props
 
@@ -47,10 +43,6 @@ const Post = props => {
     <div className={item.backgroundColor}>
       <Layout backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}>
 
-        <Helmet>
-          <title>{item.name || ""} | Confusians</title>
-          <body className={item.backgroundColor}></body>
-        </Helmet>
         <Head>
         <title>{item.name || ""} | Confusians</title>
         <meta name="description" content={item.name + " | " + item.about} />

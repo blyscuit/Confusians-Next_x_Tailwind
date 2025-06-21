@@ -5,6 +5,7 @@ import Footer from './Footer'
 import { initGA, logPageView } from '../utils/analytics'
 import React, { Component } from "react"
 import Head from 'next/head';
+import { modeBackground, modeBackdrop } from '../js/useDarkMode'
 
 import '../styles/index.css'
 import '../styles/materialize-color.css'
@@ -27,7 +28,7 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <div style={layoutStyle} >
+      <div className={modeBackground(this.props.backdrop)} >
       <Head>
         <link rel="shortcut icon" href="/static/favicon.ico" />
       </Head>

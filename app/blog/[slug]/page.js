@@ -3,6 +3,14 @@ import { createClient } from 'contentful'
 import BlogDetailPost from './post'
 
 
+export async function generateMetadata(
+  { params }
+) {
+  return {
+    title: decodeURIComponent(params.slug) + " | Confusians | Blog",
+  }
+}
+
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN

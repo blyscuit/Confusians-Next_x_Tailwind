@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata = {
   title: 'Confusians',
-  description: 'Confusians Blog',
+  description: 'Confusians',
 }
 
 export default function RootLayout({ children }) {
