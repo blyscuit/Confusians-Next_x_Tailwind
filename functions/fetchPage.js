@@ -8,7 +8,7 @@ export default async function fetchPage(context, perPage) {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
   })
 
-  var { blogPage } = context.query
+  var blogPage = context.query.page
   blogPage = blogPage || ""
   if (blogPage == "") { 
     blogPage = '1' 
@@ -24,12 +24,12 @@ export default async function fetchPage(context, perPage) {
   }
 
   pageInt = pageInt > 0 ? pageInt : 1
+  var skip = (pageInt - 1) * perPage
   const entries = await client.getEntries({
     limit: perPage,
-    skip: (pageInt - 1) * perPage,
+    skip: skip,
     order: '-fields.date',
     content_type: "post"
   })
-
   return { totalCount: entries.total, page: pageInt, entries: entries.items }
 };

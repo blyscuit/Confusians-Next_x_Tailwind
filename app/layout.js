@@ -1,7 +1,6 @@
 import '../styles/index.css'
 import '../styles/materialize-color.css'
 import '../styles/font.css'
-import '../styles/prism.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata = {

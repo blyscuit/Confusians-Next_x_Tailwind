@@ -1,9 +1,5 @@
-import BlogPage from './blogpage/page'
-import fetchPage, { perPage } from '../../functions/fetchPage'
+import BlogPage from './page/[page]/page'
 
-export default async function BlogList({ searchParams }) {
-  // You may want to handle pagination via searchParams.page
-  const context = { query: searchParams || {} }
-  const { entries } = await fetchPage(context, perPage)
-  return <BlogPage entries={entries} />
+export default function BlogList({ }) {
+  return <BlogPage/>
 }

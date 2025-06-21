@@ -3,18 +3,9 @@
 import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import { useEffect } from 'react'
-import Prism from 'prismjs'
-import 'prismjs/components/prism-clike'
-import 'prismjs/components/prism-c'
-import 'prismjs/components/prism-java'
-import 'prismjs/components/prism-swift'
-import 'prismjs/components/prism-python'
+import { Highlight, themes } from "prism-react-renderer"
 
 export default function Post(props) {
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [props.markdown])
-
   const { alt, date, image, title, url, id, markdown, isDetail } = props
   const dtf = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: 'numeric' })
   const [{ value: mo }, , { value: da }, , { value: ye }] = dtf.formatToParts(new Date(date))
@@ -34,15 +25,29 @@ export default function Post(props) {
         <ReactMarkdown
           className="prose-lg lg:prose-xl prose-blue font-serif leading-relaxed text-gray-900 dark:text-white"
           components={{
-            p: ({ children }) => <p className="mt-8">{children}</p>,
+            p: ({ children }) => <div className="mt-8">{children}</div>,
             code: ({ node, inline, className, children, ...props }) => (
-              <div className="mt-8">
-                <pre className="mt-8">
-                  <code className={`text-sm ${className} mt-8`} style={{ fontSize: "0.875rem" }}>
-                    {children}
-                  </code>
-                </pre>
-              </div>
+                  <Highlight
+                  theme={themes.oneDark}
+                  code={children[0]}
+                  language={className?.replace('language-', '') || ''}
+                    >
+                    {({ className, style, tokens, getLineProps, getTokenProps }) => (
+
+                      <pre style={style}>
+                                        <div style={{ overflowX: "auto", }}>
+                        {tokens.map((line, i) => (
+                          <div key={i} {...getLineProps({ line })}>
+                            {/* <span>{i + 1}</span> */}
+                            {line.map((token, key) => (
+                              <span key={key} {...getTokenProps({ token })} />
+                            ))}
+                          </div>
+                        ))}
+                          </div>
+                      </pre>
+                    )}
+                  </Highlight>
             ),
             img: ({ alt, src }) => (
               <img className="my-8 mx-auto md:max-w-lg" alt={alt} src={src} />

@@ -1,28 +1,15 @@
 'use client'
-import Post from '../../../components/blog/post'
-import Layout from '../../../components/MyLayout'
-import PaginngIndicator from '../../../components/blog/pagingIndicator'
-import fetchPage, { perPage } from '../../../functions/fetchPage'
-import { useDarkMode, modeBackdrop, modeBackground } from '../../../js/useDarkMode'
+import Post from '../../../../components/blog/post'
+import Layout from '../../../../components/MyLayout'
+import PaginngIndicator from '../../../../components/blog/pagingIndicator'
+import { perPage } from '../../../../functions/fetchPage'
+import { useDarkMode, modeBackdrop, modeBackground } from '../../../../js/useDarkMode'
 import { Helmet } from 'react-helmet'
 import Head from 'next/head';
 
-import { useEffect, useState } from 'react'
 
-export default function BlogPage({ searchParams }) {
+export default function BlogPagePost({ result, page }) {
   const [colorTheme, setTheme] = useDarkMode()
-  const [data, setData] = useState({ entries: [], page: 1, totalCount: 0 })
-
-  const page = parseInt(searchParams?.page || 1)
-
-  useEffect(() => {
-    async function loadData() {
-      console.log(`Loading blog page ${page} with perPage ${perPage}`)
-      const result = await fetchPage({ query: { page } }, perPage)
-      setData(result)
-    }
-    loadData()
-  }, [page])
 
   return (
         <Layout backdrop={modeBackdrop(colorTheme)} footer={true}>
@@ -44,8 +31,8 @@ export default function BlogPage({ searchParams }) {
 
       <div className={modeBackground(colorTheme)}>
         <div className="min-h-screen pt-20" style={{ paddingBottom: '-60rem' }}>
-          {data.entries.length > 0 &&
-            data.entries.map(p => (
+          {result.entries.length > 0 &&
+            result.entries.map(p => (
               <Post
                 alt={p.fields.alt}
                 date={p.fields.date}
@@ -61,7 +48,7 @@ export default function BlogPage({ searchParams }) {
 
         <PaginngIndicator
           currentPage={page - 1}
-          maxPage={Math.ceil((data.totalCount || 0) / perPage)}
+          maxPage={Math.ceil((result.totalCount || 0) / perPage)}
         />
       </div>
     </Layout>

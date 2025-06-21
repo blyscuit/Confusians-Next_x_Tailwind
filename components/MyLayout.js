@@ -6,6 +6,10 @@ import { initGA, logPageView } from '../utils/analytics'
 import React, { Component } from "react"
 import Head from 'next/head';
 
+import '../styles/index.css'
+import '../styles/materialize-color.css'
+import '../styles/font.css'
+
 const layoutStyle = {
   // margin: 20,
   // padding: 20,

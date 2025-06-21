@@ -39,7 +39,7 @@ const Index = props => (
         var detail = props.catalog[item.id] || {}
         return (
           <div key={item.id} class={' sm: w-full md:' + item.size}>
-            <Link href={{pathname: "/[id]", query: {}}} as={`/${item.id}`} >
+            <Link legacyBehavior href={{pathname: "/[id]", query: {}}} as={`/${item.id}`} >
               <a><HomeCard backgroundColor={detail.backgroundColor} name={detail.name} textColor={detail.textColor} image={item.image} font={detail.font}></HomeCard></a>
             </Link>
           </div>

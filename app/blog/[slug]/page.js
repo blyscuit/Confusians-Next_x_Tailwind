@@ -1,9 +1,7 @@
-"use client"
 
-import { Helmet } from 'react-helmet'
 import { createClient } from 'contentful'
-import Post from '../../../components/blog/post'
-import Layout from '../../../components/MyLayout'
+import BlogDetailPost from './post'
+
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -11,8 +9,6 @@ const client = createClient({
 })
 
 export default async function BlogDetail({ params, searchParams }) {
-  console.log('BlogDetail params:', params)
-  console.log('BlogDetail searchParams:', searchParams)
 
   let post = null
 
@@ -20,31 +16,13 @@ export default async function BlogDetail({ params, searchParams }) {
     post = await client.getEntry(searchParams.id)
   } else {
     const entries = await client.getEntries({
-      'fields.title': params.blog,
+      'fields.title': decodeURIComponent(params.slug), // decode %20 to space
       content_type: 'post'
     })
     post = entries.items[0] || null
   }
 
-  if (!post) return <div>Not found</div>
-
   return (
-    <Layout footer={true}>
-      <Helmet>
-        <title>{post.fields?.title} | Confusians | Blog</title>
-      </Helmet>
-      <div className="min-h-screen flex flex-col items-center pt-20">
-        <Post
-          alt={post.fields.alt}
-          date={post.fields.date}
-          key={post.fields.title}
-          image={post.fields.image}
-          title={post.fields.title}
-          url={post.fields.url}
-          markdown={post.fields.markdown}
-          isDetail={true}
-        />
-      </div>
-    </Layout>
+    <BlogDetailPost post={post}></BlogDetailPost>
   )
 }

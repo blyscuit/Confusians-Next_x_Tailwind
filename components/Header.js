@@ -13,7 +13,7 @@ const Header = props => {
     <div class="group flex flex-col items-center pt-20">
       <div class="flex flex-col items-center" id="index-banner-logo-section">
         <div class="" id="index-banner-logo" style={{ paddingLeft: 13 }}>
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a id="logo-container" class="">
               <img id="logoImage" alt="Confusians logo" class="w-20 md:w-32" src={logoImage} align="middle"></img>
             </a>
@@ -21,11 +21,11 @@ const Header = props => {
         </div>
 
         <div class="pt-4 transition duration-300 ease-out sm:opacity-100 md:opacity-0 group-hover:opacity-100" id="link-section">
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a><span class={headerTextClass}>Work</span></a>
           </Link>
           <span class={seperatorTextClass}> | </span>
-          <Link href="/blog">
+          <Link legacyBehavior href="/blog">
             <a><span class={headerTextClass}>Blog</span></a>
           </Link>
         </div>
