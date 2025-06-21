@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -16,6 +12,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "types": ["react"],
+    "target": "esnext",
     "plugins": [
       {
         "name": "next"
@@ -27,9 +25,10 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "app/blog/page/[page]/post.js", "app/blog/[slug]/post.js"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "**/*.tsx",
+    "app/blog/page/[page]/post.js",
+    "app/blog/[slug]/post.js",
+    "js/useDarkMode.js"
+  ],
+  "exclude": ["node_modules"]
 }

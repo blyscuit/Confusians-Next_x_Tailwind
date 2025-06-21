@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/icon?family=Quicksand');
-@import url('http://fonts.googleapis.com/css?family=Dr+Sugiyama|Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-  
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/icon?family=Quicksand");
+@import url("http://fonts.googleapis.com/css?family=Dr+Sugiyama|Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 @font-face {
-    font-family: "Futura Oblique";
-    src: url("../font/futura/Futura Oblique.ttf") format("truetype");
+  font-family: "Futura Oblique";
+  src: url("../font/futura/Futura Oblique.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: "Gotham-Light";
-    src: url("../font/GothamLight.ttf") format("truetype");
+  font-family: "Gotham-Light";
+  src: url("../font/GothamLight.ttf") format("truetype");
 }

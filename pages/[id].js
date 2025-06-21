@@ -1,51 +1,65 @@
-import Layout from '../components/MyLayout';
-import fetch from 'isomorphic-unfetch';
-import catalog from '../db/catalog.json'
-import IconView from '../components/IconView'
-import Head from 'next/head'
-import ProductImage from "../components/ProductImage"
-import { useEffect, useState } from 'react';
+import Layout from "../components/MyLayout";
+import fetch from "isomorphic-unfetch";
+import catalog from "../db/catalog.json";
+import IconView from "../components/IconView";
+import Head from "next/head";
+import ProductImage from "../components/ProductImage";
+import { useEffect, useState } from "react";
 
-const Post = props => {
+const Post = (props) => {
   const [isClient, setIsClient] = useState(false);
 
-  const item = props
+  const item = props;
 
   const style = isClient ? { fontFamily: props.font } : {};
 
   let linkSection = (
     <div className="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
-    <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
-
-      {item.adr != null && item.adr != "" ? (
-        <div className={"flex-1 flex items-center flex-col"}>
-          <div className="">
-            <a href={item.adr}>
-              <img alt="Android app on Google Play"
-                src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png" style={{ width: '122px', height: '44px', marginTop: -1 }} />
-            </a>
+      <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
+        {item.adr != null && item.adr != "" ? (
+          <div className={"flex-1 flex items-center flex-col"}>
+            <div className="">
+              <a href={item.adr}>
+                <img
+                  alt="Android app on Google Play"
+                  src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png"
+                  style={{ width: "122px", height: "44px", marginTop: -1 }}
+                />
+              </a>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
 
-      {item.ios != null && item.ios != "" ? (
-        <div className="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
-          <div className="pt-px ">
-            <a href={item.ios} style={{ display: 'inline-block', overflow: 'hidden', background: 'url("https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg")', backgroundRepeat: 'no-repeat', width: '120px', height: '40px' }}></a>
+        {item.ios != null && item.ios != "" ? (
+          <div className="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
+            <div className="pt-px ">
+              <a
+                href={item.ios}
+                style={{
+                  display: "inline-block",
+                  overflow: "hidden",
+                  background:
+                    'url("https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg")',
+                  backgroundRepeat: "no-repeat",
+                  width: "120px",
+                  height: "40px",
+                }}
+              ></a>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
-  </div>
-  )
+  );
 
   return (
     <div className={item.backgroundColor}>
-      <Layout backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}>
-
+      <Layout
+        backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}
+      >
         <Head>
-        <title>{item.name || ""} | Confusians</title>
-        <meta name="description" content={item.name + " | " + item.about} />
+          <title>{item.name || ""} | Confusians</title>
+          <meta name="description" content={item.name + " | " + item.about} />
           <meta
             name="robots"
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -54,23 +68,41 @@ const Post = props => {
           <meta property="og:type" content="website" />
           <meta property="og:title" content={item.name} />
           <meta property="og:description" content={item.about} />
-          <meta property="og:url" content={"https://confusians.com/" + item.name} />
+          <meta
+            property="og:url"
+            content={"https://confusians.com/" + item.name}
+          />
           <meta property="og:site_name" content="Confusians" />
-          <meta property="og:image" content={"https://confusians.com/" + (item.image || [""])[0]} />
-          <meta property="og:image:secure_url" content={"https://confusians.com/" + (item.image || [""])[0]} />
+          <meta
+            property="og:image"
+            content={"https://confusians.com/" + (item.image || [""])[0]}
+          />
+          <meta
+            property="og:image:secure_url"
+            content={"https://confusians.com/" + (item.image || [""])[0]}
+          />
           <meta property="og:image:width" content="1280" />
           <meta property="og:image:height" content="720" />
           <meta name="twitter:card" content="app" />
           <meta name="twitter:description" content={item.about} />
           <meta name="twitter:title" content={item.name} />
-          <meta name="twitter:image" content={"https://confusians.com/" + (item.image || [""])[0]} />
+          <meta
+            name="twitter:image"
+            content={"https://confusians.com/" + (item.image || [""])[0]}
+          />
         </Head>
 
         <div className={"flex flex-col items-center  pb-10"}>
-
           <div className="flex flex-col px-6 py-16">
-            <h1 className={"text-6xl pb-4 text-center " + item.textColor} style={style}>{item.name}</h1>
-            <h5 className={"text-2xl text-center font-light " + item.textColor}>{item.about}</h5>
+            <h1
+              className={"text-6xl pb-4 text-center " + item.textColor}
+              style={style}
+            >
+              {item.name}
+            </h1>
+            <h5 className={"text-2xl text-center font-light " + item.textColor}>
+              {item.about}
+            </h5>
           </div>
 
           <ProductImage item={item}></ProductImage>
@@ -78,54 +110,58 @@ const Post = props => {
           {linkSection}
 
           <div className="grid-container"></div>
-          <div className={"self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " + item.textColor}>
+          <div
+            className={
+              "self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " +
+              item.textColor
+            }
+          >
             {(item.description ?? []).map(function (des) {
               return (
-                <div key={des.text} className="flex flex-col items-center pt-16">
+                <div
+                  key={des.text}
+                  className="flex flex-col items-center pt-16"
+                >
                   <IconView icon={des.icon} size={60} color={item.textColor} />
                   <div className={"pt-4 "}>{des.text}</div>
                 </div>
-              )
-            })
-            }
+              );
+            })}
           </div>
 
           {(item.description ?? []).length > 0 ? linkSection : null}
-
         </div>
-
       </Layout>
     </div>
   );
-}
+};
 
 export async function getStaticPaths() {
-
-  const paths = catalog.index.map(index => {
+  const paths = catalog.index.map((index) => {
     return {
       params: {
-        id: index.id
-      }
-    }
-  })
+        id: index.id,
+      },
+    };
+  });
   return {
     paths,
-    fallback: true
-  }
+    fallback: true,
+  };
 }
 
 export async function getStaticProps(context) {
-  var { id } = context.params
-  id = id || ''
-  var item = catalog[id.toLowerCase()]
+  var { id } = context.params;
+  id = id || "";
+  var item = catalog[id.toLowerCase()];
 
   if (!item) {
     return {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
       },
-    }
+    };
   }
   return { props: item };
 }

@@ -19,8 +19,8 @@ async function generateRSS() {
 
   const entries = await client.getEntries({
     limit: 20,
-    order: '-fields.date',
-    content_type: "post"
+    order: "-fields.date",
+    content_type: "post",
   });
 
   entries.items.forEach((item) => {
