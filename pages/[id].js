@@ -4,6 +4,7 @@ import catalog from "../db/catalog.json";
 import IconView from "../components/IconView";
 import Head from "next/head";
 import ProductImage from "../components/ProductImage";
+import StaticProductImage from "../components/StaticProductImage";
 import { useEffect, useState } from "react";
 
 const Post = (props) => {
@@ -105,7 +106,11 @@ const Post = (props) => {
             </h5>
           </div>
 
-          <ProductImage item={item}></ProductImage>
+          {item.noScaleAnimation ? (
+            <StaticProductImage image={item.image} />
+          ) : (
+            <ProductImage item={item}></ProductImage>
+          )}
 
           {linkSection}
 

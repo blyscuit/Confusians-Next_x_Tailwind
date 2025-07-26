@@ -2,6 +2,7 @@
   "index": [
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg" },
     { "id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png" },
+    { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy.png" },
     { "id": "sliadde", "size": "w-full", "image": "sliadde_home.png" },
     { "id": "esqace", "size": "w-full", "image": "esqace_home.png" },
     { "id": "livert", "size": "w-full", "image": "livert_home.png" },
@@ -55,6 +56,29 @@
     "ios": "https://appsto.re/th/Ui3Eib.i",
     "adr": "",
     "image": ["/cosmetica_mobile1.png", "/cosmetica_mobile2.png"]
+  },
+  "top-bar-web-buddy": {
+    "name": "Top Bar Web Buddy",
+    "about": "Access website quickly. Very useful for monitoring ticker/crypto tracker.",
+    "font": "",
+    "backgroundColor": "black darken-5",
+    "textColor": "white-text text-lighten-5",
+    "ios": "https://apps.apple.com/us/app/top-bar-web-buddy/id6749138471?mt=12",
+    "adr": "",
+    "image": ["/top-bar-web-buddy.png"],
+    "noFrame": true,
+    "noScaleAnimation": true,
+    "description": [
+      {
+        "icon": "IoNotificationsOutline",
+        "text": "Track ticker stock/crypto price real-time"
+      },
+      { "icon": "IoSquareOutline", "text": "Keyboard Shortcuts" },
+      {
+        "icon": "IoLockClosedOutline",
+        "text": "Don't track you. Your data is always your."
+      }
+    ]
   },
   "livert": {
     "name": "Livert",

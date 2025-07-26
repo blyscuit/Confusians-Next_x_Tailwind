@@ -83,7 +83,7 @@ const ProductImage = (props) => {
         style={{
           height: "100vh",
           position: isAbsolute ? "fixed" : "relative",
-          width: isAbsolute ? "25%" : "100%",
+          width: isAbsolute ?  "25%" : "100%",
           top: isAbsolute ? scrollTop : "auto",
         }}
       >
