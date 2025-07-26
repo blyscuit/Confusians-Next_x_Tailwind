@@ -6,6 +6,7 @@ import Head from "next/head";
 import ProductImage from "../components/ProductImage";
 import StaticProductImage from "../components/StaticProductImage";
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 const Post = (props) => {
   const [isClient, setIsClient] = useState(false);
@@ -102,7 +103,21 @@ const Post = (props) => {
               {item.name}
             </h1>
             <h5 className={"text-2xl text-center font-light " + item.textColor}>
-              {item.about}
+                {item.about && (<ReactMarkdown>{item.about}</ReactMarkdown>)}
+            </h5>
+
+            <h5 className={"text-xl text-center font-light " + item.textColor}>
+              {item.markdownText && (
+                <ReactMarkdown
+                  components={{
+                    a: ({node, ...props}) => (
+                      <a {...props} style={{ textDecoration: "underline" }} />
+                    ),
+                  }}
+                >
+                  {item.markdownText}
+                </ReactMarkdown>
+              )}
             </h5>
           </div>
 

@@ -60,6 +60,7 @@
   "top-bar-web-buddy": {
     "name": "Top Bar Web Buddy",
     "about": "Access website quickly. Very useful for monitoring ticker/crypto tracker.",
+    "markdownText": "[Download Demo](https://confusians.gumroad.com/l/lqdqxb)",
     "font": "",
     "backgroundColor": "black darken-5",
     "textColor": "white-text text-lighten-5",
