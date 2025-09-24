@@ -56,6 +56,8 @@ const IconView = (props) => {
       );
     case "IoApps":
       return <Icons.IoApps className={"" + props.color} size={props.size} />;
+    case "IoMailOpenOutline":
+      return <Icons.IoMailOpenOutline className={"" + props.color} size={props.size} />;
     default:
       return <div />;
   }
