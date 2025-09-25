@@ -10,18 +10,20 @@ const Header = (props) => {
     seperatorTextClass = "font-light grey-text text-darken-1";
   }
   return (
-    <div className="group flex flex-col items-center pt-20">
+    <div className="group flex flex-col items-center pt-8">
       <div
         className="flex flex-col items-center"
         id="index-banner-logo-section"
       >
-        <div className="" id="index-banner-logo" style={{ paddingLeft: 13 }}>
+        <div className="" id="index-banner-logo" 
+        // style={{ paddingLeft: 13 }}
+        >
           <Link href="/">
             <div id="logo-container" className="">
               <img
                 id="logoImage"
                 alt="Confusians logo"
-                className="w-20 md:w-32"
+                className="w-32 md:w-44"
                 src={logoImage}
                 align="middle"
               ></img>
