@@ -30,7 +30,8 @@ export default class Layout extends Component {
     return (
       <div className={modeBackground(this.props.backdrop)}>
         <Head>
-          <link rel="shortcut icon" href="/static/favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
         </Head>
 
         <Header backdrop={this.props.backdrop || "light"} />

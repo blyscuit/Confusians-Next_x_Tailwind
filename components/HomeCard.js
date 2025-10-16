@@ -26,7 +26,7 @@ const HomeCard = (props) => {
 
         <div
           className={
-            "absolute overflow-hidden z-10 flex flex-col items-center h-64 justify-center"
+            "absolute z-10 flex flex-col items-center h-64 justify-center"
           }
         >
           <p
@@ -61,10 +61,10 @@ const HomeCard = (props) => {
         ></div>
       </div>
       <img
-        alt={props.name}
+        {...(props.image ? { alt: props.name } : {})}
         className={"object-cover w-full h-full"}
         src={props.image}
-      ></img>
+      />
     </div>
   );
 };

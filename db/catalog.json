@@ -2,7 +2,8 @@
   "index": [
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg" },
     { "id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png" },
-    { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy.png" },
+    { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png" },
+    { "id": "web-share-drop", "size": "w-full", "image": "web-share-drop-home.png" },
     { "id": "sliadde", "size": "w-full", "image": "sliadde_home.png" },
     { "id": "esqace", "size": "w-full", "image": "esqace_home.png" },
     { "id": "livert", "size": "w-full", "image": "livert_home.png" },
@@ -64,7 +65,7 @@
     "font": "",
     "backgroundColor": "black darken-5",
     "textColor": "white-text text-lighten-5",
-    "ios": "https://apps.apple.com/us/app/top-bar-web-buddy/id6749138471?mt=12",
+    "ios": "https://apps.apple.com/us/app/top-bar-web-buddy/id6749138471",
     "adr": "",
     "image": ["/top-bar-web-buddy.png"],
     "noFrame": true,
@@ -72,9 +73,31 @@
     "description": [
       {
         "icon": "IoNotificationsOutline",
-        "text": "Track ticker stock/crypto price real-time"
+        "text": "Track ticker stock/crypto price real-time."
       },
       { "icon": "IoSquareOutline", "text": "Keyboard Shortcuts" },
+      {
+        "icon": "IoLockClosedOutline",
+        "text": "Don't track you. Your data is always your."
+      }
+    ]
+  },
+  "web-share-drop": {
+    "name": "WebShareDrop",
+    "about": "AirDrop or share current Web Tabs with ease.",
+    "font": "",
+    "backgroundColor": "grey darken-3",
+    "textColor": "white-text text-lighten-5",
+    "ios": "https://apps.apple.com/us/app/websharedrop-share-web-tabs/id6753943009",
+    "adr": "",
+    "image": ["/web-share-drop.gif", "/web-share-drop.png"],
+    "noFrame": true,
+    "noScaleAnimation": true,
+    "description": [
+      {
+        "icon": "IoShareOutline",
+        "text": "AirDrop all opened tabs."
+      },
       {
         "icon": "IoLockClosedOutline",
         "text": "Don't track you. Your data is always your."
@@ -127,7 +150,7 @@
     "name": "N-egative",
     "about": "A minimal game about mind reading!",
     "font": "",
-    "backgroundColor": "amber accent-1",
+    "backgroundColor": "amber lighten-4",
     "textColor": "text-blue-grey text-darken-4",
     "ios": "https://itunes.apple.com/en/app/negative/id840000894?mt=8",
     "adr": "",
