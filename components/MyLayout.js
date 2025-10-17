@@ -32,6 +32,7 @@ export default class Layout extends Component {
         <Head>
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="manifest" href="/manifest.json" />
         </Head>
 
         <Header backdrop={this.props.backdrop || "light"} />
