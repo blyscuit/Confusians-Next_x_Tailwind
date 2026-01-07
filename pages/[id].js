@@ -119,6 +119,16 @@ const Post = (props) => {
                 </ReactMarkdown>
               )}
             </h5>
+            {item.youtube ? (
+              <div className={"flex flex-col items-center  pb-10 pt-10"}>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={item.youtube}
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : null}
           </div>
 
           {item.noScaleAnimation ? (

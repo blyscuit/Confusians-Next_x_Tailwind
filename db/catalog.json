@@ -1,5 +1,6 @@
 {
   "index": [
+    { "id": "fallfate", "size": "w-full", "image": "" },
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg" },
     { "id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png" },
     { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png" },
@@ -14,6 +15,19 @@
   ],
   "home": {
     "backgroundColor": "blue-grey lighten-5"
+  },
+  "fallfate": {
+    "name": "Fallfate",
+    "about": "Fallfate is short, action-packed roguelike plinko. Parry enemies and bosses. Defy house's edge with spins. Chase losses with resolve and upgrades, until you master the true nature of fate.",
+    "font": "",
+    "backgroundColor": "black darken-4",
+    "textColor": "white-text text-lighten-4",
+    "ios": "",
+    "adr": "",
+    "image": [],
+    "youtube": "https://www.youtube.com/embed/0Q_JB6KLfrU",
+    "noFrame": true,
+    "noScaleAnimation": true
   },
   "cryptget": {
     "name": "Cryptget",
