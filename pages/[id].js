@@ -102,11 +102,11 @@ const Post = (props) => {
             >
               {item.name}
             </h1>
-            <h5 className={"text-2xl text-center font-light " + item.textColor}>
+            <h5 className={"pl-20 pr-20 text-2xl text-center font-light " + item.textColor}>
                 {item.about && (<ReactMarkdown>{item.about}</ReactMarkdown>)}
             </h5>
 
-            <h5 className={"text-xl text-center font-light " + item.textColor}>
+            <h5 className={"pl-40 pr-40 text-xl text-center font-light " + item.textColor}>
               {item.markdownText && (
                 <ReactMarkdown
                   components={{
@@ -138,6 +138,14 @@ const Post = (props) => {
           )}
 
           {linkSection}
+
+          {item.steam != null && item.steam !== "" ? (
+            <iframe
+              src={`https://store.steampowered.com/widget/${item.steam}/`}
+              frameBorder="0"
+              width="646" height="190"
+            ></iframe>
+          ) : null}
 
           <div className="grid-container"></div>
           <div

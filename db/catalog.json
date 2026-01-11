@@ -18,7 +18,7 @@
   },
   "fallfate": {
     "name": "Fallfate",
-    "about": "Fallfate is short, action-packed roguelike plinko. Parry enemies and bosses. Defy house's edge with spins. Chase losses with resolve and upgrades, until you master the true nature of fate.",
+    "markdownText": "Fallfate is short, action-packed roguelike plinko. Parry enemies and bosses. Defy house's edge with spins. Chase losses with resolve and upgrades, until you master the true nature of fate.",
     "font": "",
     "backgroundColor": "black darken-4",
     "textColor": "white-text text-lighten-4",
@@ -27,7 +27,8 @@
     "image": [],
     "youtube": "https://www.youtube.com/embed/0Q_JB6KLfrU",
     "noFrame": true,
-    "noScaleAnimation": true
+    "noScaleAnimation": true,
+    "steam": "3961470"
   },
   "cryptget": {
     "name": "Cryptget",
