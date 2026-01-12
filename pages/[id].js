@@ -102,11 +102,11 @@ const Post = (props) => {
             >
               {item.name}
             </h1>
-            <h5 className={"pl-20 pr-20 text-2xl text-center font-light " + item.textColor}>
+            <h5 className={"px-10 md:px-20 text-2xl text-center font-light " + item.textColor}>
                 {item.about && (<ReactMarkdown>{item.about}</ReactMarkdown>)}
             </h5>
 
-            <h5 className={"pl-40 pr-40 text-xl text-center font-light " + item.textColor}>
+            <h5 className={"px-10 md:px-20 text-xl text-center font-light " + item.textColor}>
               {item.markdownText && (
                 <ReactMarkdown
                   components={{
@@ -120,9 +120,10 @@ const Post = (props) => {
               )}
             </h5>
             {item.youtube ? (
-              <div className={"flex flex-col items-center  pb-10 pt-10"}>
+            <div className="sm:pl-10 sm:pr-10 pt-10 w-full sm:w-full md:max-w-2xl mx-auto">
                 <iframe
-                  width="560"
+                  width='100%'
+                  max-width='100vw'
                   height="315"
                   src={item.youtube}
                   allowFullScreen
@@ -140,11 +141,13 @@ const Post = (props) => {
           {linkSection}
 
           {item.steam != null && item.steam !== "" ? (
+            <div className="pt-10 w-full px-10 md:px-0 md:max-w-lg mx-auto">
             <iframe
               src={`https://store.steampowered.com/widget/${item.steam}/`}
-              frameBorder="0"
-              width="646" height="190"
+              width='100%'
+              height="190"
             ></iframe>
+            </div>
           ) : null}
 
           <div className="grid-container"></div>
