@@ -24,7 +24,16 @@
     "textColor": "white-text text-lighten-4",
     "ios": "",
     "adr": "",
-    "image": [],
+    "image": [
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/3ad0ba682d8d733ef04652cd556e012b0b5f6bf0/ss_3ad0ba682d8d733ef04652cd556e012b0b5f6bf0.1920x1080.jpg?t=1767958004",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/ba6c4a7ee2833511f3cdf256e29c438cf98e9023/ss_ba6c4a7ee2833511f3cdf256e29c438cf98e9023.1920x1080.jpg?t=1767958004",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/030ca9f005f4fefae0494a158b20fcd5edc1ec2d/ss_030ca9f005f4fefae0494a158b20fcd5edc1ec2d.1920x1080.jpg?t=1767843034",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/64c4c14b577951a13d0b12276d391b3573f99293/ss_64c4c14b577951a13d0b12276d391b3573f99293.1920x1080.jpg?t=1767843034",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/3cbf3c998ff5a9968d864cdeb5c5486e89291d5f/ss_3cbf3c998ff5a9968d864cdeb5c5486e89291d5f.1920x1080.jpg?t=1767843034",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/38ba2a4a857a669a2684a16be77deee0daf28921/ss_38ba2a4a857a669a2684a16be77deee0daf28921.1920x1080.jpg?t=1767843034",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/c1cd3158b7d6051a1c3b95a81ea757f6ff26e0d1/ss_c1cd3158b7d6051a1c3b95a81ea757f6ff26e0d1.1920x1080.jpg?t=1767843034"
+    ],
+    "video": "https://video.akamai.steamstatic.com/store_trailers/3961470/1981441093/f05b681df5437795f88099709cb356a0cba86b67/1767770407/hls_264_master.m3u8?t=1767771002",
     "youtube": "https://www.youtube.com/embed/0Q_JB6KLfrU",
     "noFrame": true,
     "noScaleAnimation": true,

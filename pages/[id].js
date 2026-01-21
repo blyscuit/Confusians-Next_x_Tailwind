@@ -102,6 +102,20 @@ const Post = (props) => {
             >
               {item.name}
             </h1>
+
+            {item.video ? (
+            <div className="sm:pl-10 sm:pr-10 py-40 w-full sm:w-full md:max-w-3xl mx-auto">
+                <video
+                  width='100%'
+                  max-width='100vw'
+                  height="315"
+                  controls autoPlay loop muted playsInline
+                >
+                  <source src={item.video}/>
+                </video>
+              </div>
+            ) : null}
+
             <h5 className={"px-10 md:px-20 text-2xl text-center font-light " + item.textColor}>
                 {item.about && (<ReactMarkdown>{item.about}</ReactMarkdown>)}
             </h5>
@@ -119,17 +133,6 @@ const Post = (props) => {
                 </ReactMarkdown>
               )}
             </h5>
-            {item.youtube ? (
-            <div className="sm:pl-10 sm:pr-10 pt-10 w-full sm:w-full md:max-w-2xl mx-auto">
-                <iframe
-                  width='100%'
-                  max-width='100vw'
-                  height="315"
-                  src={item.youtube}
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : null}
           </div>
 
           {item.noScaleAnimation ? (
@@ -147,6 +150,18 @@ const Post = (props) => {
               width='100%'
               height="190"
             ></iframe>
+            </div>
+          ) : null}
+
+          {item.youtube ? (
+          <div className="sm:pl-10 sm:pr-10 pt-10 w-full sm:w-full md:max-w-2xl mx-auto">
+              <iframe
+                width='100%'
+                max-width='100vw'
+                height="315"
+                src={item.youtube}
+                allowFullScreen
+              ></iframe>
             </div>
           ) : null}
 
