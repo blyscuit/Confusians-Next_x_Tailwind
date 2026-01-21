@@ -1,10 +1,12 @@
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
 import JSZip from "jszip"
 import { saveAs } from "file-saver"
 
 import steamPresskit from "../../db/steam_presskit.json"
 import catalog from "../../db/catalog.json"
+
+import Layout from "../../components/MyLayout"
+import Head from "next/head"
 
 /* ---------------- helpers ---------------- */
 
@@ -44,10 +46,7 @@ async function downloadZip(name, urls) {
 
 /* ---------------- page ---------------- */
 
-export default function PressKitPage() {
-  const router = useRouter()
-  const { id } = router.query
-
+export default function PressKitPage({ id }) {
   const entry = catalog[id]
   const presskit = steamPresskit[id]
 
@@ -57,16 +56,6 @@ export default function PressKitPage() {
 
   const [imageSize, setImageSize] = useState(0)
   const [brandingSize, setBrandingSize] = useState(0)
-
-  /* -------- redirect if presskit missing -------- */
-
-  useEffect(() => {
-    if (!router.isReady) return
-
-    if (!presskit) {
-      router.replace("/")
-    }
-  }, [router.isReady, presskit])
 
   /* -------- size calculation -------- */
 
@@ -86,98 +75,168 @@ export default function PressKitPage() {
 
   /* -------- prevent render during redirect -------- */
 
-  if (!router.isReady || !presskit || !entry) return null
+  if (!presskit || !entry) return null
 
   const combinedSize = imageSize + brandingSize
 
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-10 bg-background text-foreground">
-      <h1 className="text-3xl font-bold tracking-tight">{id} – Press Kit</h1>
+    <div className={entry.backgroundColor}>
+      <Layout
+        backdrop={(entry.textColor || "").includes("lighten") ? "dark" : "light"}
+      >
+        <Head>
+          <title>{entry.name || ""} | Confusians</title>
+          <meta
+            name="description"
+            content={entry.name + " | " + (entry.about || "")}
+          />
+        </Head>
 
-      {/* 1–2 VIDEO */}
-      {video && (
-        <section>
-          <h2 className="text-xl font-semibold mb-2 text-foreground">Video</h2>
-          <video controls className="w-full rounded-md border border-border">
-            <source src={video} />
-          </video>
+        <div className="flex flex-col items-center pb-10">
+          <div className="flex flex-col px-6 py-16 w-full">
+            <h1 className={"text-6xl pb-4 text-center " + entry.textColor}>
+              {entry.name} – Press Kit
+            </h1>
 
-          <a
-            href={video}
-            download
-            className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
-          >
-            Download Video
-          </a>
-        </section>
-      )}
+            {/* 1–2 VIDEO */}
+            {video && (
+              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+                <section>
+                  <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Video</h2>
+                  <video controls className="w-full rounded-md border border-border">
+                    <source src={video} />
+                  </video>
 
+                  <a
+                    href={video}
+                    download
+                    className={
+                      "px-6 py-3 border border-current rounded hover:opacity-80 " +
+                      entry.textColor
+                    }
+                  >
+                    Download Video
+                  </a>
+                </section>
+              </div>
+            )}
 
-      {/* 9–10 ALL ASSETS */}
-      <section>
-        <h2 className="text-xl font-semibold mb-2 text-foreground">All Assets</h2>
+            {/* 9–10 ALL ASSETS */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section>
+                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>All Assets</h2>
 
-        <button
-          onClick={() =>
-            downloadZip(`${id}-all-assets`, [...images, ...branding])
-          }
-          className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
-        >
-          Download All Images
-        </button>
+                <button
+                  onClick={() =>
+                    downloadZip(`${id}-all-assets`, [...images, ...branding])
+                  }
+                  className={
+                    "px-6 py-3 border border-current rounded hover:opacity-80 " +
+                    entry.textColor
+                  }
+                >
+                  Download All Images
+                </button>
 
-        <p className="text-sm text-muted-foreground mt-2">
-          Total size: {formatBytes(combinedSize)}
-        </p>
-      </section>
+                <p className={"text-sm mt-2 " + entry.textColor}>
+                  Total size: {formatBytes(combinedSize)}
+                </p>
+              </section>
+            </div>
 
-      {/* 3–5 IMAGES */}
-      <section>
-        <h2 className="text-xl font-semibold mb-2 text-foreground">Screenshots</h2>
+            {/* 3–5 IMAGES */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section>
+                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Screenshots</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {images.map((src) => (
-            <img key={src} src={src} className="rounded-md border border-border" />
-          ))}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {images.map((src) => (
+                    <img key={src} src={src} className="rounded-md border border-border" />
+                  ))}
+                </div>
+
+                <div className="mt-3 flex gap-4 items-center">
+                  <button
+                    onClick={() => downloadZip(`${id}-images`, images)}
+                    className={
+                      "px-6 py-3 border border-current rounded hover:opacity-80 " +
+                      entry.textColor
+                    }
+                  >
+                    Download Screenshots
+                  </button>
+
+                  <span className={entry.textColor}>
+                    Total size: {formatBytes(imageSize)}
+                  </span>
+                </div>
+              </section>
+            </div>
+
+            {/* 6–8 BRANDING */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section>
+                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Branding</h2>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  {branding.map((src) => (
+                    <img key={src} src={src} className="rounded-md border border-border" />
+                  ))}
+                </div>
+
+                <div className="mt-3 flex gap-4 items-center">
+                  <button
+                    onClick={() => downloadZip(`${id}-branding`, branding)}
+                    className={
+                      "px-6 py-3 border border-current rounded hover:opacity-80 " +
+                      entry.textColor
+                    }
+                  >
+                    Download Branding
+                  </button>
+
+                  <span className={entry.textColor}>
+                    Total size: {formatBytes(brandingSize)}
+                  </span>
+                </div>
+              </section>
+            </div>
+          </div>
         </div>
-
-        <div className="mt-3 flex gap-4 items-center">
-          <button
-            onClick={() => downloadZip(`${id}-images`, images)}
-            className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
-          >
-            Download Screenshots
-          </button>
-
-          <span className="text-sm text-muted-foreground">
-            Total size: {formatBytes(imageSize)}
-          </span>
-        </div>
-      </section>
-
-      {/* 6–8 BRANDING */}
-      <section>
-        <h2 className="text-xl font-semibold mb-2 text-foreground">Branding</h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {branding.map((src) => (
-            <img key={src} src={src} className="rounded-md border border-border" />
-          ))}
-        </div>
-
-        <div className="mt-3 flex gap-4 items-center">
-          <button
-            onClick={() => downloadZip(`${id}-branding`, branding)}
-            className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition"
-          >
-            Download Branding
-          </button>
-
-          <span className="text-sm text-muted-foreground">
-            Total size: {formatBytes(brandingSize)}
-          </span>
-        </div>
-      </section>
+      </Layout>
     </div>
   )
+}
+
+export async function getStaticProps({ params }) {
+  const { id } = params
+
+  const presskit = steamPresskit[id]
+  const entry = catalog[id]
+
+  if (!presskit) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+  }
+
+  if (!entry) {
+    return { notFound: true }
+  }
+
+  return {
+    props: { id },
+  }
+}
+
+export async function getStaticPaths() {
+  const ids = Object.keys(steamPresskit)
+
+  return {
+    paths: ids.map((id) => ({ params: { id } })),
+    fallback: false,
+  }
 }
