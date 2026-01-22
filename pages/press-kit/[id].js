@@ -35,7 +35,7 @@ async function downloadZip(name, urls) {
     urls.map(async (url) => {
       const res = await fetch(url)
       const blob = await res.blob()
-      const filename = url.split("/").pop()
+      const filename = url.split("/").pop().split("?t=").shift()
       zip.file(filename, blob)
     })
   )
@@ -53,9 +53,11 @@ export default function PressKitPage({ id }) {
   const images = entry?.image || []
   const branding = presskit?.branding || []
   const video = entry?.video
+  const clips = presskit?.clips || []
 
   const [imageSize, setImageSize] = useState(0)
   const [brandingSize, setBrandingSize] = useState(0)
+  const [clipsSize, setClipsSize] = useState(0)
 
   /* -------- size calculation -------- */
 
@@ -73,11 +75,18 @@ export default function PressKitPage({ id }) {
     )
   }, [branding])
 
+  useEffect(() => {
+    if (!clips.length) return
+    Promise.all(clips.map(fetchSize)).then((sizes) =>
+      setClipsSize(sizes.reduce((a, b) => a + b, 0))
+    )
+  }, [clips])
+
   /* -------- prevent render during redirect -------- */
 
   if (!presskit || !entry) return null
 
-  const combinedSize = imageSize + brandingSize
+  const combinedSize = imageSize + brandingSize + clipsSize
 
   return (
     <div className={entry.backgroundColor}>
@@ -85,7 +94,7 @@ export default function PressKitPage({ id }) {
         backdrop={(entry.textColor || "").includes("lighten") ? "dark" : "light"}
       >
         <Head>
-          <title>{entry.name || ""} | Confusians</title>
+          <title>{entry.name || ""} Press Kit | Confusians</title>
           <meta
             name="description"
             content={entry.name + " | " + (entry.about || "")}
@@ -100,12 +109,14 @@ export default function PressKitPage({ id }) {
 
             {/* 1–2 VIDEO */}
             {video && (
-              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
                 <section>
-                  <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Video</h2>
-                  <video controls className="w-full rounded-md border border-border">
-                    <source src={video} />
-                  </video>
+                  <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Video</h2>
+                  <div className="overflow-hidden">
+                    <video controls className="block w-full">
+                      <source src={video} />
+                    </video>
+                  </div>
 
                   <a
                     href={video}
@@ -122,13 +133,13 @@ export default function PressKitPage({ id }) {
             )}
 
             {/* 9–10 ALL ASSETS */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
               <section>
-                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>All Assets</h2>
+                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>All Assets</h2>
 
                 <button
                   onClick={() =>
-                    downloadZip(`${id}-all-assets`, [...images, ...branding])
+                    downloadZip(`${id}-all-assets`, [...images, ...branding, ...clips])
                   }
                   className={
                     "px-6 py-3 border border-current rounded hover:opacity-80 " +
@@ -145,17 +156,22 @@ export default function PressKitPage({ id }) {
             </div>
 
             {/* 3–5 IMAGES */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
               <section>
-                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Screenshots</h2>
+                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Screenshots</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {images.map((src) => (
-                    <img key={src} src={src} className="rounded-md border border-border" />
+                    <div key={src} className="overflow-hidden">
+                      <img
+                        src={src}
+                        className="block w-full"
+                      />
+                    </div>
                   ))}
                 </div>
 
-                <div className="mt-3 flex gap-4 items-center">
+                <div className="py-6 flex gap-6 items-center">
                   <button
                     onClick={() => downloadZip(`${id}-images`, images)}
                     className={
@@ -174,17 +190,22 @@ export default function PressKitPage({ id }) {
             </div>
 
             {/* 6–8 BRANDING */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
               <section>
-                <h2 className={"text-xl font-semibold mb-2 " + entry.textColor}>Branding</h2>
+                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Branding</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {branding.map((src) => (
-                    <img key={src} src={src} className="rounded-md border border-border" />
+                    <div key={src} className="overflow-hidden">
+                      <img
+                        src={src}
+                        className="block w-full"
+                      />
+                    </div>
                   ))}
                 </div>
 
-                <div className="mt-3 flex gap-4 items-center">
+                <div className="py-6 flex gap-6 items-center">
                   <button
                     onClick={() => downloadZip(`${id}-branding`, branding)}
                     className={
@@ -197,6 +218,39 @@ export default function PressKitPage({ id }) {
 
                   <span className={entry.textColor}>
                     Total size: {formatBytes(brandingSize)}
+                  </span>
+                </div>
+              </section>
+            </div>
+
+            {/* CLIPS */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
+              <section>
+                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Shorts</h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {clips.map((src) => (
+                    <div key={src} className="overflow-hidden">
+                      <video autoPlay loop muted playsInline className="block w-full">
+                        <source src={src} />
+                      </video>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="py-6 flex gap-6 items-center">
+                  <button
+                    onClick={() => downloadZip(`${id}-shorts`, clips)}
+                    className={
+                      "px-6 py-3 border border-current rounded hover:opacity-80 " +
+                      entry.textColor
+                    }
+                  >
+                    Download Shorts
+                  </button>
+
+                  <span className={entry.textColor}>
+                    Total size: {formatBytes(clipsSize)}
                   </span>
                 </div>
               </section>

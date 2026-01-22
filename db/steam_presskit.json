@@ -1,13 +1,42 @@
 {
   "fallfate": {
     "branding": [
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/3ad0ba682d8d733ef04652cd556e012b0b5f6bf0/ss_3ad0ba682d8d733ef04652cd556e012b0b5f6bf0.1920x1080.jpg?t=1767958004",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/ba6c4a7ee2833511f3cdf256e29c438cf98e9023/ss_ba6c4a7ee2833511f3cdf256e29c438cf98e9023.1920x1080.jpg?t=1767958004",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/030ca9f005f4fefae0494a158b20fcd5edc1ec2d/ss_030ca9f005f4fefae0494a158b20fcd5edc1ec2d.1920x1080.jpg?t=1767843034",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/64c4c14b577951a13d0b12276d391b3573f99293/ss_64c4c14b577951a13d0b12276d391b3573f99293.1920x1080.jpg?t=1767843034",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/3cbf3c998ff5a9968d864cdeb5c5486e89291d5f/ss_3cbf3c998ff5a9968d864cdeb5c5486e89291d5f.1920x1080.jpg?t=1767843034",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/38ba2a4a857a669a2684a16be77deee0daf28921/ss_38ba2a4a857a669a2684a16be77deee0daf28921.1920x1080.jpg?t=1767843034",
-        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3961470/c1cd3158b7d6051a1c3b95a81ea757f6ff26e0d1/ss_c1cd3158b7d6051a1c3b95a81ea757f6ff26e0d1.1920x1080.jpg?t=1767843034"
+      "/press-kit/fallfate/03c57e7316eb7c05b21c52dbb222a53f.avif",
+      "/press-kit/fallfate/0804dde4f6c3011474e7c09eaae21aef.avif",
+      "/press-kit/fallfate/5296f0a41a58c2f50e31b6616d825905.avif",
+      "/press-kit/fallfate/ab0461e5f59de16d261d9ae14646eea0.avif",
+      "/press-kit/fallfate/ac92a458876f88952f301b8a4280240b.avif",
+      "/press-kit/fallfate/c6da7640943b96786d404026bc841213.avif",
+
+      "/press-kit/fallfate/d5cb100ebf36ac2d659836facc962bb6.avif",
+
+      "/press-kit/fallfate/Client Icon.png",
+      "/press-kit/fallfate/Community Icon.png",
+
+      "/press-kit/fallfate/Demo Small Capsule.png",
+      "/press-kit/fallfate/Header Capsule.png",
+      "/press-kit/fallfate/Library Capsule.png",
+      "/press-kit/fallfate/Library Header.png",
+      "/press-kit/fallfate/Library Hero@2x.png",
+      "/press-kit/fallfate/Library Logo@2x.png",
+      "/press-kit/fallfate/Library Logo@2x-1.png",
+      "/press-kit/fallfate/Library Logo@2x-2.png",
+      "/press-kit/fallfate/Library Logo@2x-3.png",
+      "/press-kit/fallfate/Main Capsule.png",
+      "/press-kit/fallfate/Page Background.png",
+      "/press-kit/fallfate/Rounded App Icon.png",
+      "/press-kit/fallfate/Small Capsule.png",
+      "/press-kit/fallfate/Vertical Capsule.png",
+      "/press-kit/fallfate/Vertical Capsule@4x.png"
+    ],
+    "clips": [
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/dc76d4f379f8c5f13b18735393d0c19a.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/56779880112c1f2fb14ed09bd6305be8.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/06f9b7c2ef192a3eada6e83400720943.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/ead3380694672b3c4e260c2f4720bfa1.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/50567623752daeb564a051f0d625b49e.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/0670cbd1994783b84a83d5b8c2e9d431.mp4?t=1767843034",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/a5f5924edd95acc2d41a7e04daf9d273.mp4?t=1767843034"
     ]
   }
 }
