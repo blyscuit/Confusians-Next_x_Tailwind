@@ -6,10 +6,14 @@ import Head from "next/head";
 import ProductImage from "../components/ProductImage";
 import StaticProductImage from "../components/StaticProductImage";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 
 const Post = (props) => {
   const [isClient, setIsClient] = useState(false);
+
+  const router = useRouter();
+  const { id } = router.query;
 
   const item = props;
 
@@ -184,6 +188,17 @@ const Post = (props) => {
               );
             })}
           </div>
+
+          {item.presskit == true ? (
+          <div className="flex flex-col items-center py-16">
+            <a
+              href={id ? `/press-kit/${id}` : "/"}
+              className={"underline text-xl font-semibold " + item.textColor}
+            >
+              Press Kit!
+            </a>
+          </div>
+          ) : null}
 
           {(item.description ?? []).length > 0 ? linkSection : null}
         </div>

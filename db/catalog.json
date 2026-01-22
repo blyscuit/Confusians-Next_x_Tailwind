@@ -37,7 +37,8 @@
     "youtube": "https://www.youtube.com/embed/0Q_JB6KLfrU",
     "noFrame": true,
     "noScaleAnimation": true,
-    "steam": "3961470"
+    "steam": "3961470",
+    "presskit": true
   },
   "cryptget": {
     "name": "Cryptget",

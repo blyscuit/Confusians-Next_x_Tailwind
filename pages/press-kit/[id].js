@@ -47,8 +47,16 @@ async function downloadZip(name, urls) {
 /* ---------------- page ---------------- */
 
 export default function PressKitPage({ id }) {
+  const [copied, setCopied] = useState(null)
+
   const entry = catalog[id]
   const presskit = steamPresskit[id]
+  const {
+    developer = "",
+    pitch = "",
+    short_pitch = "",
+    description = "",
+  } = presskit || {}
 
   const images = entry?.image || []
   const branding = presskit?.branding || []
@@ -58,6 +66,12 @@ export default function PressKitPage({ id }) {
   const [imageSize, setImageSize] = useState(0)
   const [brandingSize, setBrandingSize] = useState(0)
   const [clipsSize, setClipsSize] = useState(0)
+
+  function copyToClipboard(key, text) {
+    if (!text) return
+    navigator.clipboard.writeText(text)
+    setCopied(key)
+  }
 
   /* -------- size calculation -------- */
 
@@ -103,16 +117,16 @@ export default function PressKitPage({ id }) {
 
         <div className="flex flex-col items-center pb-10">
           <div className="flex flex-col px-6 py-16 w-full">
-            <h1 className={"text-6xl pb-4 text-center " + entry.textColor}>
-              {entry.name} – Press Kit
+            <h1 className={"text-center " + entry.textColor}>
+              <div className="text-6xl">{entry.name}</div>
+              <div className="pt-10 pb-4 text-4xl font-light tracking-wide">Press Kit</div>
             </h1>
 
             {/* 1–2 VIDEO */}
             {video && (
-              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
-                <section>
-                  <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Video</h2>
-                  <div className="overflow-hidden">
+              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 pt-10">
+                <section className="items-center text-center">
+                  <div className="py-6 overflow-hidden">
                     <video controls className="block w-full">
                       <source src={video} />
                     </video>
@@ -120,30 +134,31 @@ export default function PressKitPage({ id }) {
 
                   <a
                     href={video}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     download
                     className={
-                      "px-6 py-3 border border-current rounded hover:opacity-80 " +
-                      entry.textColor
+                      "px-6 py-3 rounded bg-white hover:opacity-80 inline-flex items-center gap-2 " +
+                      "text-black font-semibold "
                     }
                   >
-                    Download Video
+                    <span>Open Video</span>
+                    <span className="text-xs opacity-70">(new tab)</span>
                   </a>
                 </section>
               </div>
             )}
 
             {/* 9–10 ALL ASSETS */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
-              <section>
-                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>All Assets</h2>
-
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section className="flex flex-col items-center text-center">
                 <button
                   onClick={() =>
                     downloadZip(`${id}-all-assets`, [...images, ...branding, ...clips])
                   }
                   className={
-                    "px-6 py-3 border border-current rounded hover:opacity-80 " +
-                    entry.textColor
+                    "px-6 py-3 rounded bg-white hover:opacity-80 " +
+                    "text-black font-semibold "
                   }
                 >
                   Download All Images
@@ -155,23 +170,113 @@ export default function PressKitPage({ id }) {
               </section>
             </div>
 
+            {/* DEVELOPER */}
+              <div className="sm:w-full md:max-w-5xl mx-auto px-6 py-6">
+                <section>
+                  <div className="flex items-center justify-between">
+                    <h2 className={"text-2xl " + entry.textColor}>Developer</h2>
+                    <button
+                      onClick={() => copyToClipboard("developer", developer)}
+                      onMouseLeave={() => setCopied(null)}
+                      style={{ backgroundColor: "rgba(0, 0, 0, 0.35)" }}
+                      className={"text-sm  px-3 py-1 rounded-md hover:opacity-80 backdrop-blur-sm " + entry.textColor}
+                    >
+                      {copied === "developer" ? "✓" : "Copy"}
+                    </button>
+                  </div>
+                  <div
+                    className="mt-4 p-4 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                  >
+                    <p className={"whitespace-pre-line " + entry.textColor}>
+                      {developer}
+                    </p>
+                  </div>
+                </section>
+              </div>
+
+            {/* PITCH */}
+              <div className="sm:w-full md:max-w-5xl mx-auto px-6 py-6">
+                <section>
+                  <div className="flex items-center justify-between">
+                    <h2 className={"text-2xl " + entry.textColor}>Pitch</h2>
+                    <button
+                      onClick={() => copyToClipboard("pitch", pitch)}
+                      onMouseLeave={() => setCopied(null)}
+                      style={{ backgroundColor: "rgba(0, 0, 0, 0.35)" }}
+                      className={"text-sm  px-3 py-1 rounded-md hover:opacity-80 backdrop-blur-sm " + entry.textColor}
+                    >
+                      {copied === "pitch" ? "✓" : "Copy"}
+                    </button>
+                  </div>
+                  <div
+                    className="mt-4 p-4 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                  >
+                    <p className={"whitespace-pre-line " + entry.textColor}>
+                      {pitch}
+                    </p>
+                  </div>
+                </section>
+              </div>
+
+            {/* Short PITCH */}
+              <div className="sm:w-full md:max-w-5xl mx-auto px-6 py-6">
+                <section>
+                  <div className="flex items-center justify-between">
+                    <h2 className={"text-2xl " + entry.textColor}>Elevator Pitch</h2>
+                    <button
+                      onClick={() => copyToClipboard("short_pitch", short_pitch)}
+                      onMouseLeave={() => setCopied(null)}
+                      style={{ backgroundColor: "rgba(0, 0, 0, 0.35)" }}
+                      className={"text-sm  px-3 py-1 rounded-md hover:opacity-80 backdrop-blur-sm " + entry.textColor}
+                    >
+                      {copied === "short_pitch" ? "✓" : "Copy"}
+                    </button>
+                  </div>
+                  <div
+                    className="mt-4 p-4 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                  >
+                    <p className={"whitespace-pre-line " + entry.textColor}>
+                      {short_pitch}
+                    </p>
+                  </div>
+                </section>
+              </div>
+
+            {/* DESCRIPTIONS */}
+              <div className="sm:w-full md:max-w-5xl mx-auto px-6 py-6">
+                <section>
+                  <div className="flex items-center justify-between">
+                    <h2 className={"text-2xl " + entry.textColor}>Descriptions</h2>
+                    <button
+                      onClick={() => copyToClipboard("description", description)}
+                      onMouseLeave={() => setCopied(null)}
+                      style={{ backgroundColor: "rgba(0, 0, 0, 0.35)" }}
+                      className={"text-sm  px-3 py-1 rounded-md hover:opacity-80 backdrop-blur-sm " + entry.textColor}
+                    >
+                      {copied === "description" ? "✓" : "Copy"}
+                    </button>
+                  </div>
+                  <div
+                    className="mt-4 p-4 backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                  >
+                    <p className={"whitespace-pre-line " + entry.textColor}>
+                      {description}
+                    </p>
+                  </div>
+                </section>
+              </div>
+
             {/* 3–5 IMAGES */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
               <section>
-                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Screenshots</h2>
+                <h2 className={"text-2xl  " + entry.textColor}>Screenshots</h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {images.map((src) => (
-                    <div key={src} className="overflow-hidden">
-                      <img
-                        src={src}
-                        className="block w-full"
-                      />
-                    </div>
-                  ))}
-                </div>
 
-                <div className="py-6 flex gap-6 items-center">
+                <div className="pt-6 pb-12 flex flex-col gap-2 items-start">
                   <button
                     onClick={() => downloadZip(`${id}-images`, images)}
                     className={
@@ -186,16 +291,9 @@ export default function PressKitPage({ id }) {
                     Total size: {formatBytes(imageSize)}
                   </span>
                 </div>
-              </section>
-            </div>
 
-            {/* 6–8 BRANDING */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
-              <section>
-                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Branding</h2>
-
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {branding.map((src) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {images.map((src) => (
                     <div key={src} className="overflow-hidden">
                       <img
                         src={src}
@@ -204,8 +302,15 @@ export default function PressKitPage({ id }) {
                     </div>
                   ))}
                 </div>
+              </section>
+            </div>
 
-                <div className="py-6 flex gap-6 items-center">
+            {/* 6–8 BRANDING */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section>
+                <h2 className={"text-2xl  " + entry.textColor}>Branding</h2>
+
+                <div className="pt-6 pb-12 flex flex-col gap-2 items-start">
                   <button
                     onClick={() => downloadZip(`${id}-branding`, branding)}
                     className={
@@ -220,25 +325,26 @@ export default function PressKitPage({ id }) {
                     Total size: {formatBytes(brandingSize)}
                   </span>
                 </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {branding.map((src) => (
+                    <div key={src} className="overflow-hidden">
+                      <img
+                        src={src}
+                        className="block w-full"
+                      />
+                    </div>
+                  ))}
+                </div>
               </section>
             </div>
 
             {/* CLIPS */}
-            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-20">
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
               <section>
-                <h2 className={"text-xl font-semibold mb-6 " + entry.textColor}>Shorts</h2>
+                <h2 className={"text-2xl " + entry.textColor}>Shorts</h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {clips.map((src) => (
-                    <div key={src} className="overflow-hidden">
-                      <video autoPlay loop muted playsInline className="block w-full">
-                        <source src={src} />
-                      </video>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="py-6 flex gap-6 items-center">
+                <div className="pt-6 pb-12 flex flex-col gap-2 items-start">
                   <button
                     onClick={() => downloadZip(`${id}-shorts`, clips)}
                     className={
@@ -252,6 +358,16 @@ export default function PressKitPage({ id }) {
                   <span className={entry.textColor}>
                     Total size: {formatBytes(clipsSize)}
                   </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {clips.map((src) => (
+                    <div key={src} className="overflow-hidden">
+                      <video autoPlay loop muted playsInline className="block w-full">
+                        <source src={src} />
+                      </video>
+                    </div>
+                  ))}
                 </div>
               </section>
             </div>
