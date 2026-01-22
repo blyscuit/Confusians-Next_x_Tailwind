@@ -56,6 +56,8 @@ export default function PressKitPage({ id }) {
     pitch = "",
     short_pitch = "",
     description = "",
+    g_drive_trailer = "",
+    steam = "",
   } = presskit || {}
 
   const images = entry?.image || []
@@ -123,7 +125,7 @@ export default function PressKitPage({ id }) {
             </h1>
 
             {/* 1–2 VIDEO */}
-            {video && (
+            {(video || g_drive_trailer !== "") && (
               <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 pt-10">
                 <section className="items-center text-center">
                   <div className="py-6 overflow-hidden">
@@ -132,19 +134,40 @@ export default function PressKitPage({ id }) {
                     </video>
                   </div>
 
-                  <a
-                    href={video}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    download
-                    className={
-                      "px-6 py-3 rounded bg-white hover:opacity-80 inline-flex items-center gap-2 " +
-                      "text-black font-semibold "
-                    }
-                  >
-                    <span>Open Video</span>
-                    <span className="text-xs opacity-70">(new tab)</span>
-                  </a>
+                  <div className="flex flex-wrap justify-center gap-4 mt-4">
+                    {video && (
+                      <a
+                        href={video}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        style={{ width: "206px" }}
+                        className={
+                          "px-6 py-3 rounded bg-white hover:opacity-80 inline-flex items-center justify-center gap-2 " +
+                          "text-black font-semibold "
+                        }
+                      >
+                        <span>Open Video</span>
+                        <span className="text-xs opacity-70">(new tab)</span>
+                      </a>
+                    )}
+
+                    {g_drive_trailer && g_drive_trailer !== "" && (
+                      <a
+                        href={g_drive_trailer}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        style={{ width: "206px" }}
+                        className={
+                          "px-6 py-3 border border-current rounded hover:opacity-80 inline-flex items-center justify-center " +
+                          entry.textColor
+                        }
+                      >
+                        <span>Google Drive</span>
+                      </a>
+                    )}
+                  </div>
                 </section>
               </div>
             )}
@@ -269,6 +292,23 @@ export default function PressKitPage({ id }) {
                   </div>
                 </section>
               </div>
+
+            {/* Plaforms */}
+            <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+              <section>
+                <h2 className={"text-2xl  " + entry.textColor}>Platforms</h2>
+                <div className="pt-6 pb-12 flex flex-col gap-2 items-start">
+                  {steam && steam !== "" && (
+                    <a
+                      href={"https://store.steampowered.com/app/" + steam}
+                      className={"underline text-lg " + entry.textColor}
+                    >
+                      Steam
+                    </a>
+                  )}
+                </div>
+              </section>
+            </div>
 
             {/* 3–5 IMAGES */}
             <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
