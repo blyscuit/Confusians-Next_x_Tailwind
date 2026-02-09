@@ -1,6 +1,6 @@
 {
   "index": [
-    { "id": "fallfate", "size": "w-full", "image": "" },
+    { "id": "fallfate", "size": "w-full", "image": "fallfate_home.png" },
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg" },
     { "id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png" },
     { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png" },
