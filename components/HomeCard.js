@@ -48,7 +48,7 @@ const HomeCard = (props) => {
               <p
                 className={
                   "text-3xl rounded-lg text-center py-2 px-2 " +
-                  props.textColor
+                  props.textColor + " "
                 }
                 style={style}
               >
@@ -63,14 +63,14 @@ const HomeCard = (props) => {
             "absolute w-full h-full duration-300 ease-out opacity-0 group-hover:opacity-100 "
           }
           style={{
-            backdropFilter: "blur( 2px )",
-            WebkitBackdropFilter: "blur( 2px )",
+            backdropFilter: "blur( 6px )",
+            WebkitBackdropFilter: "blur( 6px )",
             borderRadius: "10px",
           }}
         ></div>
         <div
           className={
-            "absolute w-full h-full duration-300 ease-out opacity-0 group-hover:opacity-70 " +
+            "absolute w-full h-full duration-300 ease-out opacity-0 group-hover:opacity-0 " +
             props.backgroundColor
           }
         ></div>

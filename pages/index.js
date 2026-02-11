@@ -51,7 +51,7 @@ const Index = (props) => (
               <HomeCard
                 backgroundColor={detail.backgroundColor}
                 name={detail.name}
-                textColor={detail.textColor}
+                textColor={item.textColor ? item.textColor : detail.textColor}
                 image={item.image}
                 font={detail.font}
                 appIcon={item.appIcon}

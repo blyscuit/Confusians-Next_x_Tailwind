@@ -2,8 +2,8 @@
   "index": [
     { "id": "fallfate", "size": "w-full", "image": "fallfate_home.png", "textLogo": "fallfate-logo.png" },
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg", "appIcon": "cryptget-icon.png" },
-    { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png", "appIcon": "top-bar-web-buddy-icon.png" },
-    { "id": "web-share-drop", "size": "w-full", "image": "web-share-drop-home.png", "appIcon": "web-share-drop-icon.png" },
+    { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png", "appIcon": "top-bar-web-buddy-icon.png", "textColor": "grey-text text-lighten-4" },
+    { "id": "web-share-drop", "size": "w-full", "image": "web-share-drop-home.png", "appIcon": "web-share-drop-icon.png", "textColor": "blue-text text-darken-2" },
     { "id": "cosmetica", "size": "w-full", "image": "cosmetica_home.png", "appIcon": "cosmetica-icon.png" },
     { "id": "livert", "size": "w-full", "image": "livert_home.png", "appIcon": "livert-icon.png" }
   ],
