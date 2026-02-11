@@ -42,11 +42,11 @@ const Index = (props) => (
       <h1 href="https://confusians.com">Confusians</h1>
     </div>
 
-    <div className="flex flex-wrap py-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 py-10 px-6 gap-2">
       {((props.catalog || {}).index || []).map((item) => {
         var detail = props.catalog[item.id] || {};
         return (
-          <div key={item.id} className={" sm: w-full md:" + item.size}>
+          <div key={item.id} className="w-full">
             <Link href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
               <HomeCard
                 backgroundColor={detail.backgroundColor}
@@ -54,6 +54,35 @@ const Index = (props) => (
                 textColor={detail.textColor}
                 image={item.image}
                 font={detail.font}
+                appIcon={item.appIcon}
+                textLogo={item.textLogo}
+              ></HomeCard>
+            </Link>
+          </div>
+        );
+      })}
+    </div>
+
+    <div className="grid grid-cols-2 md:grid-cols-3 pt-64 pb-16 px-6 gap-2">
+      <p
+            className={
+              "text-lg rounded-lg text-left py-2 transition duration-500 ease-out transform "
+            }
+          >
+            Older Works:
+          </p>
+      {((props.catalog || {}).older || []).map((item) => {
+        var detail = props.catalog[item.id] || {};
+        return (
+          <div key={item.id} className="w-full">
+            <Link href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
+              <HomeCard
+                backgroundColor={detail.backgroundColor}
+                name={detail.name}
+                textColor={detail.textColor}
+                image={item.image}
+                font={detail.font}
+                is_small={true}
               ></HomeCard>
             </Link>
           </div>
