@@ -1,6 +1,6 @@
 const StaticProductImage = (props) => {
   return (
-    <div className="w-10/12 items-center content-center">
+    <div className="w-10/12 md:w-3/5 items-center content-center">
       {props.image && Array.isArray(props.image) && props.image.map((imgSrc, idx) => {
         const isGif = /\.gif(\?|$)/i.test(String(imgSrc));
         const style = isGif

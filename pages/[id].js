@@ -108,7 +108,7 @@ const Post = (props) => {
             </h1>
 
             {item.video ? (
-            <div className="sm:pl-10 sm:pr-10 py-40 w-full sm:w-full md:max-w-3xl mx-auto">
+            <div className="sm:pl-10 sm:pr-10 py-20 w-full sm:w-full md:max-w-3xl mx-auto">
                 <video
                   width='100%'
                   max-width='100vw'

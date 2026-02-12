@@ -24,7 +24,7 @@ const HomeCard = (props) => {
             </div> */}
 
         <div
-          className="absolute z-10 flex flex-col items-center h-full justify-center transition duration-500 ease-out transform opacity-0 group-hover:opacity-100"
+          className="absolute z-10 flex flex-col items-center h-full justify-center opacity-0 transition duration-500 ease-out transform group-hover:opacity-100"
         >
           {props.textLogo ? (
             /* Show text logo only */
@@ -60,7 +60,7 @@ const HomeCard = (props) => {
 
         <div
           className={
-            "absolute w-full h-full duration-300 ease-out opacity-0 group-hover:opacity-100 "
+            "absolute w-full h-full ease-out opacity-0 duration-300 group-hover:opacity-100 "
           }
           style={{
             backdropFilter: "blur( 6px )",
@@ -68,12 +68,12 @@ const HomeCard = (props) => {
             borderRadius: "10px",
           }}
         ></div>
-        <div
+        {/* <div
           className={
             "absolute w-full h-full duration-300 ease-out opacity-0 group-hover:opacity-0 " +
             props.backgroundColor
           }
-        ></div>
+        ></div> */}
       </div>
       <img
         {...(props.image ? { alt: props.name } : {})}
