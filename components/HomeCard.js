@@ -24,7 +24,7 @@ const HomeCard = (props) => {
             </div> */}
 
         <div
-          className="absolute z-10 flex flex-col items-center h-full justify-center opacity-0 transition duration-500 ease-out transform group-hover:opacity-100"
+          className="absolute z-10 flex flex-col items-center h-full justify-center opacity-0 transition duration-300 ease-out transform group-hover:opacity-100"
         >
           {props.textLogo ? (
             /* Show text logo only */
