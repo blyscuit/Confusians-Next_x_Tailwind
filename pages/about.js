@@ -26,7 +26,7 @@ const About = () => (
         </p>
 
         <p>
-          Confusians has been my side project since 2015. Ten years in, I'm now working to make it full-time.
+          Confusians has been my side project since 2015. Ten years in, I'm working to make it full-time.
         </p>
 
         <p>
