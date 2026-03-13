@@ -14,6 +14,7 @@
       "/press-kit/fallfate/Client Icon.png",
       "/press-kit/fallfate/Community Icon.png",
 
+      "/press-kit/fallfate/Release Date Thumbnail.png",
       "/press-kit/fallfate/Header Capsule.png",
       "/press-kit/fallfate/Library Capsule.png",
       "/press-kit/fallfate/Library Header.png",
@@ -43,6 +44,7 @@
     "short_pitch": "Boss rush action roguelite plinko.",
     "description": "Plinko is predetermined, so you can lose it all.\n\nGameplay:\n- Spin to change the outcomes.\n- Fill the gauge to shift pockets’ risks.\n- Parry enemies trying to break you.\n- Face bosses.\n- Select from 7 upgrade classes. Create your own build.\n- Die, gain powers, over and over. In a roguelike adventure.\n\nFeatures:\n- 50+ Chip Upgrades\n- 10+ Enemies & Bosses\n- 4 Unique World Effects\n- Ultimate Chips\n- Extensive Meta Progressions\n- Short 3 Acts Story\n- Speed Run Mode",
     "g_drive_trailer": "https://drive.google.com/open?id=1J6Ks8K3gTEEtbQBmd4A4HCa4UmqjXmY4",
+    "g_drive_extra_trailers": ["https://drive.google.com/file/d/1uWRxU7XfBo_P0GW0Yl5ctBH0oq3VZvdg/view?usp=share_link"],
     "steam": "3961470"
   }
 }

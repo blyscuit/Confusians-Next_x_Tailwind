@@ -57,6 +57,7 @@ export default function PressKitPage({ id }) {
     short_pitch = "",
     description = "",
     g_drive_trailer = "",
+    g_drive_extra_trailers = [],
     steam = "",
   } = presskit || {}
 
@@ -110,7 +111,7 @@ export default function PressKitPage({ id }) {
         backdrop={(entry.textColor || "").includes("lighten") ? "dark" : "light"}
       >
         <Head>
-          <title>{entry.name || ""} Press Kit | Confusians</title>
+          <title>{`${entry.name || ""} | Press Kit | Confusians`}</title>
           <meta
             name="description"
             content={entry.name + " | " + (entry.about || "")}
@@ -167,6 +168,35 @@ export default function PressKitPage({ id }) {
                         <span>Google Drive</span>
                       </a>
                     )}
+                  </div>
+                </section>
+              </div>
+            )}
+
+            {g_drive_extra_trailers && g_drive_extra_trailers.length > 0 && (
+              <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
+                <section className="items-center text-center">
+                  <h2 className={"text-2xl mb-6 " + entry.textColor}>
+                    More Trailers
+                  </h2>
+
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {g_drive_extra_trailers.map((url, i) => (
+                      <a
+                        key={url}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download
+                        style={{ width: "206px" }}
+                        className={
+                          "px-6 py-3 border border-current rounded hover:opacity-80 inline-flex items-center justify-center " +
+                          entry.textColor
+                        }
+                      >
+                        <span>{"Download Trailer " + (i + 2)}</span>
+                      </a>
+                    ))}
                   </div>
                 </section>
               </div>
