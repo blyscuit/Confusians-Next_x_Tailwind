@@ -118,7 +118,7 @@
     "font": "",
     "backgroundColor": "blue-grey lighten-5",
     "textColor": "grey-text text-darken-4",
-    "ios": "",
+    "ios": "https://apps.apple.com/us/app/websharedrop-share-web-tabs/id6753943009",
     "macos": "https://apps.apple.com/us/app/websharedrop-share-web-tabs/id6753943009",
     "adr": "",
     "image": ["/web-share-drop.gif", "/web-share-drop.png"],
