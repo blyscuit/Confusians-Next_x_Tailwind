@@ -63,7 +63,7 @@ const HomeCard = (props) => {
             }
             style={{ "fontFamily": "system-ui"}}
           >
-            {[props.steam && "Steam", props.ios && "iOS", props.adr && "Android"]
+            {[props.steam && "Steam", props.ios && "iOS", props.adr && "Android", props.macos && "macOS"]
               .filter(Boolean)
               .join("  |  ")}
           </p>

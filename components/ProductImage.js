@@ -78,7 +78,7 @@ const ProductImage = (props) => {
   page.onChange(setProgress);
 
   return (
-    <div className="w-6/12 md:w-1/4 lg:w-1/4">
+    <div className="w-6/12 md:w-1/4 lg:w-1/4 pointer-events-none">
       <div
         style={{
           height: "100vh",

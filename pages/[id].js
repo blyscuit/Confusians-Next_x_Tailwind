@@ -39,6 +39,21 @@ const Post = (props) => {
           </a>
         )}
 
+        {(!item.ios || item.ios === "") && item.macos && (
+          <a
+            href={item.macos}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center"
+          >
+            <img
+              src="/Store=App Store, Language=English.svg"
+              alt="Download on the App Store"
+              className="h-full w-auto" style={{height: "40px"}} 
+            />
+          </a>
+        )}
+
         {/* Android (compensate transparent padding) */}
         {item.adr && (
           <a

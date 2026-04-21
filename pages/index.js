@@ -59,6 +59,7 @@ const Index = (props) => (
                 ios={detail.ios}
                 adr={detail.adr}
                 steam={detail.steam}
+                macos={detail.macos}
               ></HomeCard>
             </Link>
           </div>
