@@ -20,42 +20,54 @@ const Post = (props) => {
   const style = isClient ? { fontFamily: props.font } : {};
 
   let linkSection = (
-    <div className="w-2/3 md:w-1/4 lg:w-1/4 pb-4 pt-2 px-2">
-      <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row justify-between pt-4 items-stretch">
-        {item.adr != null && item.adr != "" ? (
-          <div className={"flex-1 flex items-center flex-col"}>
-            <div className="">
-              <a href={item.adr}>
-                <img
-                  alt="Android app on Google Play"
-                  src="https://play.google.com/intl/en_us/badges/images/apps/en-play-badge-border.png"
-                  style={{ width: "122px", height: "44px", marginTop: -1 }}
-                />
-              </a>
-            </div>
-          </div>
-        ) : null}
+    <div className="w-full flex justify-center px-4 pt-10">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
 
-        {item.ios != null && item.ios != "" ? (
-          <div className="flex-1 flex items-center flex-col pt-4 sm:pt-4 md:pt-4 lg:pt-0">
-            <div className="pt-px ">
-              <a
-                href={item.ios}
-                style={{
-                  display: "inline-block",
-                  overflow: "hidden",
-                  background:
-                    'url("https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg")',
-                  backgroundRepeat: "no-repeat",
-                  width: "120px",
-                  height: "40px",
-                }}
-              ></a>
-            </div>
-          </div>
-        ) : null}
+        {/* iOS FIRST */}
+        {item.ios && (
+          <a
+            href={item.ios}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center"
+          >
+            <img
+              src="/Store=App Store, Language=English.svg"
+              alt="Download on the App Store"
+              className="h-full w-auto" style={{height: "40px"}} 
+            />
+          </a>
+        )}
+
+        {/* Android (compensate transparent padding) */}
+        {item.adr && (
+          <a
+            href={item.adr}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center"
+          >
+            <img
+              src="/Store=Google Play, Language=English.svg"
+              alt="Get it on Google Play"
+              className="h-full w-auto" style={{height: "40px"}} 
+            />
+          </a>
+        )}
       </div>
     </div>
+  );
+
+  let steamSection = (
+    item.steam != null && item.steam !== "" ? (
+            <div className="pt-4 w-full px-10 pb-10 md:px-0 md:max-w-lg mx-auto">
+            <iframe
+              src={`https://store.steampowered.com/widget/${item.steam}/`}
+              width='100%'
+              height="190"
+            ></iframe>
+            </div>
+          ) : null
   );
 
   return (
@@ -108,7 +120,7 @@ const Post = (props) => {
             </h1>
 
             {item.video ? (
-            <div className="sm:pl-10 sm:pr-10 py-20 w-full sm:w-full md:max-w-3xl mx-auto">
+            <div className="sm:pl-10 sm:pr-10 pt-20 w-full sm:w-full md:max-w-3xl mx-auto">
                 <video
                   width='100%'
                   max-width='100vw'
@@ -117,6 +129,10 @@ const Post = (props) => {
                 >
                   <source src={item.video}/>
                 </video>
+
+                {linkSection}
+
+                {steamSection}
               </div>
             ) : null}
 
@@ -147,18 +163,10 @@ const Post = (props) => {
 
           {linkSection}
 
-          {item.steam != null && item.steam !== "" ? (
-            <div className="pt-10 w-full px-10 md:px-0 md:max-w-lg mx-auto">
-            <iframe
-              src={`https://store.steampowered.com/widget/${item.steam}/`}
-              width='100%'
-              height="190"
-            ></iframe>
-            </div>
-          ) : null}
+          {steamSection}
 
           {item.youtube ? (
-          <div className="sm:pl-10 sm:pr-10 pt-10 w-full sm:w-full md:max-w-2xl mx-auto">
+          <div className="sm:pl-10 sm:pr-10 w-full sm:w-full md:max-w-2xl mx-auto">
               <iframe
                 width='100%'
                 max-width='100vw'

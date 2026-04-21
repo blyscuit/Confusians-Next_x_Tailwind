@@ -327,15 +327,67 @@ export default function PressKitPage({ id }) {
             <div className="w-full sm:w-full md:max-w-5xl mx-auto px-6 py-10">
               <section>
                 <h2 className={"text-2xl  " + entry.textColor}>Platforms</h2>
-                <div className="pt-6 pb-12 flex flex-col gap-2 items-start">
-                  {steam && steam !== "" && (
-                    <a
-                      href={"https://store.steampowered.com/app/" + steam}
-                      className={"underline text-lg " + entry.textColor}
-                    >
-                      Steam
-                    </a>
-                  )}
+                <div className="pt-6 pb-12 flex flex-col gap-4 items-start">
+
+                  {[
+                    {
+                      name: "Steam",
+                      url: steam ? "https://store.steampowered.com/app/" + steam : "",
+                      key: "steam",
+                    },
+                    {
+                      name: "iOS",
+                      url: presskit?.ios || "",
+                      key: "ios",
+                    },
+                    {
+                      name: "Android",
+                      url: presskit?.android || "",
+                      key: "android",
+                    },
+                  ]
+                    .filter((p) => p.url && p.url !== "")
+                    .map((p) => (
+                      <div key={p.key} className="flex flex-col gap-2 w-full">
+                        {/* Top row (title + copy) */}
+                        <div
+                          className="flex items-center justify-between p-3"
+                        >
+                          <a
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={"text-lg flex items-center gap-2 " + entry.textColor}
+                          >
+                            <span className="underline">{p.name}</span>
+                            <span className="text-sm opacity-70">↗</span>
+                          </a>
+
+                          <button
+                            onClick={() => copyToClipboard(p.key, p.url)}
+                            onMouseLeave={() => setCopied(null)}
+                            style={{ backgroundColor: "rgba(0, 0, 0, 0.35)" }}
+                            className={
+                              "text-sm px-3 py-1 rounded-md hover:opacity-80 backdrop-blur-sm " +
+                              entry.textColor
+                            }
+                          >
+                            {copied === p.key ? "✓" : "Copy"}
+                          </button>
+                        </div>
+
+                        {/* URL block (same theme as text sections) */}
+                        <div
+                          className="p-4 backdrop-blur-sm"
+                          style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                        >
+                          <p className={"text-sm break-all " + entry.textColor}>
+                            {p.url}
+                          </p>
+                        </div>
+
+                      </div>
+                    ))}
                 </div>
               </section>
             </div>

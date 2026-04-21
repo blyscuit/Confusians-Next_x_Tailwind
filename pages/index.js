@@ -56,6 +56,9 @@ const Index = (props) => (
                 font={detail.font}
                 appIcon={item.appIcon}
                 textLogo={item.textLogo}
+                ios={detail.ios}
+                adr={detail.adr}
+                steam={detail.steam}
               ></HomeCard>
             </Link>
           </div>

@@ -47,7 +47,7 @@ const HomeCard = (props) => {
               {/* Always show text when no textLogo */}
               <p
                 className={
-                  "text-3xl rounded-lg text-center py-2 px-2 " +
+                  "text-3xl rounded-lg text-center pt-2 px-2 " +
                   props.textColor + " "
                 }
                 style={style}
@@ -56,6 +56,17 @@ const HomeCard = (props) => {
               </p>
             </>
           )}
+          <p
+            className={
+              "text-base text-center pt-2 px-2 font-extralight " +
+              props.textColor + " "
+            }
+            style={{ "fontFamily": "system-ui"}}
+          >
+            {[props.steam && "Steam", props.ios && "iOS", props.adr && "Android"]
+              .filter(Boolean)
+              .join("  |  ")}
+          </p>
         </div>
 
         <div

@@ -28,7 +28,14 @@
       "/press-kit/fallfate/Rounded App Icon.png",
       "/press-kit/fallfate/Small Capsule.png",
       "/press-kit/fallfate/Vertical Capsule.png",
-      "/press-kit/fallfate/Vertical Capsule@4x.png"
+      "/press-kit/fallfate/Vertical Capsule@4x.png",
+      "/press-kit/fallfate/iPhone1.jpg",
+      "/press-kit/fallfate/iPhone2.jpg",
+      "/press-kit/fallfate/iPhone3.jpg",
+      "/press-kit/fallfate/iPhone4.jpg",
+      "/press-kit/fallfate/iPhone5.jpg",
+      "/press-kit/fallfate/iPhone6.jpg",
+      "/press-kit/fallfate/iPhone7.jpg"
     ],
     "clips": [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/extras/dc76d4f379f8c5f13b18735393d0c19a.mp4?t=1767843034",
@@ -45,6 +52,8 @@
     "description": "Plinko is predetermined, so you can lose it all.\n\nGameplay:\n- Spin to change the outcomes.\n- Fill the gauge to shift pockets’ risks.\n- Parry enemies trying to break you.\n- Face bosses.\n- Select from 7 upgrade classes. Create your own build.\n- Die, gain powers, over and over. In a roguelike adventure.\n\nFeatures:\n- 50+ Chip Upgrades\n- 10+ Enemies & Bosses\n- 4 Unique World Effects\n- Ultimate Chips\n- Extensive Meta Progressions\n- Short 3 Acts Story\n- Speed Run Mode",
     "g_drive_trailer": "https://drive.google.com/open?id=1J6Ks8K3gTEEtbQBmd4A4HCa4UmqjXmY4",
     "g_drive_extra_trailers": ["https://drive.google.com/file/d/1uWRxU7XfBo_P0GW0Yl5ctBH0oq3VZvdg/view?usp=share_link"],
-    "steam": "3961470"
+    "steam": "3961470",
+    "ios": "https://apps.apple.com/us/app/fallfate-impulsive-plinko/id6756647967",
+    "android": "https://play.google.com/store/apps/details?id=com.confusians.Fallfate"
   }
 }
