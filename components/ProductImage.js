@@ -5,7 +5,7 @@ const mod = (n, length) => ((n % length) + length) % length;
 
 const ProductImage = (props) => {
   const [progress, setProgress] = useState(0);
-  const [previousProgress, setPreviousProgress] = useState(0);
+  const [animationDirection, setAnimationDirection] = useState(1);
   const [height, setHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [bottomScroll, setBottomScroll] = useState(0);
@@ -78,14 +78,14 @@ const ProductImage = (props) => {
       const delta = currentScrollY - lastScrollY;
       lastScrollY = currentScrollY;
 
-      // Only advance progress when scrolling down.
-      if (delta <= 0) return;
+      if (delta === 0) return;
 
       accumulatedScroll += delta;
 
-      if (accumulatedScroll >= scrollThreshold) {
-        setPreviousProgress(progress);
-        setProgress((current) => current + 1);
+      if (Math.abs(accumulatedScroll) >= scrollThreshold) {
+        const direction = accumulatedScroll > 0 ? 1 : -1;
+        setAnimationDirection(direction);
+        setProgress((current) => Math.max(0, current + direction));
         accumulatedScroll = 0;
       }
     };
@@ -95,9 +95,8 @@ const ProductImage = (props) => {
     return () => {
       window.removeEventListener("scroll", handleProgressScroll);
     };
-  }, [height, progress]);
+  }, [height]);
 
-  const direction = 1;
   const centerIndex = Math.max(0, progress - 1);
 
   const slots = [-1, 0, 1].map((offset) => ({
@@ -139,12 +138,11 @@ const ProductImage = (props) => {
               overflow: "visible",
             }}
           >
-            <AnimatePresence initial={false} mode="sync" custom={direction}>
+            <AnimatePresence initial={false} mode="sync">
               {slots.map((slot) => (
                 <motion.img
                   key={slot.key}
                   layout
-                  custom={direction}
                   alt="screenshot"
                   src={slot.src}
                   style={{
@@ -155,32 +153,61 @@ const ProductImage = (props) => {
                     marginLeft: "2%",
                     marginRight: "2%",
                   }}
-                  variants={{
-                    enter: (direction) => ({
-                      opacity: 0,
-                      x: direction > 0 ? 80 : -80,
-                      transition: {
-                        duration: 0.3,
-                        ease: "easeOut",
-                      },
-                    }),
-                    center: (direction) => ({
-                      opacity: slot.offset === 0 ? 1 : 0.2,
-                      x: 0,
-                      transition: {
-                        duration: 0.5,
-                        ease: "easeOut",
-                      },
-                    }),
-                    exit: (direction) => ({
-                      opacity: 0,
-                      x: direction > 0 ? -80 : 80,
-                      transition: {
-                        duration: 0.3,
-                        ease: "easeIn",
-                      },
-                    }),
-                  }}
+                  variants={
+                    animationDirection > 0
+                      ? {
+                          enter: {
+                            opacity: 0,
+                            x: -80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeOut",
+                            },
+                          },
+                          center: {
+                            opacity: slot.offset === 0 ? 1 : 0.2,
+                            x: 0,
+                            transition: {
+                              duration: 0.5,
+                              ease: "easeOut",
+                            },
+                          },
+                          exit: {
+                            opacity: 0,
+                            x: 80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeIn",
+                            },
+                          },
+                        }
+                      : {
+                          enter: {
+                            opacity: 0,
+                            x: 80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeOut",
+                            },
+                          },
+                          center: {
+                            opacity: slot.offset === 0 ? 1 : 0.2,
+                            x: 0,
+                            transition: {
+                              duration: 0.5,
+                              ease: "easeOut",
+                            },
+                          },
+                          exit: {
+                            opacity: 0,
+                            x: -80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeIn",
+                            },
+                          },
+                        }
+                  }
                   initial="enter"
                   animate="center"
                   exit="exit"

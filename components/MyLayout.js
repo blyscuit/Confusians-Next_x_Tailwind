@@ -28,7 +28,7 @@ export default class Layout extends Component {
 
   render() {
     return (
-      <div className={modeBackground(this.props.backdrop)}>
+      <div className={this.props.item?.backgroundColor ? this.props.item.backgroundColor : modeBackground(this.props.backdrop)}>
         <Head>
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon.ico" sizes="any" />

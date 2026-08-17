@@ -1,5 +1,6 @@
 {
   "index": [
+    { "id": "27poker", "size": "w-full", "image": "poker27_home.png", "textLogo": "poker27_logo.png" },
     { "id": "fallfate", "size": "w-full", "image": "fallfate_home.png", "textLogo": "fallfate-logo.png" },
     { "id": "cryptget", "size": "w-full", "image": "cryptget_home.jpg", "appIcon": "cryptget-icon.png" },
     { "id": "top-bar-web-buddy", "size": "w-full", "image": "top-bar-web-buddy-home.png", "appIcon": "top-bar-web-buddy-icon.png", "textColor": "grey-text text-lighten-4" },
@@ -43,11 +44,29 @@
     "steam": "3961470",
     "presskit": true
   },
+  "27poker": {
+    "name": "Falling in Love with the Girl in Seat 27H who was Playing (Ultimate Hold'em) Poker Clicker",
+    "about": "Poker incremental clicker & light rom-com",
+    "font": "",
+    "backgroundColor": "bg-purple-900",
+    "textColor": "white-text text-lighten-5",
+    "ios": "https://apps.apple.com/us/app/fall-in-love-girl-in-seat-27h/id6759246918",
+    "adr": "https://play.google.com/store/apps/details?id=com.confusians.ultiholdem",
+    "macos": "",
+    "image": [
+      "/poker27_1.png",
+      "/poker27_2.png",
+      "/poker27_3.png",
+      "/poker27_4.png",
+      "/poker27_5.png",
+      "/poker27_6.png"
+    ]
+  },
   "cryptget": {
     "name": "Cryptget",
     "about": "Watch Cryptocurrency, on iOS, Mac, and Widget",
     "font": "",
-    "backgroundColor": "black darken-4",
+    "backgroundColor": "bg-gray-900",
     "textColor": "white-text text-lighten-4",
     "ios": "https://apps.apple.com/us/app/cryptget/id1565348556",
     "macos": "https://apps.apple.com/us/app/cryptget/id1565348556",

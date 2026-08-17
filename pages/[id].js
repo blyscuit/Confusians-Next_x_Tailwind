@@ -99,6 +99,7 @@ const Post = (props) => {
   return (
     <div className={item.backgroundColor}>
       <Layout
+        item={item}
         backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}
       >
         <Head>
