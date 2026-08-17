@@ -53,11 +53,6 @@ const ProductImage = (props) => {
       const scrollY = window.scrollY;
       const absoluteStart = y * 0.9;
 
-      console.log(scrollY);
-      console.log(absoluteStart);
-      console.log(bottomScroll);
-      console.log(componentY);
-      console.log("bottomScroll");
       if (scrollY <= absoluteStart) {
         setIsBottom(false);
         setIsAbsolute(false);
