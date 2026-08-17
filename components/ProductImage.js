@@ -7,7 +7,10 @@ const ProductImage = (props) => {
   const [progress, setProgress] = useState(0);
   const [previousProgress, setPreviousProgress] = useState(0);
   const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [bottomScroll, setBottomScroll] = useState(0);
   const [isAbsolute, setIsAbsolute] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
   const item = props.item;
@@ -15,31 +18,40 @@ const ProductImage = (props) => {
   const imageCount = images.length + 1;
 
   useEffect(() => {
-    const updateDimensions = () => setHeight(window.innerHeight);
+    const updateDimensions = () => {
+      const windowsHeight = window.innerHeight;
+      const windowsWidth = window.innerWidth;
+
+      setHeight(windowsHeight);
+      setWidth(windowsWidth);
+      setBottomScroll(
+        windowsHeight * (imageCount - 0.2) - windowsWidth / 30
+      );
+    };
+
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
 
+    return () => {
+      window.removeEventListener("resize", updateDimensions);
+    };
+  }, [imageCount]);
+
+  useEffect(() => {
     const handleScroll = () => {
-      const windowsHeight = window.innerHeight;
-      const windowsWidth = window.innerWidth;
-      const startingPoint = windowsHeight / 4 - windowsWidth / 30;
+      const startingPoint = height / 4 - width / 30;
       const scrollY = window.scrollY;
 
-      if (scrollY <= windowsHeight / 2) {
+      if (scrollY <= height / 2) {
+        setIsBottom(false);
         setIsAbsolute(false);
         setScrollTop(startingPoint);
-      } else if (
-        scrollY >
-        windowsHeight * (imageCount - 0.2) - windowsWidth / 30
-      ) {
+      } else if (scrollY >= bottomScroll) {
         setIsAbsolute(true);
-        setScrollTop(
-          windowsHeight * (imageCount - 0.2) -
-            scrollY +
-            startingPoint -
-            windowsWidth / 30
-        );
+        setIsBottom(true);
+        setScrollTop(startingPoint - (scrollY - bottomScroll));
       } else {
+        setIsBottom(false);
         setIsAbsolute(true);
         setScrollTop(startingPoint);
       }
@@ -48,10 +60,9 @@ const ProductImage = (props) => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", updateDimensions);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [imageCount]);
+  }, [height, width, bottomScroll]);
 
   const { scrollY } = useViewportScroll();
 
@@ -100,10 +111,10 @@ const ProductImage = (props) => {
       <div
         style={{
           height: "100vh",
-          position: isAbsolute ? "fixed" : "relative",
+          position: isBottom ? "absolute" : isAbsolute ? "fixed" : "relative",
           width: "100%",
           left: isAbsolute ? 0 : "auto",
-          top: isAbsolute ? scrollTop : "auto",
+          top: isBottom ? height * imageCount : isAbsolute ? scrollTop : "auto",
           overflow: "visible",
         }}
       >
