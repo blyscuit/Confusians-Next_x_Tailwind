@@ -148,6 +148,7 @@ const ProductImage = (props) => {
                   alt="screenshot"
                   src={slot.src}
                   style={{
+                    minWidth: "220px",
                     width: "30%",
                     flexShrink: 0,
                     borderRadius: "16px",
