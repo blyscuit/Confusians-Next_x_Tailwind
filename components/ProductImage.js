@@ -1,43 +1,46 @@
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useViewportScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+
+const mod = (n, length) => ((n % length) + length) % length;
 
 const ProductImage = (props) => {
   const [progress, setProgress] = useState(0);
+  const [previousProgress, setPreviousProgress] = useState(0);
   const [height, setHeight] = useState(0);
   const [isAbsolute, setIsAbsolute] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
-  const updateDimensions = () => {
-    setHeight(window.innerHeight);
-  };
+  const item = props.item;
+  const images = item.image && item.image.length > 0 ? item.image : [""];
+  const imageCount = images.length + 1;
 
   useEffect(() => {
+    const updateDimensions = () => setHeight(window.innerHeight);
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
+
     const handleScroll = () => {
       const windowsHeight = window.innerHeight;
       const windowsWidth = window.innerWidth;
       const startingPoint = windowsHeight / 4 - windowsWidth / 30;
       const scrollY = window.scrollY;
+
       if (scrollY <= windowsHeight / 2) {
         setIsAbsolute(false);
         setScrollTop(startingPoint);
       } else if (
         scrollY >
-        (windowsHeight * (imageCount - 0.2)) - (windowsWidth / 30)
+        windowsHeight * (imageCount - 0.2) - windowsWidth / 30
       ) {
         setIsAbsolute(true);
         setScrollTop(
-          ((windowsHeight * (imageCount - 0.2)) -
+          windowsHeight * (imageCount - 0.2) -
             scrollY +
             startingPoint -
-            (windowsWidth / 30)) * 1,
+            windowsWidth / 30
         );
-      } else if (scrollY > windowsHeight / 2) {
-        setIsAbsolute(true);
-        setScrollTop(startingPoint);
       } else {
-        setIsAbsolute(false);
+        setIsAbsolute(true);
         setScrollTop(startingPoint);
       }
     };
@@ -48,88 +51,135 @@ const ProductImage = (props) => {
       window.removeEventListener("resize", updateDimensions);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  const item = props.item;
-
-  const imageCount = (item.image || []).length + 1;
+  }, [imageCount]);
 
   const { scrollY } = useViewportScroll();
-  const scale = useTransform(scrollY, [0, 200], [1.8, 1]);
-  const page = useTransform(scrollY, (value) => {
-    return Math.floor(value / height);
-  });
-  const imageOpacity = useTransform(scrollY, (value) => {
-    let scroll = value / height;
-    if (scroll <= 1.5) {
-      return 1.0;
-    }
-    if (scroll > imageCount - 0.5) {
-      return 1.0;
-    }
-    let rem = scroll % 1.0;
-    if (rem > 0.9) {
-      return Math.max(0.5, (1 - rem) / 0.05);
-    } else if (rem < 0.1) {
-      return Math.max(0.5, rem / 0.05);
-    }
-    return 1.0;
-  });
-  page.onChange(setProgress);
+
+  useEffect(() => {
+    if (!height) return;
+
+    let lastScrollY = window.scrollY;
+    let accumulatedScroll = 0;
+    const scrollThreshold = height;
+
+    const handleProgressScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+
+      // Only advance progress when scrolling down.
+      if (delta <= 0) return;
+
+      accumulatedScroll += delta;
+
+      if (accumulatedScroll >= scrollThreshold) {
+        setPreviousProgress(progress);
+        setProgress((current) => current + 1);
+        accumulatedScroll = 0;
+      }
+    };
+
+    window.addEventListener("scroll", handleProgressScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleProgressScroll);
+    };
+  }, [height, progress]);
+
+  const direction = 1;
+  const centerIndex = Math.max(0, progress - 1);
+
+  const slots = [-1, 0, 1].map((offset) => ({
+    offset,
+    key: centerIndex + offset,
+    src: images[mod(centerIndex + offset, images.length)],
+  }));
 
   return (
-    <div className="w-6/12 md:w-1/4 lg:w-1/4 pointer-events-none">
+    <div className="pointer-events-none">
       <div
         style={{
           height: "100vh",
           position: isAbsolute ? "fixed" : "relative",
-          width: isAbsolute ?  "25%" : "100%",
+          width: "100%",
+          left: isAbsolute ? 0 : "auto",
           top: isAbsolute ? scrollTop : "auto",
+          overflow: "visible",
         }}
       >
         <motion.div
           className="container"
           style={{
-            scale,
-            originY: "0%",
-            // y: y,
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            margin: "0 auto",
+            maxWidth: "800px",
           }}
         >
-          {item.noFrame != true ? (
-            <img
-              alt="device frame"
-              className="w-auto absolute"
-              src="/frame.png"
-            ></img>
-          ) : null}
-
-          <motion.div
-            className="container"
+          <div
             style={{
-              opacity: imageOpacity,
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "visible",
             }}
           >
-            <img
-              alt="screenshot"
-              className="left-1/2 absolute "
-              style={{
-                width: "89%",
-                borderRadius: item.noFrame != true ? "24px" : "0",
-                transform: "translate(-50%,2.5%)",
-              }}
-              src={
-                (item.image || [""])[
-                  Math.min(
-                    (item.image || []).length - 1,
-                    Math.max(0, progress - 1),
-                  )
-                ]
-              }
-            ></img>
-          </motion.div>
+            <AnimatePresence initial={false} mode="sync" custom={direction}>
+              {slots.map((slot) => (
+                <motion.img
+                  key={slot.key}
+                  layout
+                  custom={direction}
+                  alt="screenshot"
+                  src={slot.src}
+                  style={{
+                    width: "30%",
+                    flexShrink: 0,
+                    borderRadius: "16px",
+                    marginLeft: "2%",
+                    marginRight: "2%",
+                  }}
+                  variants={{
+                    enter: (direction) => ({
+                      opacity: 0,
+                      x: direction > 0 ? 80 : -80,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeOut",
+                      },
+                    }),
+                    center: (direction) => ({
+                      opacity: slot.offset === 0 ? 1 : 0.2,
+                      x: 0,
+                      transition: {
+                        duration: 0.5,
+                        ease: "easeOut",
+                      },
+                    }),
+                    exit: (direction) => ({
+                      opacity: 0,
+                      x: direction > 0 ? -80 : 80,
+                      transition: {
+                        duration: 0.3,
+                        ease: "easeIn",
+                      },
+                    }),
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                />
+              ))}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
-      <div style={{ height: height * imageCount }}></div>
+
+      <div style={{ height: height * imageCount - 1 }} />
     </div>
   );
 };

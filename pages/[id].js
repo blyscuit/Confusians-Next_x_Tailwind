@@ -11,6 +11,17 @@ import ReactMarkdown from "react-markdown";
 
 const Post = (props) => {
   const [isClient, setIsClient] = useState(false);
+  const [isMd, setIsMd] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateBreakpoint = () => setIsMd(mediaQuery.matches);
+
+    updateBreakpoint();
+    mediaQuery.addEventListener("change", updateBreakpoint);
+
+    return () => mediaQuery.removeEventListener("change", updateBreakpoint);
+  }, []);
 
   const router = useRouter();
   const { id } = router.query;
@@ -195,7 +206,7 @@ const Post = (props) => {
           <div className="grid-container"></div>
           <div
             className={
-              "self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " +
+              "self-stretch grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " +
               item.textColor
             }
           >
@@ -205,8 +216,14 @@ const Post = (props) => {
                   key={des.text}
                   className="flex flex-col items-center pt-16"
                 >
-                  <IconView icon={des.icon} size={60} color={item.textColor} />
-                  <div className={"pt-4 "}>{des.text}</div>
+                  <IconView
+                    icon={des.icon}
+                    size={isMd ? 60 : 40}
+                    color={item.textColor}
+                  />
+                  <div className="pt-3 md:pt-4 text-center">
+                    {des.text}
+                  </div>
                 </div>
               );
             })}
