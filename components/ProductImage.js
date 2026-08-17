@@ -115,7 +115,7 @@ const ProductImage = (props) => {
           width: "100%",
           left: isAbsolute ? 0 : "auto",
           top: isBottom ? height * imageCount : isAbsolute ? scrollTop : "auto",
-          overflow: "visible",
+          overflow: isBottom ? "hidden" : "visible",
         }}
       >
         <motion.div
