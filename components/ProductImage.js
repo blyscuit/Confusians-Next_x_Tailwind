@@ -41,8 +41,9 @@ const ProductImage = (props) => {
     const handleScroll = () => {
       const startingPoint = height / 4 - width / 30;
       const scrollY = window.scrollY;
+      const absoluteStart = height / 2;
 
-      if (scrollY <= height / 2) {
+      if (scrollY <= absoluteStart) {
         setIsBottom(false);
         setIsAbsolute(false);
         setScrollTop(startingPoint);
@@ -57,10 +58,25 @@ const ProductImage = (props) => {
       }
     };
 
+    const handleWheel = (event) => {
+      const absoluteStart = height / 2;
+      const scrollY = window.scrollY;
+
+      if (event.deltaY > 0 && scrollY < absoluteStart && scrollY + event.deltaY > absoluteStart) {
+        event.preventDefault();
+        window.scrollTo({
+          top: absoluteStart,
+          behavior: "auto",
+        });
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
     };
   }, [height, width, bottomScroll]);
 
@@ -114,7 +130,7 @@ const ProductImage = (props) => {
           width: "100%",
           left: isAbsolute ? 0 : "auto",
           top: isBottom ? height * imageCount : isAbsolute ? scrollTop : "auto",
-          overflow: isBottom ? "hidden" : "visible",
+          overflow: isBottom || !isAbsolute ? "hidden" : "visible",
         }}
       >
         <motion.div
