@@ -1,5 +1,5 @@
 import { motion, useViewportScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const mod = (n, length) => ((n % length) + length) % length;
 
@@ -16,16 +16,23 @@ const ProductImage = (props) => {
   const item = props.item;
   const images = item.image && item.image.length > 0 ? item.image : [""];
   const imageCount = images.length + 1;
+  const componentRef = useRef(null);
+  const [componentY, setComponentY] = useState(0);
 
   useEffect(() => {
     const updateDimensions = () => {
       const windowsHeight = window.innerHeight;
       const windowsWidth = window.innerWidth;
+      const calcHeight = Math.max(windowsWidth * 0.3, 220) * 1.78;
 
-      setHeight(windowsHeight);
+      const rect = componentRef.current?.getBoundingClientRect();
+      const y = rect ? rect.top + window.scrollY : 0;
+      setComponentY(y);
+
+      setHeight(calcHeight);
       setWidth(windowsWidth);
       setBottomScroll(
-        windowsHeight * (imageCount - 0.2) - windowsWidth / 30
+        (calcHeight * imageCount) + (componentY / 2)
       );
     };
 
@@ -35,14 +42,22 @@ const ProductImage = (props) => {
     return () => {
       window.removeEventListener("resize", updateDimensions);
     };
-  }, [imageCount]);
+  }, [imageCount, componentY]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const startingPoint = height / 4 - width / 30;
-      const scrollY = window.scrollY;
-      const absoluteStart = height / 2;
+      const rect = componentRef.current?.getBoundingClientRect();
+      const y = rect ? rect.top + window.scrollY : componentY;
 
+      const startingPoint = height / 4 + y;
+      const scrollY = window.scrollY;
+      const absoluteStart = y * 0.9;
+
+      console.log(scrollY);
+      console.log(absoluteStart);
+      console.log(bottomScroll);
+      console.log(componentY);
+      console.log("bottomScroll");
       if (scrollY <= absoluteStart) {
         setIsBottom(false);
         setIsAbsolute(false);
@@ -54,7 +69,7 @@ const ProductImage = (props) => {
       } else {
         setIsBottom(false);
         setIsAbsolute(true);
-        setScrollTop(startingPoint);
+        setScrollTop(startingPoint - y);
       }
     };
 
@@ -78,7 +93,7 @@ const ProductImage = (props) => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [height, width, bottomScroll]);
+  }, [height, width, bottomScroll, componentY]);
 
   const { scrollY } = useViewportScroll();
 
@@ -94,7 +109,7 @@ const ProductImage = (props) => {
       const delta = currentScrollY - lastScrollY;
       lastScrollY = currentScrollY;
 
-      if (delta === 0) return;
+      if (delta === 0 || window.scrollY < componentY) return;
 
       accumulatedScroll += delta;
 
@@ -122,14 +137,18 @@ const ProductImage = (props) => {
   }));
 
   return (
-    <div className="pointer-events-none">
+    <div ref={componentRef} className="pointer-events-none" 
+      style={{
+          width: "100%",
+        }}
+    >
       <div
         style={{
           height: "100vh",
           position: isBottom ? "absolute" : isAbsolute ? "fixed" : "relative",
           width: "100%",
           left: isAbsolute ? 0 : "auto",
-          top: isBottom ? height * imageCount : isAbsolute ? scrollTop : "auto",
+          top: isBottom ? (height * imageCount) + (componentY / 2) : isAbsolute ? scrollTop : "auto",
           overflow: isBottom || !isAbsolute ? "hidden" : "visible",
         }}
       >
@@ -162,8 +181,8 @@ const ProductImage = (props) => {
                   alt="screenshot"
                   src={slot.src}
                   style={{
-                    minWidth: "220px",
                     width: "30%",
+                    minWidth: "220px",
                     flexShrink: 0,
                     borderRadius: "16px",
                     marginLeft: "2%",
@@ -198,35 +217,35 @@ const ProductImage = (props) => {
                           },
                         }
                       : {
-                          enter: {
-                            opacity: 0,
-                            x: 80,
-                            transition: {
-                              duration: 0.3,
-                              ease: "easeOut",
-                            },
-                          },
+                          // enter: {
+                          //   opacity: 0,
+                          //   // x: 80,
+                          //   transition: {
+                          //     duration: 0.3,
+                          //     ease: "easeOut",
+                          //   },
+                          // },
                           center: {
                             opacity: slot.offset === 0 ? 1 : 0.2,
-                            x: 0,
+                            // x: 0,
                             transition: {
                               duration: 0.5,
                               ease: "easeOut",
                             },
                           },
-                          exit: {
-                            opacity: 0,
-                            x: -80,
-                            transition: {
-                              duration: 0.3,
-                              ease: "easeIn",
-                            },
-                          },
+                          // exit: {
+                          //   opacity: 0,
+                          //   x: -80,
+                          //   transition: {
+                          //     duration: 0.3,
+                          //     ease: "easeIn",
+                          //   },
+                          // },
                         }
                   }
-                  initial="enter"
+                  // initial="enter"
                   animate="center"
-                  exit="exit"
+                  // exit="exit"
                 />
               ))}
             </AnimatePresence>
@@ -234,7 +253,7 @@ const ProductImage = (props) => {
         </motion.div>
       </div>
 
-      <div style={{ height: height * imageCount - 1 }} />
+      <div style={{ height: (height * (imageCount)) + (componentY / 2)}} />
     </div>
   );
 };
