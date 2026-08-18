@@ -24,9 +24,21 @@ export default class Layout extends Component {
       window.GA_INITIALIZED = true;
     }
     logPageView();
+    const backgroundColor = this.props.item?.backgroundColor || modeBackground(this.props.backdrop);
+    document.body.className = backgroundColor;
+  }
+
+  componentDidUpdate(prevProps) {
+    const previousBackground = prevProps.item?.backgroundColor || modeBackground(prevProps.backdrop);
+    const backgroundColor = this.props.item?.backgroundColor || modeBackground(this.props.backdrop);
+
+    if (previousBackground !== backgroundColor) {
+      document.body.className = backgroundColor;
+    }
   }
 
   render() {
+
     return (
       <div className={this.props.item?.backgroundColor ? this.props.item.backgroundColor : modeBackground(this.props.backdrop)}>
         <Head>

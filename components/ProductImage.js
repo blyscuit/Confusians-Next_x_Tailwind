@@ -167,7 +167,7 @@ const ProductImage = (props) => {
               overflow: "visible",
             }}
           >
-            <AnimatePresence initial={false} mode="sync">
+            <AnimatePresence initial={false} mode="popLayout">
               {slots.map((slot) => (
                 <motion.img
                   key={slot.key}

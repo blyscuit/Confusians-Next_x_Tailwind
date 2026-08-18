@@ -12,6 +12,7 @@ import ReactMarkdown from "react-markdown";
 const Post = (props) => {
   const [isClient, setIsClient] = useState(false);
   const [isMd, setIsMd] = useState(false);
+  const item = props;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -25,8 +26,6 @@ const Post = (props) => {
 
   const router = useRouter();
   const { id } = router.query;
-
-  const item = props;
 
   const style = isClient ? { fontFamily: props.font } : {};
 
@@ -97,7 +96,7 @@ const Post = (props) => {
   );
 
   return (
-    <div className={item.backgroundColor}>
+    <div>
       <Layout
         item={item}
         backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}
