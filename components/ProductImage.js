@@ -32,9 +32,7 @@ const ProductImage = (props) => {
       setWindowHeight(windowsHeight);
       setHeight(calcHeight);
       setWidth(windowsHeight);
-      setBottomScroll(
-        (calcHeight * (imageCount - 1)) + (componentY)
-      );
+      setBottomScroll((calcHeight * (imageCount - 1)) + y);
     };
 
     updateDimensions();
@@ -49,47 +47,34 @@ const ProductImage = (props) => {
     const handleScroll = () => {
       const rect = componentRef.current?.getBoundingClientRect();
       const y = rect ? rect.top + window.scrollY : componentY;
-
-      const startingPoint = ((windowHeight - Math.min(height, 800 * 0.3 * 1.78)) / 2) + y;
       const scrollY = window.scrollY;
-      const absoluteStart = y * 0.84;
+      const viewportImageHeight = Math.min(height, 800 * 0.3 * 1.78);
+      const startingPoint = (windowHeight - viewportImageHeight) / 2;
+      const absoluteStart = y;
+      const absoluteEnd = y + height * (imageCount - 1) - 40;
 
       if (scrollY <= absoluteStart) {
         setIsBottom(false);
         setIsAbsolute(false);
-        setScrollTop(startingPoint);
-      } else if (scrollY >= bottomScroll - 100) {
-        setIsAbsolute(true);
+        setScrollTop((y - scrollY));
+      } else if (scrollY >= absoluteEnd) {
         setIsBottom(true);
-        setScrollTop(startingPoint - (scrollY - bottomScroll));
+        setIsAbsolute(true);
+        setScrollTop(40 - (scrollY - absoluteEnd));
       } else {
         setIsBottom(false);
         setIsAbsolute(true);
-        setScrollTop(startingPoint - y);
-      }
-    };
-
-    const handleWheel = (event) => {
-      const absoluteStart = height / 2;
-      const scrollY = window.scrollY;
-
-      if (event.deltaY > 0 && scrollY < absoluteStart && scrollY + event.deltaY > absoluteStart) {
-        event.preventDefault();
-        window.scrollTo({
-          top: absoluteStart,
-          behavior: "auto",
-        });
+        setScrollTop(startingPoint);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("wheel", handleWheel, { passive: false });
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("wheel", handleWheel);
     };
-  }, [height, width, bottomScroll, componentY]);
+  }, [height, width, imageCount, windowHeight, componentY]);
 
   const { scrollY } = useViewportScroll();
 
@@ -139,11 +124,11 @@ const ProductImage = (props) => {
       <div
         style={{
           height: height + 180,
-          position: isBottom ? "absolute" : isAbsolute ? "fixed" : "relative",
+          position: (scrollTop == 0) ? "relative" : "fixed",
           width: "100%",
-          left: isAbsolute ? 0 : "auto",
-          top: isBottom ? bottomScroll : isAbsolute ? scrollTop : "auto",
-          overflow: isBottom || !isAbsolute ? "hidden" : "visible",
+          left: 0,
+          top: scrollTop,
+          overflow: isBottom ? "hidden" : "visible",
         }}
       >
         <motion.div
