@@ -17,6 +17,21 @@ const layoutStyle = {
   // border: '1px solid #DDD'
 };
 
+function getBackgroundColorFromClass(className) {
+  if (!className) return null;
+
+  const element = document.createElement("div");
+  element.className = className;
+  element.style.position = "absolute";
+  element.style.visibility = "hidden";
+  document.body.appendChild(element);
+
+  const color = window.getComputedStyle(element).backgroundColor;
+  element.remove();
+
+  return color;
+}
+
 export default class Layout extends Component {
   componentDidMount() {
     if (!window.GA_INITIALIZED) {
@@ -27,6 +42,16 @@ export default class Layout extends Component {
     const backgroundColor = this.props.item?.backgroundColor || modeBackground(this.props.backdrop);
     document.body.className = backgroundColor;
     document.documentElement.className = backgroundColor;
+    const color = getBackgroundColorFromClass(backgroundColor);
+    if (color) {
+      let themeColor = document.querySelector('meta[name="theme-color"]');
+      if (!themeColor) {
+        themeColor = document.createElement("meta");
+        themeColor.name = "theme-color";
+        document.head.appendChild(themeColor);
+      }
+      themeColor.setAttribute("content", color);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -36,6 +61,16 @@ export default class Layout extends Component {
     if (previousBackground !== backgroundColor) {
       document.body.className = backgroundColor;
       document.documentElement.className = backgroundColor;
+      const color = getBackgroundColorFromClass(backgroundColor);
+      if (color) {
+        let themeColor = document.querySelector('meta[name="theme-color"]');
+        if (!themeColor) {
+          themeColor = document.createElement("meta");
+          themeColor.name = "theme-color";
+          document.head.appendChild(themeColor);
+        }
+        themeColor.setAttribute("content", color);
+      }
     }
   }
 
