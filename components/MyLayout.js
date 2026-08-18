@@ -25,7 +25,8 @@ export default class Layout extends Component {
     }
     logPageView();
     const backgroundColor = this.props.item?.backgroundColor || modeBackground(this.props.backdrop);
-    document.body.className = backgroundColor;
+    // document.body.className = backgroundColor;
+    document.documentElement.className = backgroundColor;
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +34,8 @@ export default class Layout extends Component {
     const backgroundColor = this.props.item?.backgroundColor || modeBackground(this.props.backdrop);
 
     if (previousBackground !== backgroundColor) {
-      document.body.className = backgroundColor;
+      // document.body.className = backgroundColor;
+      document.documentElement.className = backgroundColor;
     }
   }
 
