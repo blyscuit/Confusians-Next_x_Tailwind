@@ -7,6 +7,7 @@ const ProductImage = (props) => {
   const [progress, setProgress] = useState(0);
   const [animationDirection, setAnimationDirection] = useState(1);
   const [height, setHeight] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const [width, setWidth] = useState(0);
   const [bottomScroll, setBottomScroll] = useState(0);
   const [isAbsolute, setIsAbsolute] = useState(false);
@@ -23,16 +24,16 @@ const ProductImage = (props) => {
     const updateDimensions = () => {
       const windowsHeight = window.innerHeight;
       const windowsWidth = window.innerWidth;
-      const calcHeight = Math.max(windowsWidth * 0.3, 220) * 1.78;
+      const calcHeight = Math.max(Math.min(800,windowsWidth) * 0.3, 220) * 1.78;
 
       const rect = componentRef.current?.getBoundingClientRect();
       const y = rect ? rect.top + window.scrollY : 0;
       setComponentY(y);
-
+      setWindowHeight(windowsHeight);
       setHeight(calcHeight);
-      setWidth(windowsWidth);
+      setWidth(windowsHeight);
       setBottomScroll(
-        (calcHeight * imageCount) + (componentY / 2)
+        (calcHeight * (imageCount - 1)) + (componentY)
       );
     };
 
@@ -49,15 +50,15 @@ const ProductImage = (props) => {
       const rect = componentRef.current?.getBoundingClientRect();
       const y = rect ? rect.top + window.scrollY : componentY;
 
-      const startingPoint = height / 4 + y;
+      const startingPoint = ((windowHeight - Math.min(height, 800 * 0.3 * 1.78)) / 2) + y;
       const scrollY = window.scrollY;
-      const absoluteStart = y * 0.9;
+      const absoluteStart = y * 0.84;
 
       if (scrollY <= absoluteStart) {
         setIsBottom(false);
         setIsAbsolute(false);
         setScrollTop(startingPoint);
-      } else if (scrollY >= bottomScroll) {
+      } else if (scrollY >= bottomScroll - 100) {
         setIsAbsolute(true);
         setIsBottom(true);
         setScrollTop(startingPoint - (scrollY - bottomScroll));
@@ -95,25 +96,23 @@ const ProductImage = (props) => {
   useEffect(() => {
     if (!height) return;
 
-    let lastScrollY = window.scrollY;
-    let accumulatedScroll = 0;
-    const scrollThreshold = height;
-
     const handleProgressScroll = () => {
       const currentScrollY = window.scrollY;
-      const delta = currentScrollY - lastScrollY;
-      lastScrollY = currentScrollY;
 
-      if (delta === 0 || window.scrollY < componentY) return;
-
-      accumulatedScroll += delta;
-
-      if (Math.abs(accumulatedScroll) >= scrollThreshold) {
-        const direction = accumulatedScroll > 0 ? 1 : -1;
-        setAnimationDirection(direction);
-        setProgress((current) => Math.max(0, current + direction));
-        accumulatedScroll = 0;
+      if (currentScrollY < componentY) {
+        setProgress(0);
+        return;
       }
+      if (currentScrollY > bottomScroll) {
+        setProgress(imageCount - 1);
+        return;
+      }
+
+      const newProgress = Math.max(0, Math.ceil((currentScrollY - componentY) / height));
+      const direction = newProgress >= progress ? 1 : -1;
+
+      setAnimationDirection(direction);
+      setProgress(newProgress);
     };
 
     window.addEventListener("scroll", handleProgressScroll);
@@ -121,7 +120,7 @@ const ProductImage = (props) => {
     return () => {
       window.removeEventListener("scroll", handleProgressScroll);
     };
-  }, [height]);
+  }, [height, componentY, progress]);
 
   const centerIndex = Math.max(0, progress - 1);
 
@@ -139,11 +138,11 @@ const ProductImage = (props) => {
     >
       <div
         style={{
-          height: "100vh",
+          height: height + 180,
           position: isBottom ? "absolute" : isAbsolute ? "fixed" : "relative",
           width: "100%",
           left: isAbsolute ? 0 : "auto",
-          top: isBottom ? (height * imageCount) + (componentY / 2) : isAbsolute ? scrollTop : "auto",
+          top: isBottom ? bottomScroll : isAbsolute ? scrollTop : "auto",
           overflow: isBottom || !isAbsolute ? "hidden" : "visible",
         }}
       >
@@ -188,6 +187,32 @@ const ProductImage = (props) => {
                       ? {
                           enter: {
                             opacity: 0,
+                            x: 80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeOut",
+                            },
+                          },
+                          center: {
+                            opacity: slot.offset === 0 ? 1 : 0.2,
+                            x: 0,
+                            transition: {
+                              duration: 0.5,
+                              ease: "easeOut",
+                            },
+                          },
+                          exit: {
+                            opacity: 0,
+                            x: -80,
+                            transition: {
+                              duration: 0.3,
+                              ease: "easeIn",
+                            },
+                          },
+                        }
+                      : {
+                          enter: {
+                            opacity: 0,
                             x: -80,
                             transition: {
                               duration: 0.3,
@@ -206,41 +231,15 @@ const ProductImage = (props) => {
                             opacity: 0,
                             x: 80,
                             transition: {
-                              duration: 0.3,
+                              duration: 0.2,
                               ease: "easeIn",
                             },
                           },
                         }
-                      : {
-                          // enter: {
-                          //   opacity: 0,
-                          //   // x: 80,
-                          //   transition: {
-                          //     duration: 0.3,
-                          //     ease: "easeOut",
-                          //   },
-                          // },
-                          center: {
-                            opacity: slot.offset === 0 ? 1 : 0.2,
-                            // x: 0,
-                            transition: {
-                              duration: 0.5,
-                              ease: "easeOut",
-                            },
-                          },
-                          // exit: {
-                          //   opacity: 0,
-                          //   x: -80,
-                          //   transition: {
-                          //     duration: 0.3,
-                          //     ease: "easeIn",
-                          //   },
-                          // },
-                        }
                   }
-                  // initial="enter"
+                  initial="enter"
                   animate="center"
-                  // exit="exit"
+                  exit="exit"
                 />
               ))}
             </AnimatePresence>
@@ -248,7 +247,7 @@ const ProductImage = (props) => {
         </motion.div>
       </div>
 
-      <div style={{ height: (height * (imageCount)) + (componentY / 2)}} />
+      <div style={{ height: (height * (imageCount)) + 180}} />
     </div>
   );
 };
