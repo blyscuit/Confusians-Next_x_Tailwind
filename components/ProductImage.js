@@ -19,6 +19,7 @@ const ProductImage = (props) => {
   const imageCount = images.length + 1;
   const componentRef = useRef(null);
   const [componentY, setComponentY] = useState(0);
+  const scrollTopRef = useRef(0);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -32,7 +33,9 @@ const ProductImage = (props) => {
       setWindowHeight(windowsHeight);
       setHeight(calcHeight);
       setWidth(windowsHeight);
-      setBottomScroll((calcHeight * (imageCount - 1)) + y);
+      setBottomScroll(
+        (calcHeight * (imageCount - 1)) + (componentY)
+      );
     };
 
     updateDimensions();
@@ -44,37 +47,62 @@ const ProductImage = (props) => {
   }, [imageCount, componentY]);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let frame = null;
+
+    const updatePosition = () => {
       const rect = componentRef.current?.getBoundingClientRect();
       const y = rect ? rect.top + window.scrollY : componentY;
       const scrollY = window.scrollY;
+
       const viewportImageHeight = Math.min(height, 800 * 0.3 * 1.78);
-      const startingPoint = (windowHeight - viewportImageHeight) / 2;
-      const absoluteStart = y;
-      const absoluteEnd = y + height * (imageCount - 1) - 40;
+      const centeredTop = (windowHeight - viewportImageHeight) / 2;
+      const absoluteStart = y * 0.84;
+      const absoluteEnd = bottomScroll - 100;
+
+      let nextTop;
+      let nextAbsolute;
+      let nextBottom;
 
       if (scrollY <= absoluteStart) {
-        setIsBottom(false);
-        setIsAbsolute(false);
-        setScrollTop((y - scrollY));
+        nextAbsolute = false;
+        nextBottom = false;
+        nextTop = y - scrollY;
       } else if (scrollY >= absoluteEnd) {
-        setIsBottom(true);
-        setIsAbsolute(true);
-        setScrollTop(40 - (scrollY - absoluteEnd));
+        nextAbsolute = true;
+        nextBottom = true;
+        nextTop = centeredTop + y - (scrollY - bottomScroll);
       } else {
-        setIsBottom(false);
-        setIsAbsolute(true);
-        setScrollTop(startingPoint);
+        nextAbsolute = true;
+        nextBottom = false;
+        nextTop = centeredTop;
+      }
+
+      scrollTopRef.current = nextTop;
+      setIsAbsolute(nextAbsolute);
+      setIsBottom(nextBottom);
+      setScrollTop(nextTop);
+    };
+
+    const handleScroll = () => {
+      if (frame === null) {
+        frame = requestAnimationFrame(() => {
+          frame = null;
+          updatePosition();
+        });
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    updatePosition();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+      }
     };
-  }, [height, width, imageCount, windowHeight, componentY]);
+  }, [height, windowHeight, bottomScroll, componentY]);
 
   const { scrollY } = useViewportScroll();
 
@@ -124,11 +152,11 @@ const ProductImage = (props) => {
       <div
         style={{
           height: height + 180,
-          position: (scrollTop == 0) ? "relative" : "fixed",
+          position: isBottom ? "absolute" : isAbsolute ? "fixed" : "relative",
           width: "100%",
-          left: 0,
-          top: scrollTop,
-          overflow: isBottom ? "hidden" : "visible",
+          left: isAbsolute ? 0 : "auto",
+          top: isBottom ? bottomScroll : isAbsolute ? scrollTopRef.current : "auto",
+          overflow: isBottom || !isAbsolute ? "hidden" : "visible",
         }}
       >
         <motion.div
