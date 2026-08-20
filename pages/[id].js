@@ -85,7 +85,7 @@ const Post = (props) => {
 
   let steamSection = (
     item.steam != null && item.steam !== "" ? (
-            <div className="pt-4 w-full px-10 pb-10 md:px-0 md:max-w-lg mx-auto">
+            <div className="pt-4 w-full px-10 md:px-0 md:max-w-lg mx-auto">
             <iframe
               src={`https://store.steampowered.com/widget/${item.steam}/`}
               width='100%'
@@ -103,7 +103,7 @@ const Post = (props) => {
       >
         <Head>
           <title>{item.name || ""} | Confusians</title>
-          <meta name="description" content={item.name + " | " + item.about} />
+          <meta name="description" content={item.name + " " + item.about + " " + item.markdownText} />
           <meta
             name="robots"
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
@@ -162,7 +162,7 @@ const Post = (props) => {
               </div>
             ) : null}
 
-            <h5 className={"px-10 md:px-20 text-2xl text-center font-light " + item.textColor}>
+            <h5 className={"px-10 pt-10 md:px-20 text-2xl text-center font-light " + item.textColor}>
                 {item.about && (<ReactMarkdown>{item.about}</ReactMarkdown>)}
             </h5>
 
@@ -192,7 +192,7 @@ const Post = (props) => {
           {steamSection}
 
           {item.youtube ? (
-          <div className="sm:pl-10 sm:pr-10 w-full sm:w-full md:max-w-2xl mx-auto">
+          <div className="pt-10 sm:pl-10 sm:pr-10 w-full sm:w-full md:max-w-2xl mx-auto">
               <iframe
                 width='100%'
                 max-width='100vw'

@@ -60,6 +60,18 @@ const IconView = (props) => {
       return <Icons.IoMailOpenOutline className={"" + props.color} size={props.size} />;
     case "IoShareOutline":
       return <Icons.IoShareOutline className={"" + props.color} size={props.size} />;
+    case "IoLeafOutline":
+      return <Icons.IoLeafOutline className={"" + props.color} size={props.size} />;
+    case "IoCloudDownloadOutline":
+      return <Icons.IoCloudDownloadOutline className={"" + props.color} size={props.size} />;
+    case "IoCaretForwardCircleOutline":
+      return <Icons.IoCaretForwardCircleOutline className={"" + props.color} size={props.size} />;
+    case "IoGiftOutline":
+      return <Icons.IoGiftOutline className={"" + props.color} size={props.size} />;
+    case "IoCloudOfflineOutline":
+      return <Icons.IoCloudOfflineOutline className={"" + props.color} size={props.size} />;
+    case "IoMoonOutline":
+      return <Icons.IoMoonOutline className={"" + props.color} size={props.size} />;
     default:
       return <div />;
   }
