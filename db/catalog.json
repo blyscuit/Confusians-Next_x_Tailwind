@@ -46,7 +46,7 @@
   },
   "27poker": {
     "name": "Falling in Love with the Girl in Seat 27H who was Playing (Ultimate Hold'em) Poker Clicker",
-    "about": "Poker incremental clicker & light rom-com",
+    "markdownText": "Travel size Ultimate (Texas) Hold'em Poker.\n\nIncremental idle clicker meets Poker. Featuring multi-tables and powerups.\n\nIn a light (novel) rom-com package.",
     "font": "",
     "backgroundColor": "bg-violet-950",
     "textColor": "white-text text-lighten-5",
@@ -62,7 +62,15 @@
       "/poker27_6.png"
     ],
     "youtube": "https://www.youtube.com/embed/8hkqAkRq8sU",
-    "video": "/poker27-Preview.mp4"
+    "video": "/poker27-Preview.mp4",
+    "description": [
+      { "icon": "IoGiftOutline", "text": "All Free" },
+      { "icon": "IoCloudDownloadOutline", "text": "5MB Tiny Download" },
+      { "icon": "IoCloudOfflineOutline", "text": "Play Offline" },
+      { "icon": "IoMoonOutline", "text": "Themes" },
+      { "icon": "IoLeafOutline", "text": "Battery Saver" },
+      { "icon": "IoCaretForwardCircleOutline", "text": "Idle Mode" }
+    ]
   },
   "cryptget": {
     "name": "Cryptget",
