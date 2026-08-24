@@ -140,7 +140,7 @@ const Post = (props) => {
         </Head>
 
         <div className={"flex flex-col items-center  pb-10"}>
-          {/* <SmartAppBanner item={item}></SmartAppBanner> */}
+          <SmartAppBanner item={item}></SmartAppBanner>
           <div className="flex flex-col px-6 py-16">
             <h1
               className={"text-6xl pb-4 text-center " + item.textColor}

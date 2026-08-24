@@ -13,15 +13,13 @@ export default function SmartAppBanner(props) {
     // 2. Detect Platform
     const userAgent = navigator.userAgent || navigator.vendor || (window).opera;
     
+    setAppUrl(item.adr ? item.adr : '');
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window).MSStream) {
       setPlatform('ios');
-      setAppUrl(item.adr ? item.adr : '');
       setIsVisible(false);
     } else if (/android/i.test(userAgent)) {
       setPlatform('android');
-      setAppUrl(item.adr ? item.adr : '');
       if (item.adr && item.adr.trim() !== '') {
-        setIsClosing(false);
         setIsVisible(true);
       } else {
         setIsVisible(false);
