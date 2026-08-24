@@ -32,7 +32,7 @@ const Post = (props) => {
 
   let linkSection = (
     <div className="w-full flex justify-center px-4 pt-10">
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-10">
 
         {/* iOS FIRST */}
         {item.ios && (
