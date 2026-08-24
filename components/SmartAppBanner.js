@@ -16,7 +16,7 @@ export default function SmartAppBanner(props) {
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window).MSStream) {
       setPlatform('ios');
       setAppUrl(item.adr ? item.adr : '');
-      setIsVisible(true);
+      setIsVisible(false);
     } else if (/android/i.test(userAgent)) {
       setPlatform('android');
       setAppUrl(item.adr ? item.adr : '');
