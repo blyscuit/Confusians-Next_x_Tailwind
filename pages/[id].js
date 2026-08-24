@@ -5,6 +5,7 @@ import IconView from "../components/IconView";
 import Head from "next/head";
 import ProductImage from "../components/ProductImage";
 import StaticProductImage from "../components/StaticProductImage";
+import SmartAppBanner from "../components/SmartAppBanner";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
@@ -139,6 +140,7 @@ const Post = (props) => {
         </Head>
 
         <div className={"flex flex-col items-center  pb-10"}>
+          <SmartAppBanner item={item}></SmartAppBanner>
           <div className="flex flex-col px-6 py-16">
             <h1
               className={"text-6xl pb-4 text-center " + item.textColor}
