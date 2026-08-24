@@ -210,7 +210,7 @@ const Post = (props) => {
           <div className="grid-container"></div>
           <div
             className={
-              "self-stretch grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 p-2 mx-6 " +
+              "self-stretch grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 p-2 mx-6 " +
               item.textColor
             }
           >
@@ -218,14 +218,14 @@ const Post = (props) => {
               return (
                 <div
                   key={des.text}
-                  className="flex flex-col items-center pt-16"
+                  className={`flex ${!isMd ? "flex-row" : "flex-col"} items-center pt-${!isMd ? "4" : "16"}`}
                 >
                   <IconView
                     icon={des.icon}
-                    size={isMd ? 60 : 40}
+                    size={!isMd ? 20 : 40}
                     color={item.textColor}
                   />
-                  <div className="pt-3 md:pt-4 text-center">
+                  <div className={`${!isMd ? "pl-4" : "pt-3 md:pt-4"} text-center`}>
                     {des.text}
                   </div>
                 </div>
