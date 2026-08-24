@@ -1,19 +1,14 @@
-import Layout from "../components/MyLayout.js";
+"use client";
+import Layout from "../../components/MyLayout.js";
 import Link from "next/link";
-import Head from "next/head";
 import { useEffect } from "react";
 import {
   useDarkMode,
   modeBackdrop,
   modeBackgroundTrueBlack,
-} from "../js/useDarkMode";
+} from "../../js/useDarkMode";
 
-export const metadata = {
-  title: "Confusians | Tip",
-  description: "Confusians",
-};
-
-const Tip = (props) => {
+const TipRoute = (props) => {
   const [colorTheme, setTheme] = useDarkMode();
 
   const copy = (e) => {
@@ -36,32 +31,6 @@ const Tip = (props) => {
 
   return (
     <Layout backdrop={modeBackdrop(colorTheme)} footer={false}>
-      <Head>
-        <title>Confusians | Tip</title>
-        <meta name="description" content="Tip jar" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={"Confusians | Tip"} />
-        <meta property="og:url" content={"https://confusians.com/tip"} />
-        <meta property="og:site_name" content="Confusians" />
-        <meta
-          property="og:image"
-          content={"https://confusians.com/logofull.png"}
-        />
-        <meta
-          property="og:image:secure_url"
-          content={"https://confusians.com/logofull.png"}
-        />
-        <meta property="og:image:width" content="1280" />
-        <meta property="og:image:height" content="720" />
-        <meta name="twitter:card" content="app" />
-        <meta name="twitter:title" content={"Confusians | Tip"} />
-        <meta
-          name="twitter:image"
-          content={"https://confusians.com/logofull.png"}
-        />
-      </Head>
-
       <div className="hidden">
         <h1 href="https://confusians.com">Confusians Tip Jar</h1>
       </div>
@@ -86,8 +55,4 @@ const Tip = (props) => {
   );
 };
 
-export async function getStaticProps(context) {
-  return { props: {} };
-}
-
-export default Tip;
+export default TipRoute;

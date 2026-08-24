@@ -1,13 +1,5 @@
-import { useEffect, useState } from "react";
-
 const HomeCard = (props) => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // runs only in the browser
-  }, []);
-
-  const style = isClient ? { fontFamily: props.font } : {};
+  const style = { fontFamily: props.font };
 
   return (
     <div

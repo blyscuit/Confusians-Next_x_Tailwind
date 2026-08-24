@@ -1,4 +1,5 @@
-import { motion, useViewportScroll, useTransform, AnimatePresence } from "framer-motion";
+"use client";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
 const mod = (n, length) => ((n % length) + length) % length;
@@ -8,7 +9,6 @@ const ProductImage = (props) => {
   const [animationDirection, setAnimationDirection] = useState(1);
   const [height, setHeight] = useState(0);
   const [windowHeight, setWindowHeight] = useState(0);
-  const [width, setWidth] = useState(0);
   const [bottomScroll, setBottomScroll] = useState(0);
   const [isAbsolute, setIsAbsolute] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
@@ -32,7 +32,6 @@ const ProductImage = (props) => {
       setComponentY(y);
       setWindowHeight(windowsHeight);
       setHeight(calcHeight);
-      setWidth(windowsHeight);
       setBottomScroll(
         (calcHeight * (imageCount - 1)) + (componentY)
       );
@@ -104,7 +103,6 @@ const ProductImage = (props) => {
     };
   }, [height, windowHeight, bottomScroll, componentY]);
 
-  const { scrollY } = useViewportScroll();
 
   useEffect(() => {
     if (!height) return;
