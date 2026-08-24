@@ -78,11 +78,11 @@ const HomeCard = (props) => {
           }
         ></div> */}
       </div>
-      <img
+      {props.image ? (<img
         {...(props.image ? { alt: props.name } : {})}
         className={"object-top object-cover w-full h-full"}
         src={props.image}
-      /> 
+      /> ) : null}
 
       {props.image.length <= 0 ? (
             <div className={"absolute h-full w-full flex flex-col items-center justify-center "}>

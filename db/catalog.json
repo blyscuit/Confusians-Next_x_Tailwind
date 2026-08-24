@@ -26,6 +26,7 @@
     "backgroundColor": "black darken-4",
     "textColor": "white-text text-lighten-4",
     "ios": "https://apps.apple.com/us/app/fallfate-impulsive-plinko/id6756647967",
+    "ios_banner": "6756647967",
     "adr": "https://play.google.com/store/apps/details?id=com.confusians.fallfate.full",
     "image": [
         "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3961470/58888c2ac69af1c16eb51b2ed83091812031481a/ss_58888c2ac69af1c16eb51b2ed83091812031481a.1920x1080.jpg?t=1770635977",
@@ -51,6 +52,7 @@
     "backgroundColor": "bg-violet-950",
     "textColor": "white-text text-lighten-5",
     "ios": "https://apps.apple.com/us/app/fall-in-love-girl-in-seat-27h/id6759246918",
+    "ios_banner": "6759246918",
     "adr": "https://play.google.com/store/apps/details?id=com.confusians.ultiholdem",
     "macos": "",
     "image": [
@@ -79,6 +81,7 @@
     "backgroundColor": "bg-gray-950",
     "textColor": "white-text text-lighten-4",
     "ios": "https://apps.apple.com/us/app/cryptget/id1565348556",
+    "ios_banner": "1565348556",
     "macos": "https://apps.apple.com/us/app/cryptget/id1565348556",
     "adr": "",
     "image": [
@@ -112,7 +115,8 @@
     "font": "Quicksand",
     "backgroundColor": "grey lighten-4",
     "textColor": "grey-text text-darken-3",
-    "ios": "https://appsto.re/th/Ui3Eib.i",
+    "ios": "https://apps.apple.com/th/app/cosmetica/id1216049710",
+    "ios_banner": "1216049710",
     "adr": "",
     "image": ["/cosmetica_mobile1.png", "/cosmetica_mobile2.png"]
   },
@@ -124,6 +128,7 @@
     "backgroundColor": "blue-grey lighten-5",
     "textColor": "grey-text text-darken-4",
     "macos": "https://apps.apple.com/us/app/top-bar-web-buddy/id6749138471",
+    "ios_banner": "6749138471",
     "ios": "",
     "adr": "",
     "image": ["/top-bar-web-buddy.png"],
@@ -148,6 +153,7 @@
     "backgroundColor": "blue-grey lighten-5",
     "textColor": "grey-text text-darken-4",
     "ios": "https://apps.apple.com/us/app/websharedrop-share-web-tabs/id6753943009",
+    "ios_banner": "6753943009",
     "macos": "https://apps.apple.com/us/app/websharedrop-share-web-tabs/id6753943009",
     "adr": "",
     "image": ["/web-share-drop.gif", "/web-share-drop.png"],
@@ -171,6 +177,7 @@
     "backgroundColor": "black darken-4",
     "textColor": "white-text text-lighten-3",
     "ios": "https://apps.apple.com/en/app/livert/id1409397277",
+    "ios_banner": "1409397277",
     "adr": "",
     "image": ["/livert_mobile.png"]
   },
@@ -181,6 +188,7 @@
     "backgroundColor": "blue-grey darken-4",
     "textColor": "light-blue-text text-lighten-5",
     "ios": "https://itunes.apple.com/th/app/keep-misfit-shine-tracker/id1079891930?mt=8",
+    "ios_banner": "1079891930",
     "adr": "",
     "image": ["/KeepMisfit_mobile.png"],
     "noFrame": true
@@ -191,7 +199,7 @@
     "font": "Times,serif",
     "backgroundColor": "grey darken-1",
     "textColor": "grey-text text-lighten-5",
-    "ios": "https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8",
+    "ios": "",
     "adr": "",
     "image": ["/esqace_mobile1.png"]
   },
@@ -202,6 +210,7 @@
     "backgroundColor": "grey darken-4",
     "textColor": "grey-text text-lighten-5",
     "ios": "https://itunes.apple.com/us/app/sliadde/id1025636998?mt=8",
+    "ios_banner": "1025636998",
     "adr": "https://play.google.com/store/apps/details?id=com.confusians.Sliaddee",
     "image": ["/sliadde_mobile.png"],
     "noFrame": true
@@ -213,6 +222,7 @@
     "backgroundColor": "amber lighten-4",
     "textColor": "text-blue-grey text-darken-4",
     "ios": "https://itunes.apple.com/en/app/negative/id840000894?mt=8",
+    "ios_banner": "840000894",
     "adr": "",
     "image": ["/iphone-big.png"],
     "noFrame": true
@@ -224,6 +234,7 @@
     "backgroundColor": "deep-orange lighten-1",
     "textColor": "grey-text text-lighten-3",
     "ios": "https://apps.apple.com/us/app/quick-note-one-handed-camera/id981003902",
+    "ios_banner": "981003902",
     "adr": "",
     "image": ["/qnohc_mobile.png"],
     "noFrame": true
