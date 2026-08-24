@@ -225,7 +225,7 @@ const Post = (props) => {
                     size={!isMd ? 20 : 40}
                     color={item.textColor}
                   />
-                  <div className={`${!isMd ? "pl-4" : "pt-3 md:pt-4"} text-center`}>
+                  <div className={`${!isMd ? "pl-4" : "pt-3 md:pt-4"} ${!isMd ? "text-left" : "text-center"}`}>
                     {des.text}
                   </div>
                 </div>
