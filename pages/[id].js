@@ -220,11 +220,15 @@ const Post = (props) => {
                   key={des.text}
                   className={`flex ${!isMd ? "flex-row" : "flex-col"} ${!isMd ? "items-top" : "items-center"} pt-${!isMd ? "4" : "6"}`}
                 >
+                  <div
+                    className={!isMd ? "mt-0.5" : ""}
+                  >
                   <IconView
                     icon={des.icon}
                     size={!isMd ? 20 : 40}
                     color={item.textColor}
                   />
+                  </div>
                   <div className={`${!isMd ? "pl-4" : "pt-3 md:pt-4"} ${!isMd ? "text-left" : "text-center"}`}>
                     {des.text}
                   </div>
