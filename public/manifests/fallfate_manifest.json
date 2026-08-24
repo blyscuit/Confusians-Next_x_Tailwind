@@ -2,7 +2,6 @@
   "name": "Fallfate",
   "short_name": "Fallfate",
   "start_url": "/fallfate",
-  "display": "standalone",
   "prefer_related_applications": true,
   "related_applications": [
     {

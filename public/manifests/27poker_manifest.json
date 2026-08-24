@@ -2,7 +2,6 @@
   "name": "Falling in Love with the Girl in Seat 27H who was Playing (Ultimate Hold'em) Poker Clicker",
   "short_name": "Seat 27H Poker",
   "start_url": "/27poker",
-  "display": "standalone",
   "prefer_related_applications": true,
   "related_applications": [
     {
