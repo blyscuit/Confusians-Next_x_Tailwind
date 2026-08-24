@@ -55,7 +55,7 @@ export default function SmartAppBanner(props) {
 
   return (
     <div
-      className={`fixed top-2 left-2 right-2 z-[9999] flex h-[65px] items-center rounded-2xl bg-white/50 px-3 shadow-[0_2px_5px_rgba(0,0,0,0.1)] backdrop-blur-sm transition-opacity duration-200 ease-out ${isClosing ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed top-2 left-2 right-2 z-[9999] flex py-2 items-center rounded-2xl bg-white/50 px-3 shadow-[0_2px_5px_rgba(0,0,0,0.1)] backdrop-blur-sm transition-opacity duration-200 ease-out ${isClosing ? 'opacity-0' : 'opacity-100'}`}
     >
       <button onClick={handleClose} className="pr-2 border-none bg-transparent text-[20px] font-light">×</button>
     
@@ -63,7 +63,7 @@ export default function SmartAppBanner(props) {
         <img
           src={item.adr_icon}
           alt=""
-          className="h-10 w-10 shrink-0 rounded-xl object-cover"
+          className="h-12 w-12 shrink-0 rounded-xl object-cover"
         />
       )}
 
@@ -75,9 +75,9 @@ export default function SmartAppBanner(props) {
         href={appUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={"rounded-full px-[15px] py-[6px] text-[12px] font-bold no-underline " + item.textColor + " " + item.backgroundColor}
+        className={"rounded-full px-[15px] py-[6px] text-[12px] font-semibold no-underline " + item.textColor + " " + item.backgroundColor}
       >
-        VIEW
+        View
       </a>
     </div>
   );
