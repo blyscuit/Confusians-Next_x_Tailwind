@@ -43,7 +43,8 @@
     "noFrame": true,
     "noScaleAnimation": true,
     "steam": "3961470",
-    "presskit": true
+    "presskit": true,
+    "adr_icon": "/android_icons/fallfate.png"
   },
   "27poker": {
     "name": "Falling in Love with the Girl in Seat 27H who was Playing (Ultimate Hold'em) Poker Clicker",
@@ -72,7 +73,8 @@
       { "icon": "IoMoonOutline", "text": "Themes" },
       { "icon": "IoLeafOutline", "text": "Battery Saver" },
       { "icon": "IoCaretForwardCircleOutline", "text": "Idle Mode" }
-    ]
+    ],
+    "adr_icon": "/android_icons/poker27.png"
   },
   "cryptget": {
     "name": "Cryptget",
