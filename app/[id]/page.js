@@ -1,33 +1,19 @@
-import Layout from "../components/MyLayout";
+import Layout from "../../components/MyLayout";
 import fetch from "isomorphic-unfetch";
-import catalog from "../db/catalog.json";
-import IconView from "../components/IconView";
-import Head from "next/head";
-import ProductImage from "../components/ProductImage";
-import StaticProductImage from "../components/StaticProductImage";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import catalog from "../../db/catalog.json";
+import IconView from "../../components/IconView";
+import ProductImage from "../../components/ProductImage";
+import StaticProductImage from "../../components/StaticProductImage";
 import ReactMarkdown from "react-markdown";
 
-const Post = (props) => {
-  const [isClient, setIsClient] = useState(false);
-  const [isMd, setIsMd] = useState(false);
-  const item = props;
+const ProductRoute = ({ params }) => {
+  const { id } = params;
+  const item = catalog[id?.toLowerCase()];
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const updateBreakpoint = () => setIsMd(mediaQuery.matches);
+  if (!item) {
+    return null;
+  }
 
-    updateBreakpoint();
-    mediaQuery.addEventListener("change", updateBreakpoint);
-
-    return () => mediaQuery.removeEventListener("change", updateBreakpoint);
-  }, []);
-
-  const router = useRouter();
-  const { id } = router.query;
-
-  const style = isClient ? { fontFamily: props.font } : {};
 
   let linkSection = (
     <div className="w-full flex justify-center px-4 pt-10">
@@ -101,46 +87,11 @@ const Post = (props) => {
         item={item}
         backdrop={(item.textColor || "").includes("lighten") ? "dark" : "light"}
       >
-        <Head>
-          <title>{item.name || ""} | Confusians</title>
-          <meta name="description" content={item.name + " " + item.about + " " + item.markdownText} />
-          <meta
-            name="robots"
-            content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-          />
-          <meta property="og:locale" content="en_US" />
-          <meta property="og:type" content="website" />
-          <meta property="og:title" content={item.name} />
-          <meta property="og:description" content={item.about} />
-          <meta
-            property="og:url"
-            content={"https://confusians.com/" + item.name}
-          />
-          <meta property="og:site_name" content="Confusians" />
-          <meta
-            property="og:image"
-            content={"https://confusians.com/" + (item.image || [""])[0]}
-          />
-          <meta
-            property="og:image:secure_url"
-            content={"https://confusians.com/" + (item.image || [""])[0]}
-          />
-          <meta property="og:image:width" content="1280" />
-          <meta property="og:image:height" content="720" />
-          <meta name="twitter:card" content="app" />
-          <meta name="twitter:description" content={item.about} />
-          <meta name="twitter:title" content={item.name} />
-          <meta
-            name="twitter:image"
-            content={"https://confusians.com/" + (item.image || [""])[0]}
-          />
-        </Head>
 
         <div className={"flex flex-col items-center  pb-10"}>
           <div className="flex flex-col px-6 py-16">
             <h1
               className={"text-6xl pb-4 text-center " + item.textColor}
-              style={style}
             >
               {item.name}
             </h1>
@@ -218,7 +169,7 @@ const Post = (props) => {
                 >
                   <IconView
                     icon={des.icon}
-                    size={isMd ? 60 : 40}
+                    size={40}
                     color={item.textColor}
                   />
                   <div className="pt-3 md:pt-4 text-center">
@@ -247,34 +198,47 @@ const Post = (props) => {
   );
 };
 
-export async function getStaticPaths() {
-  const paths = catalog.index.map((index) => {
-    return {
-      params: {
-        id: index.id,
-      },
-    };
-  });
+export async function generateStaticParams() {
+  return catalog.index.map((index) => ({
+    id: index.id,
+  }));
+}
+
+export async function generateMetadata({ params }) {
+  const item = catalog[params?.id?.toLowerCase()];
+
+  if (!item) {
+    return {};
+  }
+
+  const image = (item.image || [""])[0];
+
   return {
-    paths,
-    fallback: true,
+    title: `${item.name || ""} | Confusians`,
+    description: `${item.name || ""} ${item.about || ""} ${item.markdownText || ""}`,
+    robots: {
+      index: true,
+      follow: true,
+      maxSnippet: -1,
+      maxImagePreview: "large",
+      maxVideoPreview: -1,
+    },
+    openGraph: {
+      locale: "en_US",
+      type: "website",
+      title: item.name,
+      description: item.about,
+      url: `https://confusians.com/${item.name}`,
+      siteName: "Confusians",
+      images: image ? [`https://confusians.com/${image}`] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.name,
+      description: item.about,
+      images: image ? [`https://confusians.com/${image}`] : [],
+    },
   };
 }
 
-export async function getStaticProps(context) {
-  var { id } = context.params;
-  id = id || "";
-  var item = catalog[id.toLowerCase()];
-
-  if (!item) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-  return { props: item };
-}
-
-export default Post;
+export default ProductRoute;

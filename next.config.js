@@ -12,7 +12,4 @@ module.exports = {
     // a non-locale prefixed path e.g. `/hello`
     defaultLocale: "en-US",
   },
-  experimental: {
-    scrollRestoration: true,
-  },
 };
