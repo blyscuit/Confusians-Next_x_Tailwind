@@ -135,7 +135,6 @@ const Post = (props) => {
             name="twitter:image"
             content={"https://confusians.com/" + (item.image || [""])[0]}
           />
-          {item.adr && <link rel="manifest" href={`/manifests/${id}_manifest.json`} />}
           {item.ios_banner && <meta name="apple-itunes-app" content={`app-id=${item.ios_banner}`}></meta>}
         </Head>
 
