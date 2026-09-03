@@ -78,12 +78,14 @@ export default class Layout extends Component {
 
     return (
       <div className={this.props.item?.backgroundColor ? this.props.item.backgroundColor : modeBackground(this.props.backdrop)}>
-        <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel='manifest' href='/site.webmanifest' />
-        </Head>
+      <Head>
+        <meta name="apple-mobile-web-app-title" content="Confusians" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </Head>
 
         <Header backdrop={this.props.backdrop || "light"} />
         {this.props.children}
