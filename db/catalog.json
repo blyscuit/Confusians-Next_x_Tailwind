@@ -124,7 +124,7 @@
   },
   "top-bar-web-buddy": {
     "name": "Top Bar Web Buddy",
-    "about": "Access website quickly. Very useful for monitoring ticker/crypto tracker.",
+    "about": "Access website quickly. Always visible web title. Useful for monitoring ticker/crypto. Search the web right from the menu bar.",
     "markdownText": "[Download Demo](https://confusians.gumroad.com/l/lqdqxb)",
     "font": "",
     "backgroundColor": "blue-grey lighten-5",
@@ -133,9 +133,11 @@
     "ios_banner": "6749138471",
     "ios": "",
     "adr": "",
-    "image": ["/top-bar-web-buddy.png"],
+    "image": ["/top-bar-web-buddy.png", "/top-bar-web-buddy-1.png", "/top-bar-web-buddy-2.png"],
     "noFrame": true,
     "noScaleAnimation": true,
+    "video": "/top-bar-web-buddy-preview.mp4",
+    "youtube": "https://www.youtube.com/embed/T792yKY_aLY",
     "description": [
       {
         "icon": "IoNotificationsOutline",
