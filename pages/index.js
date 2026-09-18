@@ -47,7 +47,7 @@ const Index = (props) => (
         var detail = props.catalog[item.id] || {};
         return (
           <div key={item.id} className="w-full">
-            <Link href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
+            <Link className="group" href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
               <HomeCard
                 backgroundColor={detail.backgroundColor}
                 name={detail.name}
@@ -79,7 +79,7 @@ const Index = (props) => (
         var detail = props.catalog[item.id] || {};
         return (
           <div key={item.id} className="w-full">
-            <Link href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
+            <Link className="group" href={{ pathname: "/[id]", query: {} }} as={`/${item.id}`}>
               <HomeCard
                 backgroundColor={detail.backgroundColor}
                 name={detail.name}

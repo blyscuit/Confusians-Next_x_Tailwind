@@ -20,7 +20,7 @@ const HomeOldCard = (props) => {
       >
         <div
           className={
-            "absolute z-10 flex flex-col items-center h-full justify-center transition duration-500 ease-out transform group-hover:opacity-0 "
+            "absolute z-10 flex flex-col items-center h-full justify-center transition duration-500 ease-out transform group-hover:opacity-0 group-focus-within:opacity-0 "
           }
         >
           <p
@@ -39,7 +39,7 @@ const HomeOldCard = (props) => {
 
         <div
           className={
-            "absolute w-full h-full duration-300 ease-out opacity-50 md:opacity-100 group-hover:opacity-0 "
+            "absolute w-full h-full duration-300 ease-out opacity-50 md:opacity-100 group-hover:opacity-0 group-focus-within:opacity-0 "
           }
           style={{
             backdropFilter: "blur( 6px )",
@@ -49,7 +49,7 @@ const HomeOldCard = (props) => {
         ></div>
         <div
           className={
-            "absolute w-full h-full duration-300 ease-out opacity-50 group-hover:opacity-0 " +
+            "absolute w-full h-full duration-300 ease-out opacity-50 group-hover:opacity-0 group-focus-within:opacity-0 " +
             props.backgroundColor
           }
         ></div>

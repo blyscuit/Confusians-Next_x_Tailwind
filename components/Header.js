@@ -32,7 +32,7 @@ const Header = (props) => {
         </div>
 
         <div
-          className="pt-4 transition duration-300 ease-out sm:opacity-100 md:opacity-0 group-hover:opacity-100"
+          className="pt-4 transition duration-300 ease-out sm:opacity-100 md:opacity-0 md:group-hover:opacity-100 md:has-[:focus]:opacity-100"
           id="link-section"
         >
           <Link href="/">
